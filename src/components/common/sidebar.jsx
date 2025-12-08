@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import { FiHome, FiShield } from "react-icons/fi";
 import { LuUsers } from "react-icons/lu";
@@ -7,6 +8,7 @@ import { MdAssessment } from "react-icons/md";
 import { GiTrophyCup, GiChessKnight } from "react-icons/gi";
 import { RiTaskLine } from "react-icons/ri";
 import { cn } from '@/lib/utils';
+import { usePathname, useRouter } from 'next/navigation';
 
 const sidebarItems = [
     {
@@ -48,7 +50,19 @@ const sidebarItems = [
 
 
 const SideBar = () => {
+    const router = useRouter()
+    const pathname = usePathname()
     const [activeItem, setActiveItem] = useState(0)
+
+    useEffect(() => {
+        const index = sidebarItems.findIndex((item) =>
+            item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href)
+        );
+
+        if (index !== -1) setActiveItem(index);
+    }, [pathname]);
 
     return (
         <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-800 border-r border-r-gray-500/20'>
@@ -71,7 +85,10 @@ const SideBar = () => {
 
                             key={item.label}
 
-                            onClick={() => setActiveItem(prev => index)}
+                            onClick={() => {
+                                setActiveItem(index);
+                                router.push(item.href)
+                            }}
 
                             className={
                                 cn('flex items-center gap-2 text-gray-400 px-2 py-2  rounded-lg cursor-pointer hover:bg-blue-500/5 transition-colors duration-300 delay-75', activeItem === index && "relative overflow-hidden text-white bg-linear-to-r from-blue-500 to-purple-700 transition-transform duration-200")

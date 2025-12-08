@@ -19,7 +19,7 @@ const DrawerSidebar = () => {
       <div
         onClick={() => setShowDrawerSidebar(false)}
         className={cn(
-          "fixed inset-0 backdrop-blur-sm transition-opacity duration-300 cursor-pointer",
+          "fixed inset-0 backdrop-blur-sm bg-black/40 transition-opacity duration-300 cursor-pointer",
           showDrawerSidebar ? "opacity-100 visible" : "opacity-0 invisible"
         )}
       />

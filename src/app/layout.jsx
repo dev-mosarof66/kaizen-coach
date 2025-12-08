@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SideBar from "@/components/common/sidebar";
-import DrawerSidebar from "@/components/common/drawer-sidebar";
 import Header from "@/components/common/header";
+import AIAssistant from "../components/common/ai-assistant";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +36,7 @@ export default function RootLayout({ children }) {
             <div className="w-full flex-1">
               {children}
             </div>
+       
           </div>
         </div>
       </body>

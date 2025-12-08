@@ -64,12 +64,12 @@ const UpcomingEvents = () => {
                         return (
                             <div
                                 key={m.id}
-                                className=" m-2 p-3 px-5 bg-gray-900 gap-2 rounded-xl shadow-inset transition-colors duration-300 cursor-pointer"
+                                className="m-1 mx-3 py-2 px-4 bg-gray-900 hover:bg-purple-600/5 gap-2 rounded-xl shadow-inset transition-colors duration-300 cursor-pointer group"
                             >
                                 <div className="flex items-center justify-between">
 
                                     {/* Left Section */}
-                                    <div className="flex flex-col gap-2" >
+                                    <div className="flex flex-col gap-1" >
                                         {/* Match Type Badge */}
                                         <div className="flex gap-2">
                                             <span className={
@@ -101,7 +101,7 @@ const UpcomingEvents = () => {
                                             </p>
                                         </div>
                                         {/* Arrow */}
-                                        <ChevronRight className="text-gray-500 group-hover:text-gray-300 transition-colors" />
+                                        <ChevronRight className="text-gray-500 group-hover:text-gray-300 transition-all duration-300 group-hover:translate-x-1 " />
                                     </div>
                                 </div>
                             </div>

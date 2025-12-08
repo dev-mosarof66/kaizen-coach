@@ -4,7 +4,7 @@ import PlayerRequests from './player-requests'
 
 const ThirdSection = () => {
     return (
-        <div className='w-full grid grid-cols-1 xl:grid-cols-3 space-y-3 xl:space-y-0 gap-2 my-6'>
+        <div className='w-full grid grid-cols-1 xl:grid-cols-3 space-y-3 xl:space-y-0 xl:gap-2 my-6'>
             <UpcomingEvents />
             <PlayerRequests />
         </div>

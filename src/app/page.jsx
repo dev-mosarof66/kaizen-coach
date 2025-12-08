@@ -5,7 +5,7 @@ import ThirdSection from "@/components/dashboard/third-section";
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col px-4 md:px-5">
+    <div className="w-full flex flex-col px-4 md:px-5 relative">
       <WelcomeCard />
       <StatsCard />
       <ThirdSection />

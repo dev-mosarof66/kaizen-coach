@@ -30,7 +30,8 @@ const DrawerSidebar = () => {
           showDrawerSidebar ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <SideBar />
+        <SideBar onClick={() => setShowDrawerSidebar(false)}
+        />
       </div>
     </div>
   );

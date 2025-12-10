@@ -1,7 +1,8 @@
 'use client'
+import { PrimaryButton } from '@/components/common/button'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Progress } from '@/components/ui/progress' 
+import { Progress } from '@/components/ui/progress'
 import { ChevronDown } from 'lucide-react'
 import React from 'react'
 import { FaPlus } from 'react-icons/fa'
@@ -72,101 +73,100 @@ const getCategoryClasses = (category) => {
 }
 
 const TaskList = () => {
-    return (
-        <Card className="w-full bg-gray-800 border border-gray-700/50 text-white rounded-xl p-2 sm:p-4">
+  return (
+    <Card className="w-full bg-gray-800 border border-gray-700/50 text-white rounded-xl p-2 sm:p-4">
 
-            <CardHeader className="p-0">
-                <div className='w-full flex flex-col gap-4 sm:flex-row items-center justify-between'>
-                    <p className="text-xl font-bold">Tasks</p> 
-                    <div className='flex flex-wrap justify-end gap-2'> 
-                        <Button 
-                            size={'sm'} 
-                            className={'bg-gray-700/50 border border-gray-600 hover:bg-gray-700/80 text-white flex items-center gap-1'}
-                        >
-                            All Categories
-                            <ChevronDown className='w-4 h-4 text-gray-400' />
-                        </Button>
-                        
-                        <Button 
-                            size={'sm'} 
-                            className={'bg-gray-700/50 border border-gray-600 hover:bg-gray-700/80 text-white flex items-center gap-1'}
-                        >
-                            All Status
-                            <ChevronDown className='w-4 h-4 text-gray-400' />
-                        </Button>
+      <CardHeader className="p-0">
+        <div className='w-full flex flex-col gap-4 sm:flex-row items-center justify-between'>
+          <p className="text-xl font-bold">Tasks</p>
+          <div className='flex flex-wrap justify-end gap-2'>
+            <Button
+              size={'sm'}
+              className={'bg-gray-700/50 border border-gray-600 hover:bg-gray-700/80 text-white flex items-center gap-1'}
+            >
+              All Categories
+              <ChevronDown className='w-4 h-4 text-gray-400' />
+            </Button>
 
-                        <Button 
-                            size={'sm'} 
-                            className={'bg-blue-600 hover:bg-blue-700 text-white flex items-center gap-1'}
-                        >
-                            <FaPlus className='w-3 h-3' />
-                            Assign Task
-                        </Button>
+            <Button
+              size={'sm'}
+              className={'bg-gray-700/50 border border-gray-600 hover:bg-gray-700/80 text-white flex items-center gap-1'}
+            >
+              All Status
+              <ChevronDown className='w-4 h-4 text-gray-400' />
+            </Button>
+
+            <PrimaryButton
+              onClick={() => console.log('assign task')}
+            >
+              <FaPlus className='w-3 h-3' />
+              Assign Task
+            </PrimaryButton>
+          </div>
+        </div>
+      </CardHeader>
+
+      <CardContent className="p-0">
+        <div className="overflow-x-auto">
+          <table className="min-w-full table-fixed">
+            <thead>
+              <tr className='text-sm text-gray-400'>
+                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[25%] font-medium">Task</th>
+                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Category</th>
+                <th className="hidden lg:table-cell py-3 px-2 border-b border-gray-700/70 text-left w-[15%] font-medium">Assigned By</th>
+                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Due</th>
+                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Progress</th>
+                <th className="hidden sm:table-cell py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Status</th>
+                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[10%] font-medium">Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              {task_list.map((item, index) => (
+                <tr key={index} className='text-gray-200 border-b border-gray-700/30 last:border-b-0 text-sm'>
+                  <td className="py-3 px-2 font-medium">{item.Task}</td>
+
+                  <td className="py-3 px-2">
+                    <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full border ${getCategoryClasses(item.Category)}`}>
+                      {item.Category}
+                    </span>
+                  </td>
+
+                  <td className="hidden lg:table-cell py-3 px-2 text-gray-400">{item['Assigned By']}</td>
+
+                  <td className="py-3 px-2 text-gray-400">{item.Due}</td>
+
+                  {/* Progress (Progress Bar) */}
+                  <td className="py-3 px-2">
+                    <div className='flex items-center gap-2'>
+                      <span className='text-xs text-blue-400 w-8'>{item.Progress}</span>
+
+                      <Progress
+                        value={parseInt(item.Progress)}
+                        className="h-1.5 w-full bg-gray-700"
+                        indicatorClassName={item.Status === 'Completed' ? 'bg-green-500' : 'bg-blue-500'}
+                      />
                     </div>
-                </div>
-            </CardHeader>
+                  </td>
 
-            <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                    <table className="min-w-full table-fixed">
-                        <thead>
-                            <tr className='text-sm text-gray-400'>
-                                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[25%] font-medium">Task</th>
-                                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Category</th>
-                                <th className="hidden lg:table-cell py-3 px-2 border-b border-gray-700/70 text-left w-[15%] font-medium">Assigned By</th>
-                                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Due</th>
-                                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Progress</th>
-                                <th className="hidden sm:table-cell py-3 px-2 border-b border-gray-700/70 text-left w-[12%] font-medium">Status</th>
-                                <th className="py-3 px-2 border-b border-gray-700/70 text-left w-[10%] font-medium">Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {task_list.map((item, index) => (
-                                <tr key={index} className='text-gray-200 border-b border-gray-700/30 last:border-b-0 text-sm'>
-                                    <td className="py-3 px-2 font-medium">{item.Task}</td>
+                  {/* Status (Styled Badge) */}
+                  <td className="hidden sm:table-cell py-3 px-2">
+                    <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded ${getStatusClasses(item.Status)}`}>
+                      {item.Status}
+                    </span>
+                  </td>
 
-                                    <td className="py-3 px-2">
-                                        <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded-full border ${getCategoryClasses(item.Category)}`}>
-                                            {item.Category}
-                                        </span>
-                                    </td>
-
-                                    <td className="hidden lg:table-cell py-3 px-2 text-gray-400">{item['Assigned By']}</td>
-
-                                    <td className="py-3 px-2 text-gray-400">{item.Due}</td>
-
-                                    {/* Progress (Progress Bar) */}
-                                    <td className="py-3 px-2">
-                                        <div className='flex items-center gap-2'>
-                                            <span className='text-xs text-blue-400 w-8'>{item.Progress}</span>
-
-                                            <Progress 
-                                                value={parseInt(item.Progress)} 
-                                                className="h-1.5 w-full bg-gray-700" 
-                                                indicatorClassName={item.Status === 'Completed' ? 'bg-green-500' : 'bg-blue-500'}
-                                            />
-                                        </div>
-                                    </td>
-
-                                    {/* Status (Styled Badge) */}
-                                    <td className="hidden sm:table-cell py-3 px-2">
-                                        <span className={`inline-block text-xs font-semibold px-2 py-0.5 rounded ${getStatusClasses(item.Status)}`}>
-                                            {item.Status}
-                                        </span>
-                                    </td>
-
-                                    {/* Rating */}
-                                    <td className="py-3 px-2 font-medium">
-                                        {item.Rating !== null ? item.Rating : '—'}
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </CardContent>
-        </Card>
-    )
+                  {/* Rating */}
+                  <td className="py-3 px-2 font-medium">
+                    {item.Rating !== null ? item.Rating : '—'}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
 
 export default TaskList

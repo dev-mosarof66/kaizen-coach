@@ -1,29 +1,45 @@
+'use client'
 import React from 'react'
 import { Button } from '../ui/button'
 import { FaSave } from 'react-icons/fa'
+import { OutlineButton, PrimaryButton } from '../common/button'
+import { useRouter } from 'next/navigation'
+
+
 
 export const TopButtons = () => {
+
+    const router = useRouter();
+
     return (
         <div className='flex items-center gap-2 py-2'>
-            <Button size={'sm'} className={'w-fit bg-transparent border border-gray-600 hover:bg-gray-500/10 cursor-pointer'}>
+            <OutlineButton onClick={() => router.back()}>
                 Cancel
-            </Button>
-            <Button size={'sm'} className={'w-fit bg-blue-600 hover:bg-blue-700 cursor-pointer'}>
+            </OutlineButton>
+            <PrimaryButton>
+                <FaSave />
                 Save Player
-            </Button>
+            </PrimaryButton>
         </div>
     )
 }
 export const SubmitButtons = () => {
+    const router = useRouter();
+
+    const handleSubmit = () => {
+        console.log('submit');
+    }
+
+
     return (
         <div className='w-full flex items-end justify-center gap-2'>
-            <Button size={'sm'} className={'w-fit bg-transparent border border-gray-600 hover:bg-gray-500/10 cursor-pointer'}>
+            <OutlineButton onClick={() => router.back()}>
                 Cancel
-            </Button>
-            <Button size={'sm'} className={'w-fit bg-linear-to-br from-blue-500 via-blue-500 to-purple-500  cursor-pointer'}>
+            </OutlineButton>
+            <PrimaryButton className='bg-linear-to-br from-blue-500 via-blue-500 to-purple-500' onClick={handleSubmit}>
                 <FaSave />
                 Save Player
-            </Button>
+            </PrimaryButton>
         </div>
-    )
-}
+    );
+};

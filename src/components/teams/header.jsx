@@ -1,9 +1,6 @@
 'use client'
 import React from 'react'
-import { Button } from '../ui/button'
 import { FaPlus } from 'react-icons/fa'
-import { cn } from '@/lib/utils'
-import { constClassName } from '@/constants/constants'
 import { useRouter } from 'next/navigation'
 import { OutlineButton, PrimaryButton } from '../common/button'
 
@@ -14,21 +11,17 @@ const Header = () => {
 
             <div className="w-full flex flex-col">
                 <h1 className="text-2xl font-semibold tracking-tight">
-                    Players
+                    Teams
                 </h1>
                 <p className="text-gray-500 text-sm">
-                    Manage and track all players across your teams
+                    Manage all teams across your club
                 </p>
             </div>
 
-            <div className="w-full flex items-center sm:justify-end md:justify-start lg:justify-end gap-2">
-                <OutlineButton>
-                    Import Players
-                </OutlineButton>
-
+            <div className="w-full flex items-center sm:justify-end md:justify-start lg:justify-end gap-4">
                 <PrimaryButton onClick={() => router.push("/add-player")}>
                     <FaPlus className="text-sm" />
-                    Add Players
+                    <p className='flex items-center gap-1'>Create <span className='hidden sm:block md:hidden xl:block'>New</span> Team</p>
                 </PrimaryButton>
 
 

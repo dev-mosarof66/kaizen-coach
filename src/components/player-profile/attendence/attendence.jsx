@@ -49,7 +49,7 @@ const Attendence = ({ selectedTab }) => {
         <div>
             {
                 selectedTab === 'Attendance' &&
-                <div className='w-full flex flex-col gap-6'>
+                <div className='w-full flex flex-col gap-4'>
                     <ProfileStatCard colors={colors} stats={stats} />
                     <div className='w-full grid grid-cols-1 xl:grid-cols-3 gap-0 xl:gap-6'>
                         <Calendar />

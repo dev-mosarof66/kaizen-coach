@@ -5,7 +5,7 @@ import Tasks from './tasks/tasks'
 
 const ProfileContent = ({ selectedTab }) => {
     return (
-        <div className='w-full flex flex-col py-2'>
+        <div className='w-full flex flex-col'>
             <Overview selectedTab={selectedTab} />
             <Attendence selectedTab={selectedTab} />
             <Tasks selectedTab={selectedTab} />

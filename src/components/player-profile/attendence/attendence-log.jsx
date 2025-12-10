@@ -2,6 +2,7 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { OutlineButton } from '@/components/common/button';
 
 
 const activityData = [
@@ -21,9 +22,9 @@ const AttendenceLogs = () => {
             <CardHeader className="p-0">
                 <div className='w-full flex items-center justify-between'>
                     <p className="text-lg font-semibold">Attendence Log</p>
-                    <Button size={'sm'} className={'bg-gray-500/10 border border-gray-700 hover:bg-gray-500/30 transition-all duration-300 delay-75'}>
+                    <OutlineButton onClick={() => console.log('export csv')}>
                         Export CSV
-                    </Button>
+                    </OutlineButton>
                 </div>
             </CardHeader>
 

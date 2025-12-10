@@ -49,7 +49,7 @@ const sidebarItems = [
 ];
 
 
-const SideBar = () => {
+const SideBar = ({ onClick }) => {
     const router = useRouter()
     const pathname = usePathname()
     const [activeItem, setActiveItem] = useState(0)
@@ -85,7 +85,8 @@ const SideBar = () => {
 
                             onClick={() => {
                                 setActiveItem(index);
-                                router.push(item.href)
+                                router.push(item.href);
+                                onClick();
                             }}
 
                             className={

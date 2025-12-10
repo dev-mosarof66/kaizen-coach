@@ -5,10 +5,10 @@ import { Card } from "../ui/card"
 import { cn } from "@/lib/utils"
 
 const stats = [
-    { label: "Total Players", value: 127, icon: PiUsers },
-    { label: "Active Players", value: 118, icon: PiUsers },
-    { label: "Avg Rating", value: 7.6, icon: PiUsers },
-    { label: "Task Completion", value: "82%", icon: PiUsers },
+    { label: "Teams", value: 6, icon: PiUsers },
+    { label: "Players", value: 118, icon: PiUsers },
+    { label: "Sub-Coaches", value: 15, icon: PiUsers },
+    { label: "Next Match", value: 2, icon: PiUsers },
 ]
 
 const colors = [
@@ -17,16 +17,15 @@ const colors = [
         iconBg: "bg-blue-900/20",
         label: "text-blue-400",
     },
-
-    {
-        icon: "text-amber-400",
-        iconBg: "bg-amber-900/20",
-        label: "text-amber-400",
-    },
     {
         icon: "text-red-400",
         iconBg: "bg-red-900/20",
         label: "text-red-400",
+    },
+    {
+        icon: "text-amber-400",
+        iconBg: "bg-amber-900/20",
+        label: "text-amber-400",
     },
     {
         icon: "text-green-400",

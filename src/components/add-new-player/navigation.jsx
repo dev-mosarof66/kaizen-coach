@@ -19,7 +19,7 @@ const Navigation = () => {
                     <p onClick={() => router.back()} className="hover:text-white transition-colors cursor-pointer">Players</p>
                     <ChevronRight className="w-4 h-4" />
                 </div>
-                <p className="text-gray-400 font-semibold">New Player</p>
+                <p className="text-gray-400 font-semibold text-sm">New Player</p>
             </div>
         </div>
     )

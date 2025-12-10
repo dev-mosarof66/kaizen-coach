@@ -55,13 +55,11 @@ const SideBar = () => {
     const [activeItem, setActiveItem] = useState(0)
 
     useEffect(() => {
-        const index = sidebarItems.findIndex((item) =>
-            item.href === "/"
-                ? pathname === "/"
-                : pathname.startsWith(item.href)
-        );
-
-        if (index !== -1) setActiveItem(index);
+        if (pathname === '/') {
+            setActiveItem(0)
+        } else if (pathname === '/players' || pathname === '/add-player' || pathname === '/player-profile') {
+            setActiveItem(1)
+        }
     }, [pathname]);
 
     return (

@@ -7,8 +7,10 @@ import Argentian from '../../../public/argentina.png'
 import { Button } from '../ui/button';
 import { MarketValueChart } from './market-value-chart';
 import { TrendingUp } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const PlayerModal = ({ player, onClose }) => {
+    const router = useRouter()
     if (!player) return null;
 
     return (
@@ -102,7 +104,7 @@ const PlayerModal = ({ player, onClose }) => {
 
                     {/* Action Buttons */}
                     <div className="w-full flex flex-col gap-3 pt-8">
-                        <Button className="flex-1 bg-blue-600 hover:bg-blue-700 rounded-lg py-2 text-white font-semibold">
+                        <Button onClick={() => router.push('/player-profile')} className="flex-1 bg-blue-600 hover:bg-blue-700 rounded-lg py-2 text-white font-semibold">
                             View Profile
                         </Button>
                         <div className='w-full flex items-center justify-between gap-3'>
@@ -143,7 +145,7 @@ const PlayerModal = ({ player, onClose }) => {
                         <Button className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-600/10 rounded-lg py-2 text-white font-semibold">
                             Assign Task
                         </Button>
-                 <Button className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-600/10 rounded-lg py-2 text-white font-semibold">
+                        <Button className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-600/10 rounded-lg py-2 text-white font-semibold">
                             Add Note
                         </Button>
                     </div>

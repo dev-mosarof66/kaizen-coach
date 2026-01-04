@@ -1,9 +1,9 @@
 'use client'
-import NavButtons from '@/components/player-profile/nav-buttons'
-import Navigation from '@/components/player-profile/navigation'
-import ProfileCard from '@/components/player-profile/profile-card'
-import ProfileContent from '@/components/player-profile/profile-content'
-import ProfileTabs from '@/components/player-profile/profile-tabs'
+import NavButtons from '../components/player-profile/nav-buttons'
+import Navigation from '../components/player-profile/navigation'
+import ProfileCard from '../components/player-profile/profile-card'
+import ProfileContent from '../components/player-profile/profile-content'
+import ProfileTabs from '../components/player-profile/profile-tabs'
 import React, { useState } from 'react'
 
 const PlayerProfileView = () => {

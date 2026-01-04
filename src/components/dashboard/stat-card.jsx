@@ -4,7 +4,7 @@ import { GoTrophy } from "react-icons/go"
 import { IoCalendarNumberOutline } from "react-icons/io5"
 import { MdOutlineShowChart } from "react-icons/md"
 import { Card } from "../ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const stats = [
     {

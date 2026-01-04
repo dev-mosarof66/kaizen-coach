@@ -2,8 +2,8 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { FaPlus } from 'react-icons/fa'
-import { cn } from '@/lib/utils'
-import { constClassName } from '@/constants/constants'
+import { cn } from '../../lib/utils'
+import { constClassName } from '../../constants/constants'
 import { useRouter } from 'next/navigation'
 import { OutlineButton, PrimaryButton } from '../common/button'
 

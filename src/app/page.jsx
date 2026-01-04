@@ -1,7 +1,7 @@
-import WelcomeCard from "@/components/dashboard/coach-welcome-card";
-import FourthSection from "@/components/dashboard/fourth-section";
-import StatsCard from "@/components/dashboard/stat-card";
-import ThirdSection from "@/components/dashboard/third-section";
+import WelcomeCard from "../components/dashboard/coach-welcome-card";
+import FourthSection from "../components/dashboard/fourth-section";
+import StatsCard from "../components/dashboard/stat-card";
+import ThirdSection from "../components/dashboard/third-section";
 
 export default function Home() {
   return (

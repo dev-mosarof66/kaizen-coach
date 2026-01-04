@@ -1,4 +1,4 @@
-import MatchesView from '@/views/matches-view'
+import MatchesView from '../../views/matches-view'
 import React from 'react'
 
 const MatchesPage = () => {

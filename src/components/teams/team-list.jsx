@@ -1,9 +1,10 @@
 import React from 'react'
 import { Card } from '../ui/card'
-import { cn } from '@/lib/utils'
+import { cn } from '../../lib/utils'
 import { Trophy } from 'lucide-react'
 import { FaRegCalendar } from 'react-icons/fa'
 import { OutlineButton, PrimaryButton } from '../common/button'
+import { useRouter } from 'next/navigation'
 
 const teams = [
   {
@@ -123,7 +124,7 @@ const matchResultColors = {
   blue: 'bg-blue-500'
 }
 
-const TeamList = ({setShowModal}) => {
+const TeamList = ({ setShowModal }) => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
@@ -136,6 +137,7 @@ const TeamList = ({setShowModal}) => {
 }
 
 const TeamCard = ({ team, setShowModal }) => {
+  const router = useRouter()
   const borderClass = borderColors[team.borderColor]
   const iconBgClass = iconBgColors[team.borderColor]
   const iconTextClass = iconTextColors[team.borderColor]
@@ -216,7 +218,8 @@ const TeamCard = ({ team, setShowModal }) => {
             See Details
           </PrimaryButton>
 
-          <OutlineButton className='flex-1 bg-transparent border-gray-600 hover:bg-white/5 text-white'>
+          <OutlineButton
+            onClick={() => router.push('/add-player')} className='flex-1 bg-transparent border-gray-600 hover:bg-white/5 text-white'>
             Add Player
           </OutlineButton>
         </div>

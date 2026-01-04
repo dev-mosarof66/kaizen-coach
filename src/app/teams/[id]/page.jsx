@@ -1,4 +1,4 @@
-import TeamsOverviewView from '@/views/teams-overview'
+import TeamsOverviewView from '../../../views/teams-overview'
 
 
 const TeamsOverviewPage = () => {

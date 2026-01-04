@@ -1,6 +1,6 @@
-import { getInitials } from "@/utils/utils"
+import { getInitials } from "../../utils/utils"
 import { Card } from "../ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 import { HiOutlineDotsVertical } from "react-icons/hi";
 
 const players = [

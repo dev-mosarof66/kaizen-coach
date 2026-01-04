@@ -1,6 +1,6 @@
 import React from "react"
 import { Card } from "../ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const status = [
   { id: 1, name: "J. Smith", inactive: 7, stamina: 60 },

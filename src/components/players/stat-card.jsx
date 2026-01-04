@@ -2,7 +2,7 @@
 import React from "react"
 import { PiUsers } from "react-icons/pi"
 import { Card } from "../ui/card"
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
 const stats = [
     { label: "Total Players", value: 127, icon: PiUsers },

@@ -7,7 +7,7 @@ import { LuUsers } from "react-icons/lu";
 import { MdAssessment } from "react-icons/md";
 import { GiTrophyCup, GiChessKnight } from "react-icons/gi";
 import { RiTaskLine } from "react-icons/ri";
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 
 const sidebarItems = [
@@ -49,7 +49,7 @@ const sidebarItems = [
 ];
 
 
-const SideBar = ({ onClick }) => {
+const SideBar = ({ closeDrawer }) => {
     const router = useRouter()
     const pathname = usePathname()
     const [activeItem, setActiveItem] = useState(0)
@@ -71,10 +71,13 @@ const SideBar = ({ onClick }) => {
         else if (pathname === '/reports' || pathname === '/add-report' || pathname === '/report-profile') {
             setActiveItem(5)
         }
+        else if (pathname === '/game-plans' || pathname.includes('/game-plans')) {
+            setActiveItem(6)
+        }
     }, [pathname]);
 
     return (
-        <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-800 border-r border-r-gray-500/20'>
+        <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-900 to-gray-800 border-r border-r-gray-500/20'>
             {/* logo + sidebarItems  */}
             <div className='w-full'>
                 {/* logo  */}
@@ -97,7 +100,7 @@ const SideBar = ({ onClick }) => {
                             onClick={() => {
                                 setActiveItem(index);
                                 router.push(item.href);
-                                onClick();
+                                closeDrawer()
                             }}
 
                             className={

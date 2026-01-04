@@ -3,8 +3,8 @@ import { Card } from "../ui/card"
 import { Button } from "../ui/button"
 import { FaPlus } from "react-icons/fa"
 import { OutlineButton } from "../common/button"
-import { cn } from "@/lib/utils"
-import { constClassName } from "@/constants/constants"
+import { cn } from "../../lib/utils"
+import { constClassName } from "../../constants/constants"
 
 const WelcomeCard = () => {
     return (

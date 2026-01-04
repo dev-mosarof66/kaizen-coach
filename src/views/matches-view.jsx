@@ -1,7 +1,7 @@
 'use client'
-import Header from '@/components/matches/header'
-import UpcomingMatches from '@/components/matches/upcoming-matches'
-import MatchHistory from '@/components/matches/match-history'
+import Header from '../components/matches/header'
+import UpcomingMatches from '../components/matches/upcoming-matches'
+import MatchHistory from '../components/matches/match-history'
 
 
 

@@ -1,5 +1,5 @@
 'use client'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent, CardHeader } from '../../ui/card'
 import React, { useState } from 'react'
 
 const days = ['M', 'T', 'W', 'T', 'F', 'S', 'S']

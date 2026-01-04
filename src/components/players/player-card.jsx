@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import Image from "next/image";
 
 const PlayerCard = ({ index, image, name, team, age, position, rating, value, club, selectedPlayer, setSelectedPlayer }) => {

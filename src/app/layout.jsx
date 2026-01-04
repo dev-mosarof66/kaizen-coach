@@ -1,6 +1,6 @@
 import "./globals.css";
-import SideBar from "@/components/common/sidebar";
-import Header from "@/components/common/header";
+import SideBar from "../components/common/sidebar";
+import Header from "../components/common/header";
 import AIAssistant from "../components/common/ai-assistant";
 
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
       <body
         className={`antialiased`}
       >
-        <div className="w-full h-screen flex bg-gray-900 text-white">
+        <div className="w-full h-screen flex bg-background text-white">
           <div>
             <div className="hidden md:block w-full h-screen">
               <SideBar />

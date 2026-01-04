@@ -3,7 +3,7 @@ import { BsFillHeartPulseFill } from "react-icons/bs";
 import { Card, CardContent, CardHeader } from '../ui/card'
 import { Input } from '../ui/input'
 import { FaRegFileLines } from "react-icons/fa6";
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "../ui/textarea"
 
 const Notes = () => {
   return (

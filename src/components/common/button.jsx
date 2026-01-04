@@ -1,6 +1,6 @@
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 import { Button } from "../ui/button"
-import { constClassName } from "@/constants/constants"
+import { constClassName } from "../../constants/constants"
 
 export const OutlineButton = ({ children, onClick, className = constClassName.outlineButton }) => {
     return (

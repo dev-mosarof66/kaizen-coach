@@ -1,6 +1,6 @@
 'use client'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+import { Card, CardContent, CardHeader } from '../../ui/card'
+import { cn } from '../../../lib/utils'
 import React from 'react'
 
 const data = [

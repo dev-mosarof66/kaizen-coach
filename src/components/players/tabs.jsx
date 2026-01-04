@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
+import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+import { cn } from "../../lib/utils";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 const TabsFilter = ({ tab, setTab, tabs }) => {
     const isMobile = useIsMobile();

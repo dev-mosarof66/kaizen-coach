@@ -1,4 +1,4 @@
-import PlayerProfileView from '@/views/player-profile-view'
+import PlayerProfileView from '../../views/player-profile-view'
 import React from 'react'
 
 export const metadata = {

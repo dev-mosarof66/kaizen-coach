@@ -1,10 +1,10 @@
 'use client'
-import Header from '@/components/teams/header'
-import Pagination from '@/components/teams/pagination'
-import Stats from '@/components/teams/stats'
-import TeamList from '@/components/teams/team-list'
-import TeamModal from '@/components/teams/team-modal'
-import TeamsTab from '@/components/teams/teams-tab'
+import Header from '../components/teams/header'
+import Pagination from '../components/teams/pagination'
+import Stats from '../components/teams/stats'
+import TeamList from '../components/teams/team-list'
+import TeamModal from '../components/teams/team-modal'
+import TeamsTab from '../components/teams/teams-tab'
 import React, { useState } from 'react'
 
 const TeamView = () => {

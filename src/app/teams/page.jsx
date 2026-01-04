@@ -1,4 +1,4 @@
-import TeamView from '@/views/teams-view'
+import TeamView from '../../views/teams-view'
 
 const TeamPage = () => {
     return (

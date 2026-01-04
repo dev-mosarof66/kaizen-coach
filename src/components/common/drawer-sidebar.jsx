@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import SideBar from "./sidebar";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 const DrawerSidebar = () => {
   const [showDrawerSidebar, setShowDrawerSidebar] = useState(false);
@@ -30,7 +30,7 @@ const DrawerSidebar = () => {
           showDrawerSidebar ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <SideBar onClick={() => setShowDrawerSidebar(false)}
+        <SideBar closeDrawer={() => setShowDrawerSidebar(false)}
         />
       </div>
     </div>

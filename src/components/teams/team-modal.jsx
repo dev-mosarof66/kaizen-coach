@@ -1,41 +1,52 @@
 'use client'
 import React from 'react'
-import { Dialog, DialogHeader, DialogTitle, DialogContent } from '../ui/dialog'
 import { FaArrowRight, FaTimes, FaTrophy, FaUsers } from 'react-icons/fa';
 import { PrimaryButton } from '../common/button';
 import { useRouter } from 'next/navigation';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+} from '../ui/sheet';
+import { Button } from '../ui/button';
 
 
-const TeamModal = ({ showModal, setShowModal, teamId }) => {
+const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
   const router = useRouter()
 
-  if (!showModal) return null;
-
-  console.log(teamId);
+  const isOpen = open !== undefined ? open : showModal;
+  const handleOpenChange = onOpenChange || ((value) => {
+    if (setShowModal) setShowModal(value);
+  });
 
 
   return (
-    <div className='fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-end justify-end'>
-      <div className='w-full max-w-sm bg-gray-900 h-full flex flex-col gap-6 px-4 overflow-y-scroll scrollbar-hidden'>
-        {/* header  */}
-        <div className='w-full flex items-center justify-between px-3 py-6 border-b border-gray-800'>
-          <div className='flex items-center gap-2'>
-            <div className='p-3 rounded-full bg-red-500/20 text-red-400'>
-              <FaTrophy className='size-4' />
+    <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+      <SheetContent
+        side="right"
+        className="w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
+      >
+        <SheetHeader className="border-b border-gray-800 py-0">
+          {/* header  */}
+          <div className='w-full flex items-center justify-between px-2 py-6'>
+            <div className='flex items-center gap-2'>
+              <div className='p-3 rounded-full bg-red-500/20 text-red-400'>
+                <FaTrophy className='size-4' />
+              </div>
+              <div className='flex flex-col'>
+                <h1 className='text-white text-sm font-semibold'>Team C -- U16</h1>
+                <p className='text-gray-400 text-xs'>U16</p>
+              </div>
             </div>
-            <div className='flex flex-col'>
-              <h1 className='text-white text-sm font-semibold'>Team C -- U16</h1>
-              <p className='text-gray-400 text-xs'>U16</p>
-            </div>
+            <Button variant="ghost" size="icon" className="bg-gray-800/10 rounded-full hover:bg-gray-800/20" onClick={() => handleOpenChange(false)}>
+              <FaTimes className='size-4 text-gray-400' />
+            </Button>
           </div>
-          <div className='text-gray-400 hover:text-white cursor-pointer' onClick={() => setShowModal(false)}>
-            <FaTimes />
-          </div>
-        </div>
+        </SheetHeader>
 
         {/* content  */}
 
-        <div className='w-full h-full flex flex-col gap-6 px-0 overflow-y-scroll scrollbar-hidden'>
+        <div className='w-full h-full flex flex-col gap-6 px-4 overflow-y-scroll scrollbar-hidden'>
 
           {/* content header  */}
           <div className='w-full grid grid-cols-2 gap-4'>
@@ -116,7 +127,7 @@ const TeamModal = ({ showModal, setShowModal, teamId }) => {
           <div className='w-full flex justify-center border-b border-b-gray-800 pb-6'>
             <PrimaryButton onClick={() => router.push(`/teams/${teamId}`)} className='w-full flex items-center gap-6 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500 group'>
               <p>Open Full Team Page</p>
-              <FaArrowRight className='group-hover:translate-x-2 transition-all duration-300'  />
+              <FaArrowRight className='group-hover:translate-x-2 transition-all duration-300' />
             </PrimaryButton>
           </div>
 
@@ -139,8 +150,8 @@ const TeamModal = ({ showModal, setShowModal, teamId }) => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </SheetContent>
+    </Sheet>
   )
 }
 

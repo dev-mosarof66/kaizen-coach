@@ -8,22 +8,37 @@ import { Button } from '../ui/button';
 import { MarketValueChart } from './market-value-chart';
 import { TrendingUp } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import {
+    Sheet,
+    SheetContent,
+    SheetHeader,
+} from '../ui/sheet';
 
-const PlayerModal = ({ player, onClose }) => {
+const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
     const router = useRouter()
+
+    // Support both old (onClose) and new (open/onOpenChange) prop patterns
+    const isOpen = open !== undefined ? open : !!player;
+    const handleOpenChange = onOpenChange || ((value) => !value && onClose && onClose());
+
     if (!player) return null;
 
     return (
-        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-end justify-end">
-            <div className="bg-gray-900 w-full h-screen max-w-md relative text-white">
-                {/* Close Button */}
-                <div
-                    onClick={onClose}
-                    className="w-full p-3 border-b border-gray-700 flex items-center gap-2 text-gray-400 hover:text-white cursor-pointer transition-all duration-300 delay-75"
-                >
-                    <FaTimes />
-                    <p>Close</p>
-                </div>
+        <Sheet open={isOpen} onOpenChange={handleOpenChange}>
+            <SheetContent
+                side="right"
+                className="w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
+            >
+                <SheetHeader className="border-b border-gray-700">
+                    {/* Close Button */}
+                    <div
+                        onClick={() => handleOpenChange(false)}
+                        className="w-full flex items-center gap-2 text-gray-400 hover:text-white active:scale-95 cursor-pointer transition-all duration-300 delay-75"
+                    >
+                        <FaTimes />
+                        <p>Close</p>
+                    </div>
+                </SheetHeader>
 
                 <div className='w-full h-full flex flex-col gap-6 px-4 overflow-y-scroll scrollbar-hidden'>
                     {/* Player Image */}
@@ -150,8 +165,8 @@ const PlayerModal = ({ player, onClose }) => {
                         </Button>
                     </div>
                 </div>
-            </div>
-        </div>
+            </SheetContent>
+        </Sheet>
     );
 };
 

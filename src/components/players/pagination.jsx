@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { constClassName } from '@/constants/constants'
+import { cn } from '../../lib/utils'
+import { constClassName } from '../../constants/constants'
 
 const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
     const totalPages = Math.ceil(totalItems / itemsPerPage)

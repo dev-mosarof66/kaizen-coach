@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { OutlineButton } from '@/components/common/button';
+import { Button } from '../../ui/button'
+import { Card, CardContent, CardHeader } from '../../ui/card'
+import { OutlineButton } from '../../common/button';
 
 
 const activityData = [

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import GamePlanOverview from './game-plan-overview'
-import TacticalDashboard from '../../views/tactical-dashboard'
+import TacticalDashboard from '../tactical-board/tactical-board'
 import AIAnalytics from './ai-analytics'
 
 const GamePlanContent = ({ gamePlan, selectedTab, comment, setComment, coachNote, setCoachNote, onSendComment, onSaveNote }) => {

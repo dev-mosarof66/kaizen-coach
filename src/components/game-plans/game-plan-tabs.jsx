@@ -6,7 +6,7 @@ const tabs = ["Overview", "Tactical Board", "AI Analytics"]
 
 const GamePlanTabs = ({ selectedTab, setSelectedTab }) => {
     return (
-        <div className="w-full grid grid-cols-3 border-t border-gray-700">
+        <div className="w-full grid grid-cols-3 border-t border-gray-700 overflow-hidden rounded-b-lg">
             {tabs.map((tab, index) => {
                 const active = selectedTab === tab
 

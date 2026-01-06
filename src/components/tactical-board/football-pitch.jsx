@@ -16,8 +16,14 @@ const FootballPitch = ({ stageRef, handleMouseDown, handleMouseMove, handleMouse
                     // eslint-disable-next-line react-hooks/refs
                     height={containerRef.current?.clientHeight || 450}
                     onMouseDown={handleMouseDown}
+                    onPointerDown={handleMouseDown}
                     onMouseMove={handleMouseMove}
+                    onPointerMove={handleMouseMove}
                     onMouseUp={handleMouseUp}
+                    onPointerUp={handleMouseUp}
+                    style={{
+                        touchAction: 'none'
+                    }}
                 >
                     <Layer>
                         {objects.map((obj, i) => {

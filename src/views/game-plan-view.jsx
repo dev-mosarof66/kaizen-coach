@@ -200,7 +200,7 @@ const GamePlanView = () => {
             {/* search and filters */}
 
 
-            <div className='w-full flex flex-col md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4'>
+            <div className='w-full flex flex-col md:flex-col lg:flex-row items-start md:items-center lg:items-center justify-between gap-4'>
                 <h2 className='text-xl font-semibold text-white'>All Tasks</h2>
 
                 {/* Search and Filters */}
@@ -252,7 +252,7 @@ const GamePlanView = () => {
 
 
                                 return (
-                                    <TableRow onClick={() => router.push(`/game-plans/${task.id}`)} key={task.id} className='border-b border-gray-700/50 hover:bg-gray-800/30 transition-colors cursor-pointer'>
+                                    <TableRow onClick={() => router.push(`/game-plans/${task.id}`)} key={task.id} className='border-b border-gray-700/50 hover:bg-gray-800/30 active:scale-95 transition-all duration-300 delay-75  cursor-pointer'>
                                         {/* Task Name */}
                                         <TableCell className='py-3 px-4'>
                                             <div className='flex items-center gap-3 relative'>

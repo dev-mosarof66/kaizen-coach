@@ -1,0 +1,234 @@
+/* eslint-disable react-hooks/immutability */
+'use client'
+import React, { useRef, useState } from 'react'
+import { Pencil, Square, Circle as CircleIcon, ArrowRight, Type, Eraser, Undo, Redo, ZoomIn, ZoomOut, Trash, Users, Mic, Video } from 'lucide-react'
+import DrawingTools from './drawing-tools'
+import ActionTools from './action-tools'
+import FootballPitch from './football-pitch'
+import { CardContent } from '../ui/card'
+import BottomAction from './bottom-action'
+import FootballPitchBackground from './football-pitch-background'
+
+
+const drawingTools = [
+    { id: 'pencil', icon: Pencil, label: 'Pencil' },
+    { id: 'square', icon: Square, label: 'Square' },
+    { id: 'circle', icon: CircleIcon, label: 'Circle' },
+    { id: 'arrow', icon: ArrowRight, label: 'Arrow' },
+    { id: 'text', icon: Type, label: 'Text' },
+    { id: 'players', icon: Users, label: 'Players' },
+    { id: 'eraser', icon: Eraser, label: 'Eraser' },
+]
+
+const actionTools = [
+    { id: 'undo', icon: Undo, label: 'Undo' },
+    { id: 'redo', icon: Redo, label: 'Redo' },
+    { id: 'zoomIn', icon: ZoomIn, label: 'Zoom In' },
+    { id: 'zoomOut', icon: ZoomOut, label: 'Zoom Out' },
+    { id: 'mic', icon: Mic, label: 'Microphone' },
+    { id: 'video', icon: Video, label: 'Video' },
+    { id: 'trash', icon: Trash, label: 'Clear' },
+]
+
+
+const TacticalBoard = () => {
+    const stageRef = useRef(null)
+    const startPos = useRef({ x: 0, y: 0 })
+    const [color, setColor] = useState('#ffffff')
+
+    const [tool, setTool] = useState('pencil')
+    const [isDrawing, setIsDrawing] = useState(false)
+    const [zoom, setZoom] = useState(1)
+
+    const [history, setHistory] = useState([])
+    const [step, setStep] = useState(-1)
+
+    const [objects, setObjects] = useState([])
+
+    const [editingText, setEditingText] = useState(null)
+
+
+
+    /* ------------------ History helpers ------------------ */
+    const commit = (newObjects) => {
+        const updated = history.slice(0, step + 1)
+        updated.push(newObjects)
+        setHistory(updated)
+        setStep(step + 1)
+        setObjects(newObjects)
+    }
+
+    console.log('step', step)
+
+    /* ------------------ Mouse handlers ------------------ */
+    const handleMouseDown = (e) => {
+        const pos = e.target.getStage().getPointerPosition()
+        startPos.current = pos
+        setIsDrawing(true)
+
+        let newObj = null
+
+        switch (tool) {
+            case 'pencil':
+            case 'eraser':
+                newObj = {
+                    type: 'line',
+                    tool,
+                    color,
+                    strokeWidth: tool === 'eraser' ? 20 : 2,
+                    points: [pos.x, pos.y],
+                }
+                break
+
+            case 'square':
+                newObj = { type: 'rect', x: pos.x, y: pos.y, width: 0, height: 0, color }
+                break
+
+            case 'circle':
+                newObj = { type: 'circle', x: pos.x, y: pos.y, radius: 0, color }
+                break
+
+            case 'arrow':
+                newObj = { type: 'arrow', points: [pos.x, pos.y, pos.x, pos.y], color }
+                break
+
+            case 'text':
+                setEditingText({
+                    x: pos.x,
+                    y: pos.y,
+                    text: '',
+                    color,
+                })
+                setIsDrawing(false)
+                return
+        }
+
+        commit([...objects, newObj])
+    }
+
+    const handleMouseMove = (e) => {
+        if (!isDrawing) return
+        const pos = e.target.getStage().getPointerPosition()
+        const last = objects[objects.length - 1]
+
+        if (!last) return
+
+        if (last.type === 'line') {
+            last.points = last.points.concat([pos.x, pos.y])
+        }
+
+        if (last.type === 'rect') {
+            last.width = pos.x - startPos.current.x
+            last.height = pos.y - startPos.current.y
+        }
+
+        if (last.type === 'circle') {
+            last.radius = Math.hypot(
+                pos.x - startPos.current.x,
+                pos.y - startPos.current.y
+            )
+        }
+
+        if (last.type === 'arrow') {
+            last.points = [
+                startPos.current.x,
+                startPos.current.y,
+                pos.x,
+                pos.y,
+            ]
+        }
+
+        setObjects(objects.slice())
+    }
+
+    const handleMouseUp = () => {
+        setIsDrawing(false)
+    }
+
+    /* ------------------ Actions ------------------ */
+    const undo = () => {
+        if (step <= 0) {
+            setObjects([])
+            return
+        }
+        setStep(step - 1)
+        setObjects(history[step - 1])
+    }
+
+    const redo = () => {
+        if (step >= history.length - 1) return
+        setStep(step + 1)
+        setObjects(history[step + 1])
+    }
+
+    const clearBoard = () => {
+        commit([])
+    }
+
+    const commitText = () => {
+        if (!editingText) return
+
+        if (editingText.value.trim() !== '') {
+            commit([
+                ...objects,
+                {
+                    type: 'text',
+                    x: editingText.x,
+                    y: editingText.y,
+                    text: editingText.value,
+                    color,
+                },
+            ])
+        }
+
+        setEditingText(null)
+    }
+
+    const zoomStage = (delta) => {
+        const newZoom = Math.max(1, Math.min(2, zoom + delta))
+        setZoom(newZoom)
+        stageRef.current.scale({ x: newZoom, y: newZoom })
+        stageRef.current.batchDraw()
+    }
+
+    const handleAction = (actionId) => {
+        switch (actionId) {
+            case 'undo':
+                undo()
+                break
+            case 'redo':
+                redo()
+                break
+            case 'zoomIn':
+                zoomStage(0.1)
+                break
+            case 'zoomOut':
+                zoomStage(-0.1)
+                break
+            case 'trash':
+                clearBoard()
+                break
+        }
+    }
+    return (
+        <CardContent className='w-full h-full p-2 flex flex-col gap-4 bg-gray-800 rounded-md'>
+            <div className='flex items-center justify-between gap-2 flex-wrap'>
+                <DrawingTools tool={tool} setTool={setTool} color={color} setColor={setColor} drawingTools={drawingTools} />
+                <ActionTools actionTools={actionTools} handleAction={handleAction} />
+            </div>
+            <div className='w-full max-w-5xl mx-auto h-full bg-gray-900 relative rounded-md p-2 md:p-6'>
+                <div className='w-full max-w-4xl mx-auto relative'>
+                    <div>
+                        <FootballPitchBackground />
+                    </div>
+                    <div className='w-full h-full absolute top-0 left-0 z-50'>
+                        <FootballPitch stageRef={stageRef} handleMouseDown={handleMouseDown} handleMouseMove={handleMouseMove} handleMouseUp={handleMouseUp} objects={objects} editingText={editingText} setEditingText={setEditingText} commitText={commitText} />
+                    </div>
+                </div>
+            </div>
+            <BottomAction />
+        </CardContent>
+    )
+}
+
+export default TacticalBoard

@@ -44,7 +44,7 @@ const GamePlanCard = ({ selectedTab, setSelectedTab, gamePlan, setEditMode }) =>
                             <span className="">Edit Plan</span>
                         </PrimaryButton>
                         <OutlineButton
-                            className="flex-1 sm:flex-none w-full sm:w-fit  bg-gray-600/20 text-red-400 hover:text-red-500 hover:bg-gray-600/30 border border-red-400/20 rounded-full flex items-center justify-center text-xs sm:text-sm"
+                            className="flex-1 sm:flex-none w-full sm:w-fit  bg-gray-600/20 text-red-400 hover:text-red-500 hover:bg-gray-600/30 border border-red-400/20 flex items-center justify-center text-xs sm:text-sm"
                         >
                             <Trash2 className="size-4" />
                             <span className="lg:hidden">Delete Plan</span>

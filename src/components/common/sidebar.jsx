@@ -79,7 +79,7 @@ const SideBar = ({ closeDrawer }) => {
     }, [pathname]);
 
     return (
-        <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-900 to-gray-800 border-r border-r-gray-500/20'>
+        <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-900 to-gray-800 border-r border-r-gray-700'>
             {/* logo + sidebarItems  */}
             <div className='w-full'>
                 {/* logo  */}
@@ -102,7 +102,7 @@ const SideBar = ({ closeDrawer }) => {
                             onClick={() => {
                                 setActiveItem(index);
                                 router.push(item.href);
-                                closeDrawer()
+                                closeDrawer?.()
                             }}
 
                             className={

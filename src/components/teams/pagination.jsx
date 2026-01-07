@@ -4,8 +4,10 @@ import { Button } from '../ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { constClassName } from '../../constants/constants'
+import { useTranslation } from '../../contexts/translation-context'
 
 const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
+    const { t } = useTranslation()
     const totalPages = Math.ceil(totalItems / itemsPerPage)
     const [currentPageIndex, setCurrentPageIndex] = useState(1)
 
@@ -30,8 +32,8 @@ const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
     return (
         <div className='w-full flex flex-col gap-2 sm:flex-row items-center justify-between py-4'>
             <p className='text-sm sm:text-xs xl:text-xs'>
-                Showing {(currentPageIndex - 1) * itemsPerPage + 1} -{' '}
-                {Math.min(currentPageIndex * itemsPerPage, totalItems)} of <span>{totalItems}</span> teams
+                {t('teamsPage.pagination.showing')} {(currentPageIndex - 1) * itemsPerPage + 1} -{' '}
+                {Math.min(currentPageIndex * itemsPerPage, totalItems)} {t('teamsPage.pagination.of')} <span>{totalItems}</span> {t('teamsPage.pagination.teams')}
             </p>
             <div className='flex items-center gap-2'>
                 <Button className={cn(constClassName.outlineButton)} onClick={handlePrev} disabled={currentPageIndex === 1}>

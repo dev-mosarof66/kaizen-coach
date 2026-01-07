@@ -11,7 +11,7 @@ const DrawerSidebar = () => {
     <div className="w-full">
       <div
         onClick={() => setShowDrawerSidebar(true)}
-        className="w-fit text-xl cursor-pointer hover:text-blue-600 transition-all duration-300"
+        className="w-fit text-xl cursor-pointer text-gray-400 hover:text-blue-600 transition-all duration-300"
       >
         <FaBars />
       </div>

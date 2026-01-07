@@ -4,9 +4,15 @@ import React from 'react'
 import GamePlanOverview from './game-plan-overview'
 import TacticalDashboard from '../tactical-board/tactical-board'
 import AIAnalytics from './ai-analytics'
+import { useTranslation } from '../../contexts/translation-context'
 
 const GamePlanContent = ({ gamePlan, selectedTab, comment, setComment, coachNote, setCoachNote, onSendComment, onSaveNote }) => {
-    if (selectedTab === 'Overview') {
+    const { t } = useTranslation()
+    const overviewTab = t('gamePlanDetailsPage.tabs.overview')
+    const tacticalBoardTab = t('gamePlanDetailsPage.tabs.tacticalBoard')
+    const aiAnalyticsTab = t('gamePlanDetailsPage.tabs.aiAnalytics')
+    
+    if (selectedTab === overviewTab) {
         return (
             <GamePlanOverview
                 gamePlan={gamePlan}
@@ -20,11 +26,11 @@ const GamePlanContent = ({ gamePlan, selectedTab, comment, setComment, coachNote
         )
     }
 
-    if (selectedTab === 'Tactical Board') {
+    if (selectedTab === tacticalBoardTab) {
         return <TacticalDashboard />
     }
 
-    if (selectedTab === 'AI Analytics') {
+    if (selectedTab === aiAnalyticsTab) {
         return <AIAnalytics />
     }
 

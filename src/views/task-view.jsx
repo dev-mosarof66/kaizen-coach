@@ -13,41 +13,8 @@ import Pagination from '../components/tasks/pagination'
 import { Checkbox } from '../components/ui/checkbox'
 import TaskDetails from '../components/tasks/task-details'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from '../contexts/translation-context'
 
-const taskStats = [
-  {
-    id: 1,
-    label: "Total Tasks",
-    value: 30,
-    icon: CheckCircle2,
-    iconColor: "text-green-400",
-    iconBg: "bg-green-500/10"
-  },
-  {
-    id: 2,
-    label: "In Progress",
-    value: 12,
-    icon: Activity,
-    iconColor: "text-blue-400",
-    iconBg: "bg-blue-500/10"
-  },
-  {
-    id: 3,
-    label: "Completed",
-    value: 14,
-    icon: TrendingUp,
-    iconColor: "text-purple-400",
-    iconBg: "bg-purple-500/10"
-  },
-  {
-    id: 4,
-    label: "Overdue",
-    value: 2,
-    icon: Target,
-    iconColor: "text-orange-400",
-    iconBg: "bg-orange-500/10"
-  }
-]
 
 const tasks = [
   {
@@ -193,10 +160,45 @@ const getDueDateClasses = (status) => {
 }
 
 const TaskView = () => {
-
+  const { t } = useTranslation()
   const router = useRouter()
   const [showTaskDetails, setShowTaskDetails] = useState(false)
   const [selectedTasks, setSelectedTasks] = useState(1)
+
+  const taskStats = [
+    {
+      id: 1,
+      label: t('tasksPage.stats.totalTasks'),
+      value: 30,
+      icon: CheckCircle2,
+      iconColor: "text-green-400",
+      iconBg: "bg-green-500/10"
+    },
+    {
+      id: 2,
+      label: t('tasksPage.stats.inProgress'),
+      value: 12,
+      icon: Activity,
+      iconColor: "text-blue-400",
+      iconBg: "bg-blue-500/10"
+    },
+    {
+      id: 3,
+      label: t('tasksPage.stats.completed'),
+      value: 14,
+      icon: TrendingUp,
+      iconColor: "text-purple-400",
+      iconBg: "bg-purple-500/10"
+    },
+    {
+      id: 4,
+      label: t('tasksPage.stats.overdue'),
+      value: 2,
+      icon: Target,
+      iconColor: "text-orange-400",
+      iconBg: "bg-orange-500/10"
+    }
+  ]
 
 
   const handleSelectTask = (taskId) => {
@@ -211,21 +213,21 @@ const TaskView = () => {
       {/* Header Section */}
       <div className='w-full flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-2'>
         <div className='flex flex-col gap-1'>
-          <h1 className='text-2xl font-semibold text-white'>Tasks & Training Plans</h1>
-          <p className='text-sm text-gray-400'>Manage all training assignments and track progress</p>
+          <h1 className='text-2xl font-semibold text-white'>{t('tasksPage.title')}</h1>
+          <p className='text-sm text-gray-400'>{t('tasksPage.subtitle')}</p>
         </div>
 
         {/* Action Buttons */}
         <div className='flex items-center gap-3 mt-2'>
           <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
             <Download className='w-4 h-4' />
-            Export Report
+            {t('tasksPage.exportReport')}
           </OutlineButton>
           <PrimaryButton 
           onClick={() => router.push('/add-task')}
           className='bg-blue-600 hover:bg-blue-700 text-white'>
             <Plus className='w-4 h-4' />
-            Add Task
+            {t('tasksPage.addTask')}
           </PrimaryButton>
         </div>
       </div>
@@ -255,22 +257,22 @@ const TaskView = () => {
 
 
       <div className='w-full flex flex-col md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-4'>
-        <h2 className='text-xl font-semibold text-white'>All Tasks</h2>
+        <h2 className='text-xl font-semibold text-white'>{t('tasksPage.allTasks')}</h2>
 
         {/* Search and Filters */}
         <div className='flex  sm:flex-row items-start sm:items-center justify-between gap-4'>
           <div className='w-full  lg:w-[350px] relative'>
             <Search className='size-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
             <Input
-              placeholder='Search tasks...'
+              placeholder={t('tasksPage.searchTasksPlaceholder')}
               className='w-full pl-9 bg-gray-800/60 border-gray-700 text-gray-300 placeholder:text-gray-500'
             />
           </div>
           <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-            All Positions
+            {t('tasksPage.allPositions')}
           </OutlineButton>
           <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-            All Status
+            {t('tasksPage.allStatus')}
           </OutlineButton>
         </div>
       </div>
@@ -284,15 +286,15 @@ const TaskView = () => {
               <TableRow className='border-b border-gray-700 hover:bg-purple-700/5'>
                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 flex items-center gap-2'>
                   <Checkbox className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white' />
-                  <p className='text-white'>Task Name</p>
+                  <p className='text-white'>{t('tasksPage.table.taskName')}</p>
                 </TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Assigned To</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden lg:table-cell'>Created By</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Start Date</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Due Date</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Progress</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden sm:table-cell'>Status</TableHead>
-                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Rating</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.assignedTo')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden lg:table-cell'>{t('tasksPage.table.createdBy')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.startDate')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.dueDate')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.progress')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden sm:table-cell'>{t('tasksPage.table.status')}</TableHead>
+                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.rating')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -305,7 +307,7 @@ const TaskView = () => {
                       <div className='flex flex-col gap-1'>
                         <span className='text-white font-medium text-sm'>{task.taskName}</span>
                         <span className={`inline-block w-fit text-[10px] font-semibold px-2 py-0.5 rounded-full border ${getCategoryClasses(task.category)}`}>
-                          {task.category}
+                          {t(`tasksPage.categories.${task.category.toLowerCase()}`)}
                         </span>
                       </div>
                     </div>
@@ -373,7 +375,7 @@ const TaskView = () => {
                   {/* Status */}
                   <TableCell className='py-3 px-4 hidden sm:table-cell'>
                     <span className={cn('inline-block text-[10px] font-semibold px-2 py-1 rounded-md border', getStatusClasses(task.status))}>
-                      {task.status}
+                      {t(`tasksPage.status.${task.status === 'In Progress' ? 'inProgress' : task.status.toLowerCase().replace(' ', '')}`)}
                     </span>
                   </TableCell>
 
@@ -385,7 +387,7 @@ const TaskView = () => {
                         <span className='text-white font-medium'>{task.rating}</span>
                       </div>
                     ) : (
-                      <span className='text-gray-500'>N/A</span>
+                      <span className='text-gray-500'>{t('tasksPage.na')}</span>
                     )}
                   </TableCell>
                 </TableRow>

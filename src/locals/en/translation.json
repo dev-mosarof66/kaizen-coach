@@ -117,5 +117,495 @@
       "switchTeam": "Switch Team",
       "recordMatch": "Record Match"
     }
+  },
+
+  "playersPage": {
+    "filters": {
+      "allTeams": "All Teams",
+      "allPositions": "All Positions",
+      "allStatus": "All Status",
+      "moreFilters": "More Filters"
+    },
+    "stats": {
+      "totalPlayers": "Total Players",
+      "activePlayers": "Active Players",
+      "avgRating": "Avg Rating",
+      "taskCompletion": "Task Completion"
+    },
+    "playerCard": {
+      "age": "Age",
+      "rating": "Rating:",
+      "value": "Value",
+      "team": "Team"
+    },
+    "pagination": {
+      "showing": "Showing",
+      "of": "of",
+      "players": "players"
+    },
+    "playerModal": {
+      "close": "Close",
+      "forward": "Forward",
+      "gamesPlayed": "games Played",
+      "goalsScored": "goals scored",
+      "joinedTeam": "Joined Team",
+      "games": "GAMES",
+      "goals": "GOALS",
+      "assists": "ASSISTS",
+      "total": "total",
+      "viewProfile": "View Profile",
+      "switchTeam": "Switch Team",
+      "removed": "Removed",
+      "marketValue": "Market Value",
+      "comparedToLastMonth": "compared to last month",
+      "assignTask": "Assign Task",
+      "addNote": "Add Note"
+    }
+  },
+
+  "aiAssistantPage": {
+    "title": "AI Coach Assistant",
+    "online": "Online",
+    "poweredBy": "Powered by advanced analytics",
+    "actionButtons": {
+      "analyzePerformance": "Analyze Performance",
+      "tacticalSuggestions": "Tactical Suggestions",
+      "playerInsights": "Player Insights",
+      "trainingIdeas": "Training Ideas",
+      "analyzePerformanceDesc": "Get detailed performance metrics",
+      "tacticalSuggestionsDesc": "Receive tactical recommendations",
+      "playerInsightsDesc": "Analyze player development",
+      "trainingIdeasDesc": "Get training recommendations"
+    },
+    "inputPlaceholder": "Ask me anything about tactics, performance, or training...",
+    "inputHelper": "AI-powered insights based on your team's data",
+    "dateLabels": {
+      "today": "TODAY",
+      "yesterday": "YESTERDAY",
+      "august": "AUGUST"
+    }
+  },
+
+  "addTaskPage": {
+    "back": "Back",
+    "tasks": "Tasks",
+    "addTask": "Add Task",
+    "cancel": "Cancel",
+    "saveChanges": "Save Changes",
+    "taskDetails": "Task Details",
+    "taskTitle": "Task Title",
+    "taskTitlePlaceholder": "Enter task name",
+    "category": "Category",
+    "categories": {
+      "fitness": "Fitness",
+      "technical": "Technical",
+      "tactical": "Tactical",
+      "recovery": "Recovery"
+    },
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the task objectives and requirements...",
+    "startDate": "Start Date",
+    "dueDate": "Due Date",
+    "priority": "Priority",
+    "priorityLevels": {
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "attachments": "Attachments",
+    "attachmentsHelper": "Drag & drop files or click to browse",
+    "assignment": "Assignment",
+    "assignTo": "Assign to",
+    "player": "Player",
+    "team": "Team",
+    "searchPlayers": "Search players...",
+    "searchPlayersPlaceholder": "Search players...",
+    "dueTime": "Due Time",
+    "notifyAssignees": "Notify assignees via email/app",
+    "saveAndAssign": "Save & Assign",
+    "aiSuggestion": {
+      "message": "Based on player fitness history, consider adding a 10-minute warm-up before this drill to prevent injuries.",
+      "applySuggestion": "Apply Suggestion"
+    }
+  },
+
+  "gamePlansPage": {
+    "title": "Training Plans",
+    "subtitle": "Manage training tasks, tactical plans, and coaching activities",
+    "thisSeason": "This Season",
+    "addNewPlan": "Add New Plan",
+    "allTasks": "All Tasks",
+    "searchTasks": "Search tasks...",
+    "allPositions": "All Positions",
+    "allStatus": "All Status",
+    "tableHeaders": {
+      "taskPlanName": "Task/Plan Name",
+      "createdBy": "Created By",
+      "assignedTo": "Assigned To",
+      "type": "Type",
+      "startDueDate": "Start/Due Date",
+      "progress": "Progress",
+      "status": "Status"
+    },
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "notStarted": "Not Started"
+    },
+    "types": {
+      "plan": "Plan",
+      "task": "Task"
+    }
+  },
+
+  "gamePlanDetailsPage": {
+    "back": "Back",
+    "gamePlans": "Game Plans",
+    "tabs": {
+      "overview": "Overview",
+      "tacticalBoard": "Tactical Board",
+      "aiAnalytics": "AI Analytics"
+    },
+    "editPlan": "Edit Plan",
+    "deletePlan": "Delete Plan"
+  },
+
+  "matchesPage": {
+    "upcomingMatches": {
+      "title": "Upcoming Matches",
+      "matches": "matches",
+      "leagueMatch": "League match",
+      "friendlyMatch": "Friendly match",
+      "cupMatch": "Cup match",
+      "friendlyMatchType": "Friendly match",
+      "upcoming": "Upcoming",
+      "vs": "vs",
+      "venue": "Venue",
+      "record": "Record",
+      "editDetails": "Edit Details"
+    },
+    "matchHistory": {
+      "title": "Match History",
+      "matches": "matches",
+      "searchPlayers": "Search players...",
+      "allPositions": "All Positions",
+      "allStatus": "All Status",
+      "tableHeaders": {
+        "fixture": "Fixture",
+        "dateTime": "Date/Time",
+        "competition": "Competition",
+        "result": "Result",
+        "video": "Video",
+        "analysis": "Analysis",
+        "status": "Status",
+        "action": "Action"
+      },
+      "competition": {
+        "league": "League",
+        "friendly": "Friendly"
+      },
+      "status": {
+        "ready": "Ready",
+        "processing": "Processing"
+      },
+      "actions": {
+        "upload": "Upload",
+        "view": "View",
+        "viewDetails": "View Details",
+        "editMatch": "Edit Match",
+        "deleteMatch": "Delete Match"
+      }
+    }
+  },
+
+  "reportsPage": {
+    "title": "Reports & Analysis",
+    "subtitle": "Comprehensive insights and performance analytics",
+    "thisSeason": "This Season",
+    "lastSeason": "Last Season",
+    "allTeams": "All Teams",
+    "exportPdf": "Export PDF",
+    "matchResultsTrend": "Match Results Trend",
+    "season": "Season",
+    "goalsByTimePeriod": "Goals by Time Period",
+    "keyInsights": "Key Insights",
+    "viewAll": "View All",
+    "insights": {
+      "strongLateGame": "Strong Late-Game Performance",
+      "strongLateGameText": "23% of goals scored in final 15 minutes",
+      "homeAdvantage": "Home Advantage",
+      "homeAdvantageText": "Win rate: 78% home vs 58% away",
+      "trainingImpact": "Training Impact",
+      "trainingImpactText": "+15% performance with 90%+ task completion"
+    },
+    "chartLabels": {
+      "wins": "Wins",
+      "draws": "Draws",
+      "losses": "Losses",
+      "goals": "Goals"
+    }
+  },
+
+  "playerProfilePage": {
+    "navigation": {
+      "players": "Players"
+    }
+  },
+
+  "tasksPage": {
+    "title": "Tasks & Training Plans",
+    "subtitle": "Manage all training assignments and track progress",
+    "exportReport": "Export Report",
+    "addTask": "Add Task",
+    "stats": {
+      "totalTasks": "Total Tasks",
+      "inProgress": "In Progress",
+      "completed": "Completed",
+      "overdue": "Overdue"
+    },
+    "allTasks": "All Tasks",
+    "searchTasksPlaceholder": "Search tasks...",
+    "allPositions": "All Positions",
+    "allStatus": "All Status",
+    "table": {
+      "taskName": "Task Name",
+      "assignedTo": "Assigned To",
+      "createdBy": "Created By",
+      "startDate": "Start Date",
+      "dueDate": "Due Date",
+      "progress": "Progress",
+      "status": "Status",
+      "rating": "Rating"
+    },
+    "categories": {
+      "fitness": "Fitness",
+      "technical": "Technical",
+      "tactical": "Tactical",
+      "recovery": "Recovery"
+    },
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "notStarted": "Not Started"
+    },
+    "na": "N/A",
+    "pagination": {
+      "showing": "Showing",
+      "of": "of",
+      "tasks": "tasks"
+    },
+    "taskDetails": {
+      "title": "Task Details",
+      "createdBy": "Created by",
+      "progressSummary": "Progress Summary",
+      "completed": "Completed",
+      "due": "Due:",
+      "assignedPlayers": "Assigned Players",
+      "averageRating": "Average Rating",
+      "comments": "Comments",
+      "editTask": "Edit Task",
+      "markAsCompleted": "Mark as Completed",
+      "deleteTask": "Delete Task"
+    }
+  },
+
+  "teamsPage": {
+    "stats": {
+      "teams": "Teams",
+      "players": "Players",
+      "subCoaches": "Sub-Coaches",
+      "nextMatch": "Next Match"
+    },
+    "allTeams": "All Teams",
+    "searchPlayersPlaceholder": "Search players...",
+    "allPositions": "All Positions",
+    "allStatus": "All Status",
+    "teamCard": {
+      "activePlayers": "Active Players:",
+      "active": "Active",
+      "winRate": "Win Rate",
+      "lastMatch": "Last Match",
+      "nextMatch": "Next Match",
+      "noUpcomingMatches": "No upcoming matches",
+      "seeDetails": "See Details",
+      "addPlayer": "Add Player"
+    },
+    "pagination": {
+      "showing": "Showing",
+      "of": "of",
+      "teams": "teams"
+    },
+    "teamModal": {
+      "winRate": "Win Rate",
+      "players": "Players",
+      "seasonRecord": "Season Record",
+      "wins": "Wins",
+      "draws": "Draws",
+      "losses": "Losses",
+      "goalsFor": "Goals For",
+      "goalsAgainst": "Goals Against",
+      "goalDifference": "Goal Difference",
+      "playerRoaster": "Player Roaster",
+      "openFullTeamPage": "Open Full Team Page",
+      "headCoach": "Head Coach",
+      "viewProfile": "View Profile"
+    }
+  },
+
+  "teamsOverviewPage": {
+    "header": {
+      "title": "Teams Overview",
+      "subtitle": "Manage all teams across your club",
+      "addPlayer": "Add Player"
+    },
+    "teamProfileCard": {
+      "back": "Back",
+      "coach": "Coach :",
+      "players": "Players :",
+      "avgFitness": "Avg Fitness :",
+      "winRate": "Win Rate :",
+      "avgForm": "Avg Form :"
+    },
+    "teamStats": {
+      "teamOverview": "Team Overview"
+    },
+    "roaster": {
+      "title": "Roaster Readiness",
+      "fit": "Fit",
+      "doubtful": "Doubtful",
+      "injured": "Injured"
+    },
+    "formTrend": {
+      "title": "Form Trend(Last 5 Matches)"
+    },
+    "topPerformer": {
+      "title": "Top Performer"
+    },
+    "tabHeader": {
+      "players": "Players",
+      "searchPlayerPlaceholder": "Search Player",
+      "allPositions": "All Positions"
+    },
+    "teamList": {
+      "player": "Player",
+      "status": "Status",
+      "fitness": "Fitness",
+      "form": "Form",
+      "tasks": "Tasks",
+      "attendance": "Attendance",
+      "actions": "Actions"
+    }
+  },
+
+  "gamePlanOverview": {
+    "overview": "Overview",
+    "progressTracker": "Progress Tracker",
+    "complete": "Complete",
+    "updateProgress": "Update Progress",
+    "assignedPlayers": "Assigned Players",
+    "manage": "Manage",
+    "quickInfo": "Quick Info",
+    "priority": "Priority",
+    "taskRating": "Task Rating",
+    "createdBy": "Created By",
+    "commentsAndNotes": "Comments & Notes",
+    "addCommentPlaceholder": "Add a comment...",
+    "nextEvent": "Next Event",
+    "attachments": "Attachments",
+    "download": "Download",
+    "taskHistory": "Task History",
+    "addCoachNote": "Add Coach Note",
+    "addObservationsPlaceholder": "Add your observations...",
+    "saveNote": "Save Note",
+    "startDate": "Start Date",
+    "dueDate": "Due Date"
+  },
+
+  "editPlanModal": {
+    "assignTask": "Assign Task",
+    "assignTo": "Assign To",
+    "team": "Team",
+    "players": "Players",
+    "selectTeam": "Select Team",
+    "selectPlayers": "Select Players",
+    "playersCount": "players",
+    "schedule": "Schedule",
+    "startDate": "Start Date",
+    "dueDate": "Due Date",
+    "notifyAssignees": "Send notification to all assigned players/teams.",
+    "priority": "Priority",
+    "selectPriority": "Select Priority",
+    "category": "Category",
+    "selectCategory": "Select Category",
+    "additionalNotes": "Additional Notes (Optional)",
+    "notesPlaceholder": "Add any specific instructions or notes...",
+    "saveAndNotify": "Save & Notify",
+    "cancel": "Cancel"
+  },
+
+  "tacticalBoard": {
+    "drawingTools": {
+      "pencil": "Pencil",
+      "square": "Square",
+      "circle": "Circle",
+      "arrow": "Arrow",
+      "text": "Text",
+      "players": "Players",
+      "eraser": "Eraser"
+    },
+    "actionTools": {
+      "undo": "Undo",
+      "redo": "Redo",
+      "zoomIn": "Zoom In",
+      "zoomOut": "Zoom Out",
+      "microphone": "Microphone",
+      "video": "Video",
+      "clear": "Clear"
+    },
+    "bottomAction": {
+      "autoSaveEnabled": "Auto-save enabled",
+      "lastSaved": "Last saved: {time}",
+      "lastSavedMinutes": "Last saved: {minutes} minutes ago",
+      "export": "Export",
+      "savePlan": "Save Plan",
+      "attachToTask": "Attach to Task"
+    }
+  },
+
+  "aiAnalytics": {
+    "stats": {
+      "avgCompletionTime": "Avg Completion Time",
+      "playerEngagement": "Player Engagement",
+      "successRate": "Success Rate",
+      "improvement": "Improvement"
+    },
+    "completionTrend": {
+      "title": "Completion Trend",
+      "progress": "Progress",
+      "progressOver7Days": "Progress over 7 days",
+      "overallGrowth": "+60% overall growth"
+    },
+    "categoryBreakdown": {
+      "title": "Category Breakdown",
+      "total": "Total",
+      "tactical": "Tactical",
+      "fitness": "Fitness",
+      "technical": "Technical",
+      "recovery": "Recovery"
+    },
+    "averageRatings": {
+      "title": "Average Ratings",
+      "overallAverage": "Overall Average"
+    },
+    "playerParticipation": {
+      "title": "Player Participation"
+    },
+    "keyInsights": {
+      "title": "Key Insights",
+      "insight1": "Task completion rate improved by **18%** compared to last week.",
+      "insight2": "Player engagement is highest on **Thursdays and Fridays**.",
+      "insight3": "**Tactical drills** show the highest satisfaction ratings.",
+      "insight4": "Average completion time decreased by **12%**, indicating better efficiency."
+    }
   }
 }

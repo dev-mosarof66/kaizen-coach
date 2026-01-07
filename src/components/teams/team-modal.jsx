@@ -9,9 +9,11 @@ import {
   SheetHeader,
 } from '../ui/sheet';
 import { Button } from '../ui/button';
+import { useTranslation } from '../../contexts/translation-context';
 
 
 const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
+  const { t } = useTranslation()
   const router = useRouter()
 
   const isOpen = open !== undefined ? open : showModal;
@@ -52,13 +54,13 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
           <div className='w-full grid grid-cols-2 gap-4'>
             {/* win rate  */}
             <div className='w-full h-full flex flex-col gap-6 justify-between border border-gray-800 px-3 py-3 rounded-xl '>
-              <h2 className='text-gray-400 text-sm font-semibold'>Win Rate</h2>
+              <h2 className='text-gray-400 text-sm font-semibold'>{t('teamsPage.teamModal.winRate')}</h2>
               <p className='text-gray-200 text-xl'>67%</p>
             </div>
 
             {/* players  */}
             <div className='w-full h-full flex flex-col gap-6 justify-between border border-gray-800 px-3 py-3 rounded-xl '>
-              <h2 className='text-gray-400 text-sm font-semibold'>Players</h2>
+              <h2 className='text-gray-400 text-sm font-semibold'>{t('teamsPage.teamModal.players')}</h2>
               <p className='text-gray-200 text-xl'>18 / 18</p>
             </div>
           </div>
@@ -68,43 +70,43 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
 
           {/* last match results  */}
           <div className='w-full flex flex-col gap-3'>
-            <h2 className='text-gray-400 text-lg font-semibold'>Season Record</h2>
+            <h2 className='text-gray-400 text-lg font-semibold'>{t('teamsPage.teamModal.seasonRecord')}</h2>
             {/* season record  */}
             <div className='w-full flex flex-col gap-2 text-gray-400 border-b border-gray-800 pb-3 text-sm'>
               {/* wins  */}
               <div className='w-full flex items-center justify-between'>
-                <p>Wins</p>
+                <p>{t('teamsPage.teamModal.wins')}</p>
                 <p className='text-green-500'>18</p>
               </div>
               {/* draws */}
               <div className='w-full flex items-center justify-between'>
-                <p>Draws</p>
+                <p>{t('teamsPage.teamModal.draws')}</p>
                 <p className='text-amber-500'>3</p>
               </div>
               {/* losses */}
               <div className='w-full flex items-center justify-between'>
-                <p>Losses</p>
+                <p>{t('teamsPage.teamModal.losses')}</p>
                 <p className='text-red-500'>2</p>
               </div>
             </div>
             {/* goals history  */}
             <div className='w-full flex flex-col py-3 gap-2 text-gray-400 text-sm'>
               <div className='w-full flex items-center justify-between'>
-                <p>Goals For</p>
+                <p>{t('teamsPage.teamModal.goalsFor')}</p>
                 <p className='text-white'>45</p>
               </div>
               <div className='w-full flex items-center justify-between'>
-                <p>Goals Against</p>
+                <p>{t('teamsPage.teamModal.goalsAgainst')}</p>
                 <p className='text-white'>18</p>
               </div>
               <div className='w-full flex items-center justify-between'>
-                <p>Goal Difference</p>
+                <p>{t('teamsPage.teamModal.goalDifference')}</p>
                 <p className='text-green-500'>+27</p>
               </div>
             </div>
             {/* player roaster  */}
             <div className='w-full flex flex-col text-sm text-gray-400 gap-2 border-b border-b-gray-800 pb-5'>
-              <h2 className='text-gray-400 text-lg font-semibold'>18 Player Roaster</h2>
+              <h2 className='text-gray-400 text-lg font-semibold'>18 {t('teamsPage.teamModal.playerRoaster')}</h2>
               <div className='w-full flex flex-col gap-2'>
                 <div className='w-full flex items-center justify-between'>
                   <p>RW</p>
@@ -126,14 +128,14 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
 
           <div className='w-full flex justify-center border-b border-b-gray-800 pb-6'>
             <PrimaryButton onClick={() => router.push(`/teams/${teamId}`)} className='w-full flex items-center gap-6 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500 group'>
-              <p>Open Full Team Page</p>
+              <p>{t('teamsPage.teamModal.openFullTeamPage')}</p>
               <FaArrowRight className='group-hover:translate-x-2 transition-all duration-300' />
             </PrimaryButton>
           </div>
 
           {/* coach details  */}
           <div className='w-full flex flex-col gap-2 pb-10'>
-            <h2 className='text-gray-400 text-xs font-semibold'>Head Coach</h2>
+            <h2 className='text-gray-400 text-xs font-semibold'>{t('teamsPage.teamModal.headCoach')}</h2>
             <div onClick={() => router.push('/coaches/coach-details')} className='w-full flex items-center gap-4 bg-gray-950/50 p-3 rounded-xl  group hover:bg-gray-950/70 active:scale-95 cursor-pointer transition-all duration-300 hover:shadow-lg'>
               <div className='p-3 rounded-full bg-blue-500/20 text-blue-400'>
                 <FaUsers />
@@ -141,7 +143,7 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
               <div className='flex-1 flex items-center justify-between'>
                 <div className='flex flex-col'>
                   <h1 className='text-white text-sm font-semibold'>Coach Saleh</h1>
-                  <p className='text-gray-400 text-xs'>View Profile</p>
+                  <p className='text-gray-400 text-xs'>{t('teamsPage.teamModal.viewProfile')}</p>
                 </div>
                 <div className='text-gray-400 hover:text-white cursor-pointer'>
                   <FaArrowRight className='size-4 group-hover:translate-x-1 transition-all duration-300' />

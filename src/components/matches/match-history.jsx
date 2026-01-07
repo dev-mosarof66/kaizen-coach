@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Card, CardContent } from '../ui/card'
 import { Badge } from '../ui/badge'
@@ -13,9 +14,10 @@ import { Upload } from 'lucide-react'
 import { MoreVertical } from 'lucide-react'
 import { OutlineButton, PrimaryButton } from '../common/button'
 import { BsThreeDots } from 'react-icons/bs'
+import { useTranslation } from '../../contexts/translation-context'
 
 const MatchHistory = () => {
-
+    const { t } = useTranslation()
 
     const matchHistory = [
         {
@@ -30,6 +32,7 @@ const MatchHistory = () => {
             hasVideo: true,
             hasAnalysis: true,
             status: 'Ready',
+            statusKey: 'ready',
             statusColor: 'text-green-400'
         },
         {
@@ -44,6 +47,7 @@ const MatchHistory = () => {
             hasVideo: true,
             hasAnalysis: false,
             status: 'Processing',
+            statusKey: 'processing',
             statusColor: 'text-orange-400'
         },
         {
@@ -58,6 +62,7 @@ const MatchHistory = () => {
             hasVideo: false,
             hasAnalysis: false,
             status: 'Ready',
+            statusKey: 'ready',
             statusColor: 'text-green-400'
         }
     ]
@@ -66,21 +71,21 @@ const MatchHistory = () => {
     return (
         <div className='w-full flex flex-col gap-4'>
             <div className='w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'>
-                <h2 className='text-2xl font-semibold text-white'>Match History</h2>
+                <h2 className='text-2xl font-semibold text-white'>{t('matchesPage.matchHistory.title')}</h2>
 
                 <div className='flex fitems-center gap-3 w-full sm:w-auto'>
                     <div className='relative flex-1 sm:flex-initial sm:w-[200px]'>
                         <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400' />
                         <Input
-                            placeholder='Search players...'
+                            placeholder={t('matchesPage.matchHistory.searchPlayers')}
                             className='pl-9 bg-gray-800/60 border-gray-700 text-gray-300 placeholder:text-gray-500'
                         />
                     </div>
                     <Button variant='outline' className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700'>
-                        All Positions
+                        {t('matchesPage.matchHistory.allPositions')}
                     </Button>
                     <Button variant='outline' className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700'>
-                        All Status
+                        {t('matchesPage.matchHistory.allStatus')}
                     </Button>
                 </div>
             </div>
@@ -88,9 +93,9 @@ const MatchHistory = () => {
             <Card className='bg-gray-800/60 border-gray-700'>
                 <CardContent className='p-0'>
                     <div className='p-4 border-b border-gray-700 flex items-center justify-between'>
-                        <h3 className='text-base font-semibold text-white'>Match History</h3>
+                        <h3 className='text-base font-semibold text-white'>{t('matchesPage.matchHistory.title')}</h3>
                         <Badge variant='secondary' className='bg-gray-600/50 text-gray-300 border-gray-600'>
-                            3 matches
+                            3 {t('matchesPage.matchHistory.matches')}
                         </Badge>
                     </div>
 
@@ -98,14 +103,14 @@ const MatchHistory = () => {
                         <Table>
                             <TableHeader>
                                 <TableRow className='border-gray-700 hover:bg-transparent'>
-                                    <TableHead className='text-gray-400 font-medium'>Fixture</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Date/Time</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Competition</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Result</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Video</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Analysis</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Status</TableHead>
-                                    <TableHead className='text-gray-400 font-medium'>Action</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.fixture')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.dateTime')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.competition')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.result')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.video')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.analysis')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.status')}</TableHead>
+                                    <TableHead className='text-gray-400 font-medium'>{t('matchesPage.matchHistory.tableHeaders.action')}</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
@@ -145,7 +150,7 @@ const MatchHistory = () => {
                                                     className='bg-transparent border-gray-600 hover:bg-white/5 text-white'
                                                 >
                                                     <Upload className='w-4 h-4' />
-                                                    Upload
+                                                    {t('matchesPage.matchHistory.actions.upload')}
                                                 </OutlineButton>
                                             )}
                                         </TableCell>
@@ -155,24 +160,24 @@ const MatchHistory = () => {
                                                     onClick={() => { console.log('View Analysis') }}
                                                 >
                                                     <BarChart3 className='w-4 h-4' />
-                                                    View
+                                                    {t('matchesPage.matchHistory.actions.view')}
                                                 </PrimaryButton>
                                             ) : (
                                                 <OutlineButton
                                                     onClick={() => { console.log('View Analysis') }}
                                                 >
                                                     <BarChart3 className='w-4 h-4' />
-                                                    View
+                                                    {t('matchesPage.matchHistory.actions.view')}
                                                 </OutlineButton>
                                             )}
                                         </TableCell>
                                         <TableCell>
                                             <div className='flex items-center gap-2'>
-                                                {match.status === 'Processing' && (
+                                                {match.statusKey === 'processing' && (
                                                     <div className='w-2 h-2 rounded-full bg-orange-400' />
                                                 )}
                                                 <span className={cn('text-sm', match.statusColor)}>
-                                                    {match.status}
+                                                    {match.statusKey === 'ready' ? t('matchesPage.matchHistory.status.ready') : match.statusKey === 'processing' ? t('matchesPage.matchHistory.status.processing') : match.status}
                                                 </span>
                                             </div>
                                         </TableCell>
@@ -187,13 +192,13 @@ const MatchHistory = () => {
                                                 </DropdownMenuTrigger>
                                                 <DropdownMenuContent className='bg-gray-800 border-gray-700'>
                                                     <DropdownMenuItem className='text-gray-300 hover:bg-gray-700 hover:text-white'>
-                                                        View Details
+                                                        {t('matchesPage.matchHistory.actions.viewDetails')}
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem className='text-gray-300 hover:bg-gray-700 hover:text-white'>
-                                                        Edit Match
+                                                        {t('matchesPage.matchHistory.actions.editMatch')}
                                                     </DropdownMenuItem>
                                                     <DropdownMenuItem className='text-gray-300 hover:bg-gray-700 hover:text-white'>
-                                                        Delete Match
+                                                        {t('matchesPage.matchHistory.actions.deleteMatch')}
                                                     </DropdownMenuItem>
                                                 </DropdownMenuContent>
                                             </DropdownMenu>

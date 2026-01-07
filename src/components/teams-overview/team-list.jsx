@@ -1,7 +1,9 @@
+'use client'
 import { getInitials } from "../../utils/utils"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
 import { HiOutlineDotsVertical } from "react-icons/hi";
+import { useTranslation } from "../../contexts/translation-context";
 
 const players = [
     {
@@ -51,18 +53,19 @@ const players = [
 ]
 
 const TeamList = () => {
+    const { t } = useTranslation()
     return (
         <Card className="w-full h-full flex flex-col bg-gray-800/50 border border-gray-800 rounded-xl p-4">
             <table className="w-full text-left text-sm sm:text-base text-gray-300">
                 <thead className="bg-gray-800/20 text-gray-200 border-b border-gray-700">
                     <tr>
-                        <th className="p-2">Player</th>
-                        <th className="p-2">Status</th>
-                        <th className="p-2 hidden sm:block md:hidden xl:block">Fitness</th>
-                        <th className="p-2 text-center">Form</th>
-                        <th className="p-2 hidden sm:table-cell md:table-cell xl:table-cell">Tasks</th>
-                        <th className="p-2 hidden sm:table-cell md:table-cell xl:table-cell text-center">Attendance</th>
-                        <th className="p-2">Actions</th>
+                        <th className="p-2">{t('teamsOverviewPage.teamList.player')}</th>
+                        <th className="p-2">{t('teamsOverviewPage.teamList.status')}</th>
+                        <th className="p-2 hidden sm:block md:hidden xl:block">{t('teamsOverviewPage.teamList.fitness')}</th>
+                        <th className="p-2 text-center">{t('teamsOverviewPage.teamList.form')}</th>
+                        <th className="p-2 hidden sm:table-cell md:table-cell xl:table-cell">{t('teamsOverviewPage.teamList.tasks')}</th>
+                        <th className="p-2 hidden sm:table-cell md:table-cell xl:table-cell text-center">{t('teamsOverviewPage.teamList.attendance')}</th>
+                        <th className="p-2">{t('teamsOverviewPage.teamList.actions')}</th>
                     </tr>
                 </thead>
 

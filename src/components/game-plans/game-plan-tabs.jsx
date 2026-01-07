@@ -1,10 +1,15 @@
 'use client'
 import { cn } from '../../lib/utils'
 import React from 'react'
-
-const tabs = ["Overview", "Tactical Board", "AI Analytics"]
+import { useTranslation } from '../../contexts/translation-context'
 
 const GamePlanTabs = ({ selectedTab, setSelectedTab }) => {
+    const { t } = useTranslation()
+    const tabs = [
+        t('gamePlanDetailsPage.tabs.overview'),
+        t('gamePlanDetailsPage.tabs.tacticalBoard'),
+        t('gamePlanDetailsPage.tabs.aiAnalytics')
+    ]
     return (
         <div className="w-full grid grid-cols-3 border-t border-gray-700 overflow-hidden rounded-b-lg">
             {tabs.map((tab, index) => {

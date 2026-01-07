@@ -117,5 +117,495 @@
       "switchTeam": "تبديل الفريق",
       "recordMatch": "تسجيل مباراة"
     }
+  },
+
+  "playersPage": {
+    "filters": {
+      "allTeams": "جميع الفرق",
+      "allPositions": "جميع المراكز",
+      "allStatus": "جميع الحالات",
+      "moreFilters": "المزيد من الفلاتر"
+    },
+    "stats": {
+      "totalPlayers": "إجمالي اللاعبين",
+      "activePlayers": "اللاعبون النشطون",
+      "avgRating": "متوسط التقييم",
+      "taskCompletion": "إتمام المهام"
+    },
+    "playerCard": {
+      "age": "العمر",
+      "rating": "التقييم:",
+      "value": "القيمة",
+      "team": "الفريق"
+    },
+    "pagination": {
+      "showing": "عرض",
+      "of": "من",
+      "players": "لاعب"
+    },
+    "playerModal": {
+      "close": "إغلاق",
+      "forward": "مهاجم",
+      "gamesPlayed": "مباراة لعبها",
+      "goalsScored": "هدف سجله",
+      "joinedTeam": "انضم للفريق",
+      "games": "المباريات",
+      "goals": "الأهداف",
+      "assists": "المساعدات",
+      "total": "إجمالي",
+      "viewProfile": "عرض الملف الشخصي",
+      "switchTeam": "تبديل الفريق",
+      "removed": "إزالة",
+      "marketValue": "القيمة السوقية",
+      "comparedToLastMonth": "مقارنة بالشهر الماضي",
+      "assignTask": "تعيين مهمة",
+      "addNote": "إضافة ملاحظة"
+    }
+  },
+
+  "aiAssistantPage": {
+    "title": "مساعد المدرب بالذكاء الاصطناعي",
+    "online": "متصل",
+    "poweredBy": "مدعوم بالتحليلات المتقدمة",
+    "actionButtons": {
+      "analyzePerformance": "تحليل الأداء",
+      "tacticalSuggestions": "اقتراحات تكتيكية",
+      "playerInsights": "رؤى اللاعبين",
+      "trainingIdeas": "أفكار التدريب",
+      "analyzePerformanceDesc": "الحصول على مقاييس أداء مفصلة",
+      "tacticalSuggestionsDesc": "تلقي توصيات تكتيكية",
+      "playerInsightsDesc": "تحليل تطور اللاعب",
+      "trainingIdeasDesc": "الحصول على توصيات التدريب"
+    },
+    "inputPlaceholder": "اسألني أي شيء عن التكتيكات أو الأداء أو التدريب...",
+    "inputHelper": "رؤى مدعومة بالذكاء الاصطناعي بناءً على بيانات فريقك",
+    "dateLabels": {
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "august": "أغسطس"
+    }
+  },
+
+  "addTaskPage": {
+    "back": "رجوع",
+    "tasks": "المهام",
+    "addTask": "إضافة مهمة",
+    "cancel": "إلغاء",
+    "saveChanges": "حفظ التغييرات",
+    "taskDetails": "تفاصيل المهمة",
+    "taskTitle": "عنوان المهمة",
+    "taskTitlePlaceholder": "أدخل اسم المهمة",
+    "category": "الفئة",
+    "categories": {
+      "fitness": "اللياقة",
+      "technical": "تقني",
+      "tactical": "تكتيكي",
+      "recovery": "الاستشفاء"
+    },
+    "description": "الوصف",
+    "descriptionPlaceholder": "اوصف أهداف المهمة ومتطلباتها...",
+    "startDate": "تاريخ البدء",
+    "dueDate": "تاريخ الاستحقاق",
+    "priority": "الأولوية",
+    "priorityLevels": {
+      "high": "عالية",
+      "medium": "متوسطة",
+      "low": "منخفضة"
+    },
+    "attachments": "المرفقات",
+    "attachmentsHelper": "اسحب وأفلت الملفات أو انقر للتصفح",
+    "assignment": "التعيين",
+    "assignTo": "تعيين إلى",
+    "player": "لاعب",
+    "team": "فريق",
+    "searchPlayers": "البحث عن اللاعبين...",
+    "searchPlayersPlaceholder": "البحث عن اللاعبين...",
+    "dueTime": "وقت الاستحقاق",
+    "notifyAssignees": "إشعار المعينين عبر البريد الإلكتروني/التطبيق",
+    "saveAndAssign": "حفظ وتعيين",
+    "aiSuggestion": {
+      "message": "بناءً على تاريخ لياقة اللاعب، فكر في إضافة إحماء لمدة 10 دقائق قبل هذا التمرين لمنع الإصابات.",
+      "applySuggestion": "تطبيق الاقتراح"
+    }
+  },
+
+  "gamePlansPage": {
+    "title": "خطط التدريب",
+    "subtitle": "إدارة مهام التدريب والخطط التكتيكية وأنشطة التدريب",
+    "thisSeason": "هذا الموسم",
+    "addNewPlan": "إضافة خطة جديدة",
+    "allTasks": "جميع المهام",
+    "searchTasks": "البحث عن المهام...",
+    "allPositions": "جميع المراكز",
+    "allStatus": "جميع الحالات",
+    "tableHeaders": {
+      "taskPlanName": "اسم المهمة/الخطة",
+      "createdBy": "تم الإنشاء بواسطة",
+      "assignedTo": "مخصص إلى",
+      "type": "النوع",
+      "startDueDate": "تاريخ البدء/الاستحقاق",
+      "progress": "التقدم",
+      "status": "الحالة"
+    },
+    "status": {
+      "completed": "مكتمل",
+      "inProgress": "قيد التنفيذ",
+      "notStarted": "لم يبدأ"
+    },
+    "types": {
+      "plan": "خطة",
+      "task": "مهمة"
+    }
+  },
+
+  "gamePlanDetailsPage": {
+    "back": "رجوع",
+    "gamePlans": "خطط اللعب",
+    "tabs": {
+      "overview": "نظرة عامة",
+      "tacticalBoard": "اللوحة التكتيكية",
+      "aiAnalytics": "تحليلات الذكاء الاصطناعي"
+    },
+    "editPlan": "تعديل الخطة",
+    "deletePlan": "حذف الخطة"
+  },
+
+  "matchesPage": {
+    "upcomingMatches": {
+      "title": "المباريات القادمة",
+      "matches": "مباراة",
+      "leagueMatch": "مباراة الدوري",
+      "friendlyMatch": "مباراة ودية",
+      "cupMatch": "مباراة الكأس",
+      "friendlyMatchType": "مباراة ودية",
+      "upcoming": "قادمة",
+      "vs": "ضد",
+      "venue": "المكان",
+      "record": "تسجيل",
+      "editDetails": "تعديل التفاصيل"
+    },
+    "matchHistory": {
+      "title": "سجل المباريات",
+      "matches": "مباراة",
+      "searchPlayers": "البحث عن اللاعبين...",
+      "allPositions": "جميع المراكز",
+      "allStatus": "جميع الحالات",
+      "tableHeaders": {
+        "fixture": "المباراة",
+        "dateTime": "التاريخ/الوقت",
+        "competition": "المسابقة",
+        "result": "النتيجة",
+        "video": "فيديو",
+        "analysis": "التحليل",
+        "status": "الحالة",
+        "action": "الإجراء"
+      },
+      "competition": {
+        "league": "الدوري",
+        "friendly": "ودي"
+      },
+      "status": {
+        "ready": "جاهز",
+        "processing": "قيد المعالجة"
+      },
+      "actions": {
+        "upload": "رفع",
+        "view": "عرض",
+        "viewDetails": "عرض التفاصيل",
+        "editMatch": "تعديل المباراة",
+        "deleteMatch": "حذف المباراة"
+      }
+    }
+  },
+
+  "reportsPage": {
+    "title": "التقارير والتحليل",
+    "subtitle": "رؤى شاملة وتحليلات الأداء",
+    "thisSeason": "هذا الموسم",
+    "lastSeason": "الموسم الماضي",
+    "allTeams": "جميع الفرق",
+    "exportPdf": "تصدير PDF",
+    "matchResultsTrend": "اتجاه نتائج المباريات",
+    "season": "الموسم",
+    "goalsByTimePeriod": "الأهداف حسب الفترة الزمنية",
+    "keyInsights": "رؤى رئيسية",
+    "viewAll": "عرض الكل",
+    "insights": {
+      "strongLateGame": "أداء قوي في نهاية المباراة",
+      "strongLateGameText": "23% من الأهداف سجلت في آخر 15 دقيقة",
+      "homeAdvantage": "ميزة الملعب",
+      "homeAdvantageText": "معدل الفوز: 78% في الداخل مقابل 58% في الخارج",
+      "trainingImpact": "تأثير التدريب",
+      "trainingImpactText": "+15% في الأداء مع إتمام 90%+ من المهام"
+    },
+    "chartLabels": {
+      "wins": "فوز",
+      "draws": "تعادل",
+      "losses": "خسارة",
+      "goals": "أهداف"
+    }
+  },
+
+  "playerProfilePage": {
+    "navigation": {
+      "players": "اللاعبون"
+    }
+  },
+
+  "tasksPage": {
+    "title": "المهام وخطط التدريب",
+    "subtitle": "إدارة جميع مهام التدريب وتتبع التقدم",
+    "exportReport": "تصدير التقرير",
+    "addTask": "إضافة مهمة",
+    "stats": {
+      "totalTasks": "إجمالي المهام",
+      "inProgress": "قيد التنفيذ",
+      "completed": "مكتمل",
+      "overdue": "متأخر"
+    },
+    "allTasks": "جميع المهام",
+    "searchTasksPlaceholder": "البحث عن المهام...",
+    "allPositions": "جميع المراكز",
+    "allStatus": "جميع الحالات",
+    "table": {
+      "taskName": "اسم المهمة",
+      "assignedTo": "مخصص لـ",
+      "createdBy": "تم الإنشاء بواسطة",
+      "startDate": "تاريخ البدء",
+      "dueDate": "تاريخ الاستحقاق",
+      "progress": "التقدم",
+      "status": "الحالة",
+      "rating": "التقييم"
+    },
+    "categories": {
+      "fitness": "اللياقة",
+      "technical": "تقني",
+      "tactical": "تكتيكي",
+      "recovery": "الاستشفاء"
+    },
+    "status": {
+      "completed": "مكتمل",
+      "inProgress": "قيد التنفيذ",
+      "notStarted": "لم يبدأ"
+    },
+    "na": "غير متاح",
+    "pagination": {
+      "showing": "عرض",
+      "of": "من",
+      "tasks": "مهمة"
+    },
+    "taskDetails": {
+      "title": "تفاصيل المهمة",
+      "createdBy": "تم الإنشاء بواسطة",
+      "progressSummary": "ملخص التقدم",
+      "completed": "مكتمل",
+      "due": "تاريخ الاستحقاق:",
+      "assignedPlayers": "اللاعبون المعينون",
+      "averageRating": "متوسط التقييم",
+      "comments": "التعليقات",
+      "editTask": "تعديل المهمة",
+      "markAsCompleted": "وضع علامة كمكتمل",
+      "deleteTask": "حذف المهمة"
+    }
+  },
+
+  "teamsPage": {
+    "stats": {
+      "teams": "الفرق",
+      "players": "اللاعبون",
+      "subCoaches": "المدربون المساعدون",
+      "nextMatch": "المباراة القادمة"
+    },
+    "allTeams": "جميع الفرق",
+    "searchPlayersPlaceholder": "البحث عن اللاعبين...",
+    "allPositions": "جميع المراكز",
+    "allStatus": "جميع الحالات",
+    "teamCard": {
+      "activePlayers": "اللاعبون النشطون:",
+      "active": "نشط",
+      "winRate": "معدل الفوز",
+      "lastMatch": "آخر مباراة",
+      "nextMatch": "المباراة القادمة",
+      "noUpcomingMatches": "لا توجد مباريات قادمة",
+      "seeDetails": "عرض التفاصيل",
+      "addPlayer": "إضافة لاعب"
+    },
+    "pagination": {
+      "showing": "عرض",
+      "of": "من",
+      "teams": "فريق"
+    },
+    "teamModal": {
+      "winRate": "معدل الفوز",
+      "players": "اللاعبون",
+      "seasonRecord": "سجل الموسم",
+      "wins": "انتصارات",
+      "draws": "تعادلات",
+      "losses": "خسائر",
+      "goalsFor": "الأهداف المسجلة",
+      "goalsAgainst": "الأهداف المستلمة",
+      "goalDifference": "فرق الأهداف",
+      "playerRoaster": "قائمة اللاعبين",
+      "openFullTeamPage": "فتح صفحة الفريق الكاملة",
+      "headCoach": "المدرب الرئيسي",
+      "viewProfile": "عرض الملف الشخصي"
+    }
+  },
+
+  "teamsOverviewPage": {
+    "header": {
+      "title": "نظرة عامة على الفرق",
+      "subtitle": "إدارة جميع الفرق في ناديك",
+      "addPlayer": "إضافة لاعب"
+    },
+    "teamProfileCard": {
+      "back": "رجوع",
+      "coach": "المدرب :",
+      "players": "اللاعبون :",
+      "avgFitness": "متوسط اللياقة :",
+      "winRate": "معدل الفوز :",
+      "avgForm": "متوسط الأداء :"
+    },
+    "teamStats": {
+      "teamOverview": "نظرة عامة على الفريق"
+    },
+    "roaster": {
+      "title": "جاهزية القائمة",
+      "fit": "لائق",
+      "doubtful": "مشكوك فيه",
+      "injured": "مصاب"
+    },
+    "formTrend": {
+      "title": "اتجاه الأداء (آخر 5 مباريات)"
+    },
+    "topPerformer": {
+      "title": "أفضل أداء"
+    },
+    "tabHeader": {
+      "players": "اللاعبون",
+      "searchPlayerPlaceholder": "البحث عن اللاعب",
+      "allPositions": "جميع المراكز"
+    },
+    "teamList": {
+      "player": "اللاعب",
+      "status": "الحالة",
+      "fitness": "اللياقة",
+      "form": "الأداء",
+      "tasks": "المهام",
+      "attendance": "الحضور",
+      "actions": "الإجراءات"
+    }
+  },
+
+  "gamePlanOverview": {
+    "overview": "نظرة عامة",
+    "progressTracker": "متتبع التقدم",
+    "complete": "مكتمل",
+    "updateProgress": "تحديث التقدم",
+    "assignedPlayers": "اللاعبون المعينون",
+    "manage": "إدارة",
+    "quickInfo": "معلومات سريعة",
+    "priority": "الأولوية",
+    "taskRating": "تقييم المهمة",
+    "createdBy": "تم الإنشاء بواسطة",
+    "commentsAndNotes": "التعليقات والملاحظات",
+    "addCommentPlaceholder": "إضافة تعليق...",
+    "nextEvent": "الحدث القادم",
+    "attachments": "المرفقات",
+    "download": "تحميل",
+    "taskHistory": "سجل المهمة",
+    "addCoachNote": "إضافة ملاحظة المدرب",
+    "addObservationsPlaceholder": "أضف ملاحظاتك...",
+    "saveNote": "حفظ الملاحظة",
+    "startDate": "تاريخ البدء",
+    "dueDate": "تاريخ الاستحقاق"
+  },
+
+  "editPlanModal": {
+    "assignTask": "تعيين مهمة",
+    "assignTo": "تعيين إلى",
+    "team": "فريق",
+    "players": "اللاعبون",
+    "selectTeam": "اختر الفريق",
+    "selectPlayers": "اختر اللاعبين",
+    "playersCount": "لاعب",
+    "schedule": "الجدول",
+    "startDate": "تاريخ البدء",
+    "dueDate": "تاريخ الاستحقاق",
+    "notifyAssignees": "إرسال إشعار لجميع اللاعبين/الفرق المعينة.",
+    "priority": "الأولوية",
+    "selectPriority": "اختر الأولوية",
+    "category": "الفئة",
+    "selectCategory": "اختر الفئة",
+    "additionalNotes": "ملاحظات إضافية (اختياري)",
+    "notesPlaceholder": "أضف أي تعليمات أو ملاحظات محددة...",
+    "saveAndNotify": "حفظ وإشعار",
+    "cancel": "إلغاء"
+  },
+
+  "tacticalBoard": {
+    "drawingTools": {
+      "pencil": "قلم",
+      "square": "مربع",
+      "circle": "دائرة",
+      "arrow": "سهم",
+      "text": "نص",
+      "players": "اللاعبون",
+      "eraser": "ممحاة"
+    },
+    "actionTools": {
+      "undo": "تراجع",
+      "redo": "إعادة",
+      "zoomIn": "تكبير",
+      "zoomOut": "تصغير",
+      "microphone": "ميكروفون",
+      "video": "فيديو",
+      "clear": "مسح"
+    },
+    "bottomAction": {
+      "autoSaveEnabled": "الحفظ التلقائي مفعّل",
+      "lastSaved": "آخر حفظ: {time}",
+      "lastSavedMinutes": "آخر حفظ: منذ {minutes} دقيقة",
+      "export": "تصدير",
+      "savePlan": "حفظ الخطة",
+      "attachToTask": "إرفاق بالمهمة"
+    }
+  },
+
+  "aiAnalytics": {
+    "stats": {
+      "avgCompletionTime": "متوسط وقت الإنجاز",
+      "playerEngagement": "مشاركة اللاعبين",
+      "successRate": "معدل النجاح",
+      "improvement": "التحسين"
+    },
+    "completionTrend": {
+      "title": "اتجاه الإنجاز",
+      "progress": "التقدم",
+      "progressOver7Days": "التقدم على مدى 7 أيام",
+      "overallGrowth": "+60% نمو إجمالي"
+    },
+    "categoryBreakdown": {
+      "title": "توزيع الفئات",
+      "total": "الإجمالي",
+      "tactical": "تكتيكي",
+      "fitness": "لياقة",
+      "technical": "تقني",
+      "recovery": "استشفاء"
+    },
+    "averageRatings": {
+      "title": "متوسط التقييمات",
+      "overallAverage": "المتوسط الإجمالي"
+    },
+    "playerParticipation": {
+      "title": "مشاركة اللاعبين"
+    },
+    "keyInsights": {
+      "title": "رؤى رئيسية",
+      "insight1": "تحسن معدل إتمام المهام بنسبة **18%** مقارنة بالأسبوع الماضي.",
+      "insight2": "مشاركة اللاعبين أعلى في **الخميس والجمعة**.",
+      "insight3": "**التدريبات التكتيكية** تظهر أعلى تقييمات للرضا.",
+      "insight4": "انخفض متوسط وقت الإنجاز بنسبة **12%**، مما يشير إلى كفاءة أفضل."
+    }
   }
 }

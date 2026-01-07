@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Card, CardContent } from '../ui/card'
 import GamePlanTabs from './game-plan-tabs';
@@ -6,11 +7,14 @@ import { Badge } from '../ui/badge'
 import { Edit, Trash2 } from 'lucide-react'
 import { PrimaryButton, OutlineButton } from '../common/button';
 import CircularProgress from '../common/circular-progress';
+import { useTranslation } from '../../contexts/translation-context';
 
 
 
 
 const GamePlanCard = ({ selectedTab, setSelectedTab, gamePlan, setEditMode }) => {
+    const { t } = useTranslation()
+    
     return (
         <Card className="w-full bg-gray-800/50 border-gray-700 py-0">
             <CardContent className="p-4">
@@ -41,13 +45,13 @@ const GamePlanCard = ({ selectedTab, setSelectedTab, gamePlan, setEditMode }) =>
                             className="flex-1 sm:flex-none w-full sm:w-fit bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm"
                         >
                             <Edit className="size-4" />
-                            <span className="">Edit Plan</span>
+                            <span className="">{t('gamePlanDetailsPage.editPlan')}</span>
                         </PrimaryButton>
                         <OutlineButton
                             className="flex-1 sm:flex-none w-full sm:w-fit  bg-gray-600/20 text-red-400 hover:text-red-500 hover:bg-gray-600/30 border border-red-400/20 flex items-center justify-center text-xs sm:text-sm"
                         >
                             <Trash2 className="size-4" />
-                            <span className="lg:hidden">Delete Plan</span>
+                            <span className="lg:hidden">{t('gamePlanDetailsPage.deletePlan')}</span>
                         </OutlineButton>
                     </div>
                 </div>

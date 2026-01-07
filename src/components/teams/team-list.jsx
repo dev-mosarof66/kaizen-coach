@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { Card } from '../ui/card'
 import { cn } from '../../lib/utils'
@@ -5,6 +6,7 @@ import { Trophy } from 'lucide-react'
 import { FaRegCalendar } from 'react-icons/fa'
 import { OutlineButton, PrimaryButton } from '../common/button'
 import { useRouter } from 'next/navigation'
+import { useTranslation } from '../../contexts/translation-context'
 
 const teams = [
   {
@@ -137,6 +139,7 @@ const TeamList = ({ setShowModal }) => {
 }
 
 const TeamCard = ({ team, setShowModal }) => {
+  const { t } = useTranslation()
   const router = useRouter()
   const borderClass = borderColors[team.borderColor]
   const iconBgClass = iconBgColors[team.borderColor]
@@ -163,14 +166,14 @@ const TeamCard = ({ team, setShowModal }) => {
 
         {/* Active Players */}
         <div className="flex items-center gap-2">
-          <span className="text-gray-400 text-sm">Active Players:</span>
-          <span className="text-gray-200 font-medium">{team.activePlayers} Active</span>
+          <span className="text-gray-400 text-sm">{t('teamsPage.teamCard.activePlayers')}</span>
+          <span className="text-gray-200 font-medium">{team.activePlayers} {t('teamsPage.teamCard.active')}</span>
         </div>
 
         {/* Win Rate */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <span className="text-gray-400 text-sm">Win Rate</span>
+            <span className="text-gray-400 text-sm">{t('teamsPage.teamCard.winRate')}</span>
             <span className="text-gray-200 font-semibold">{team.winRate}%</span>
           </div>
           <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
@@ -183,7 +186,7 @@ const TeamCard = ({ team, setShowModal }) => {
 
         {/* Last Match Results */}
         <div className="w-full flex-col flex items-start justify-between gap-2">
-          <p className="text-gray-400 text-sm">Last Match</p>
+          <p className="text-gray-400 text-sm">{t('teamsPage.teamCard.lastMatch')}</p>
           <div className="w-full">
             <div className="flex items-center gap-1">
               {team.lastMatchResults.map((color, index) => (
@@ -200,27 +203,27 @@ const TeamCard = ({ team, setShowModal }) => {
             <div className="flex flex-col gap-1">
               <p className="flex items-center gap-2">
                 <FaRegCalendar className="size-3.5 text-gray-400" />
-                <span className="text-gray-400 text-sm">Next Match</span>
+                <span className="text-gray-400 text-sm">{t('teamsPage.teamCard.nextMatch')}</span>
               </p>
               <span className="text-gray-300 text-sm">
-                vs {team.nextMatch.opponent}
+                {t('dashboard.upcomingEvents.vs')} {team.nextMatch.opponent}
               </span>
               <span className="text-gray-400 text-xs">{team.nextMatch.date} • {team.nextMatch.time}</span>
             </div>
           ) : (
-            <div className="w-full h-16 flex items-center justify-center text-gray-500 text-sm">No upcoming matches</div>
+            <div className="w-full h-16 flex items-center justify-center text-gray-500 text-sm">{t('teamsPage.teamCard.noUpcomingMatches')}</div>
           )}
         </div>
 
         {/* Action Buttons */}
         <div className="flex items-center gap-2 pt-2">
           <PrimaryButton className='flex-1 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500' onClick={() => setShowModal(team.id)}>
-            See Details
+            {t('teamsPage.teamCard.seeDetails')}
           </PrimaryButton>
 
           <OutlineButton
             onClick={() => router.push('/add-player')} className='flex-1 bg-transparent border-gray-600 hover:bg-white/5 text-white'>
-            Add Player
+            {t('teamsPage.teamCard.addPlayer')}
           </OutlineButton>
         </div>
       </div>

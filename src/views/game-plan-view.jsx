@@ -12,6 +12,7 @@ import Pagination from '../components/tasks/pagination'
 import { Checkbox } from '../components/ui/checkbox'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { useTranslation } from '../contexts/translation-context'
 
 export const game_plans = [
     {
@@ -122,18 +123,24 @@ export const game_plans = [
     }
 ]
 
-const getStatusClasses = (status) => {
-    switch (status) {
-        case 'Completed':
-            return 'text-green-400 bg-green-500/10 border-green-500/20';
-        case 'In Progress':
-            return 'text-blue-400 bg-blue-500/10 border-blue-500/20';
-        case 'Not Started':
-            return 'text-gray-400 bg-gray-500/10 border-gray-500/20';
-        default:
-            return 'text-gray-300 bg-gray-600/20 border-gray-600/20';
+const GamePlanView = () => {
+    const router = useRouter()
+    const { t } = useTranslation()
+    const [selectedTasks, setSelectedTasks] = useState([])
+
+    const getStatusClasses = (status) => {
+        const statusKey = status === 'Completed' ? 'completed' : status === 'In Progress' ? 'inProgress' : 'notStarted'
+        switch (status) {
+            case 'Completed':
+                return 'text-green-400 bg-green-500/10 border-green-500/20';
+            case 'In Progress':
+                return 'text-blue-400 bg-blue-500/10 border-blue-500/20';
+            case 'Not Started':
+                return 'text-gray-400 bg-gray-500/10 border-gray-500/20';
+            default:
+                return 'text-gray-300 bg-gray-600/20 border-gray-600/20';
+        }
     }
-}
 
 const getCategoryClasses = (category) => {
     switch (category) {
@@ -151,11 +158,6 @@ const getCategoryClasses = (category) => {
 }
 
 
-const GamePlanView = () => {
-
-    const router = useRouter()
-    const [selectedTasks, setSelectedTasks] = useState([])
-
     const handleSelectTask = (taskId) => {
         setSelectedTasks((prev) => [...prev, taskId])
     }
@@ -172,27 +174,38 @@ const GamePlanView = () => {
         setSelectedTasks([])
     }
 
-    console.log(selectedTasks)
+    const getStatusText = (status) => {
+        if (status === 'Completed') return t('gamePlansPage.status.completed')
+        if (status === 'In Progress') return t('gamePlansPage.status.inProgress')
+        if (status === 'Not Started') return t('gamePlansPage.status.notStarted')
+        return status
+    }
+
+    const getTypeText = (type) => {
+        if (type === 'Plan') return t('gamePlansPage.types.plan')
+        if (type === 'Task') return t('gamePlansPage.types.task')
+        return type
+    }
     return (
         <div className='w-full h-full flex flex-col gap-6 p-3 sm:p-4'>
             {/* Header Section */}
             <div className='w-full flex flex-col sm:flex-row md:flex-col lg:flex-row items-start sm:items-center md:items-start lg:items-center justify-between gap-2'>
                 <div className='flex flex-col gap-1'>
-                    <h1 className='text-2xl font-semibold text-white'>Training Plans</h1>
-                    <p className='text-sm text-gray-400'>Manage training tasks, tactical plans, and coaching activities</p>
+                    <h1 className='text-2xl font-semibold text-white'>{t('gamePlansPage.title')}</h1>
+                    <p className='text-sm text-gray-400'>{t('gamePlansPage.subtitle')}</p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className='flex items-center gap-3 mt-2'>
                     <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-                        This Season
+                        {t('gamePlansPage.thisSeason')}
                         <ChevronDown className='size-4' />
                     </OutlineButton>
                     <PrimaryButton
                         onClick={() => router.push('/add-task')}
                         className='bg-blue-600 hover:bg-blue-700 text-white'>
                         <Plus className='w-4 h-4' />
-                        Add New Plan
+                        {t('gamePlansPage.addNewPlan')}
                     </PrimaryButton>
                 </div>
             </div>
@@ -201,22 +214,22 @@ const GamePlanView = () => {
 
 
             <div className='w-full flex flex-col md:flex-col lg:flex-row items-start md:items-center lg:items-center justify-between gap-4'>
-                <h2 className='text-xl font-semibold text-white'>All Tasks</h2>
+                <h2 className='text-xl font-semibold text-white'>{t('gamePlansPage.allTasks')}</h2>
 
                 {/* Search and Filters */}
                 <div className='flex  sm:flex-row items-start sm:items-center justify-between gap-4'>
                     <div className='w-full  lg:w-[350px] relative'>
                         <Search className='size-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
                         <Input
-                            placeholder='Search tasks...'
+                            placeholder={t('gamePlansPage.searchTasks')}
                             className='w-full pl-9 bg-gray-800/60 border-gray-700 text-gray-300 placeholder:text-gray-500'
                         />
                     </div>
                     <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-                        All Positions
+                        {t('gamePlansPage.allPositions')}
                     </OutlineButton>
                     <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-                        All Status
+                        {t('gamePlansPage.allStatus')}
                     </OutlineButton>
                 </div>
             </div>
@@ -235,14 +248,14 @@ const GamePlanView = () => {
                                                 handleDeselectAllTasks() :
                                                 handleSelectAllTasks()
                                         } className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
-                                    <p className='text-white'>Task/Plan Name</p>
+                                    <p className='text-white'>{t('gamePlansPage.tableHeaders.taskPlanName')}</p>
                                 </TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden lg:table-cell'>Created By</TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Assigned To</TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Type</TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Start/Due Date</TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>Progress</TableHead>
-                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden sm:table-cell'>Status</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden lg:table-cell'>{t('gamePlansPage.tableHeaders.createdBy')}</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('gamePlansPage.tableHeaders.assignedTo')}</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('gamePlansPage.tableHeaders.type')}</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('gamePlansPage.tableHeaders.startDueDate')}</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('gamePlansPage.tableHeaders.progress')}</TableHead>
+                                <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden sm:table-cell'>{t('gamePlansPage.tableHeaders.status')}</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -306,7 +319,7 @@ const GamePlanView = () => {
 
 
                                         {/* Type */}
-                                        <TableCell className='py-3 px-4 text-gray-400 text-sm'>{task.type}</TableCell>
+                                        <TableCell className='py-3 px-4 text-gray-400 text-sm'>{getTypeText(task.type)}</TableCell>
 
                                         {/* Start/Due Date */}
                                         <TableCell className='py-3 px-4 flex flex-col gap-1'>
@@ -333,7 +346,7 @@ const GamePlanView = () => {
                                         {/* Status */}
                                         <TableCell className='py-3 px-4 hidden sm:table-cell'>
                                             <span className={cn('inline-block text-[10px] font-semibold px-2 py-1 rounded-md border', getStatusClasses(task.status))}>
-                                                {task.status}
+                                                {getStatusText(task.status)}
                                             </span>
                                         </TableCell>
                                     </TableRow>

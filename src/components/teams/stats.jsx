@@ -3,13 +3,7 @@ import React from "react"
 import { PiUsers } from "react-icons/pi"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
-
-const stats = [
-    { label: "Teams", value: 6, icon: PiUsers },
-    { label: "Players", value: 118, icon: PiUsers },
-    { label: "Sub-Coaches", value: 15, icon: PiUsers },
-    { label: "Next Match", value: 2, icon: PiUsers },
-]
+import { useTranslation } from "../../contexts/translation-context"
 
 const colors = [
     {
@@ -35,6 +29,13 @@ const colors = [
 ]
 
 const Stats = () => {
+    const { t } = useTranslation()
+    const stats = [
+        { label: t('teamsPage.stats.teams'), value: 6, icon: PiUsers },
+        { label: t('teamsPage.stats.players'), value: 118, icon: PiUsers },
+        { label: t('teamsPage.stats.subCoaches'), value: 15, icon: PiUsers },
+        { label: t('teamsPage.stats.nextMatch'), value: 2, icon: PiUsers },
+    ]
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3">
             {stats.map((item, i) => (

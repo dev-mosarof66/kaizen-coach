@@ -30,6 +30,7 @@ import {
 } from 'lucide-react'
 import { cn } from '../lib/utils'
 import ReportStats from '../components/reports/report-stats'
+import { useTranslation } from '../contexts/translation-context'
 
 // Match Results Data
 const matchResultsData = [
@@ -41,99 +42,100 @@ const matchResultsData = [
     { month: 'Nov', wins: 5, draws: 1, losses: 1 },
 ]
 
-const matchResultsConfig = {
-    wins: {
-        label: 'Wins',
-        color: '#22c55e', // green
-    },
-    draws: {
-        label: 'Draws',
-        color: '#f97316', // orange
-    },
-    losses: {
-        label: 'Losses',
-        color: '#ef4444', // red
-    },
-    color: [
-        '#22c55e', // green
-        '#f97316', // orange
-        '#ef4444', // red
-    ]
-}
-
-// Goals by Time Period Data
-const goalsByTimeData = [
-    { period: '0-15', goals: 8 },
-    { period: '16-30', goals: 12 },
-    { period: '31-45', goals: 15 },
-    { period: '46-60', goals: 10 },
-    { period: '61-75', goals: 18 },
-    { period: '76-90', goals: 14 },
-]
-
-const goalsConfig = {
-    goals: {
-        label: 'Goals',
-        color: '#3b82f6', // blue
-    },
-}
-
-
-// Key Insights
-const insights = [
-    {
-        title: 'Strong Late-Game Performance',
-        text: '23% of goals scored in final 15 minutes',
-        icon: TrendingUp,
-        iconColor: 'text-green-400',
-        iconBg: 'bg-green-500/20',
-    },
-    {
-        title: 'Home Advantage',
-        text: 'Win rate: 78% home vs 58% away',
-        icon: Shield,
-        iconColor: 'text-blue-400',
-        iconBg: 'bg-blue-500/20',
-    },
-    {
-        title: 'Training Impact',
-        text: '+15% performance with 90%+ task completion',
-        icon: BarChart3,
-        iconColor: 'text-orange-400',
-        iconBg: 'bg-orange-500/20',
-    },
-]
-
 const ReportsView = () => {
+    const { t } = useTranslation()
+    
+    const matchResultsConfig = {
+        wins: {
+            label: t('reportsPage.chartLabels.wins'),
+            color: '#22c55e', // green
+        },
+        draws: {
+            label: t('reportsPage.chartLabels.draws'),
+            color: '#f97316', // orange
+        },
+        losses: {
+            label: t('reportsPage.chartLabels.losses'),
+            color: '#ef4444', // red
+        },
+        color: [
+            '#22c55e', // green
+            '#f97316', // orange
+            '#ef4444', // red
+        ]
+    }
+
+    // Goals by Time Period Data
+    const goalsByTimeData = [
+        { period: '0-15', goals: 8 },
+        { period: '16-30', goals: 12 },
+        { period: '31-45', goals: 15 },
+        { period: '46-60', goals: 10 },
+        { period: '61-75', goals: 18 },
+        { period: '76-90', goals: 14 },
+    ]
+
+    const goalsConfig = {
+        goals: {
+            label: t('reportsPage.chartLabels.goals'),
+            color: '#3b82f6', // blue
+        },
+    }
+
+    // Key Insights
+    const insights = [
+        {
+            title: t('reportsPage.insights.strongLateGame'),
+            text: t('reportsPage.insights.strongLateGameText'),
+            icon: TrendingUp,
+            iconColor: 'text-green-400',
+            iconBg: 'bg-green-500/20',
+        },
+        {
+            title: t('reportsPage.insights.homeAdvantage'),
+            text: t('reportsPage.insights.homeAdvantageText'),
+            icon: Shield,
+            iconColor: 'text-blue-400',
+            iconBg: 'bg-blue-500/20',
+        },
+        {
+            title: t('reportsPage.insights.trainingImpact'),
+            text: t('reportsPage.insights.trainingImpactText'),
+            icon: BarChart3,
+            iconColor: 'text-orange-400',
+            iconBg: 'bg-orange-500/20',
+        },
+    ]
+    
     return (
         <div className='w-full flex flex-col gap-6 p-4 md:p-6'>
             {/* Header Section */}
             <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4'>
                 <div className='flex flex-col gap-1'>
-                    <h1 className='text-3xl font-bold text-white'>Reports & Analysis</h1>
-                    <p className='text-sm text-gray-400'>Comprehensive insights and performance analytics</p>
+                    <h1 className='text-3xl font-bold text-white'>{t('reportsPage.title')}</h1>
+                    <p className='text-sm text-gray-400'>{t('reportsPage.subtitle')}</p>
                 </div>
                 <div className='flex items-center gap-3'>
                     <Select defaultValue="this-season">
                         <SelectTrigger className="w-[140px] bg-gray-800/50 border-gray-700 text-white">
-                            <SelectValue placeholder="This Season" />
+                            <SelectValue placeholder={t('reportsPage.thisSeason')} />
                         </SelectTrigger>
                         <SelectContent className="bg-gray-800 border-gray-700">
                             <SelectItem value="this-season" className="text-white hover:bg-gray-700">
-                                This Season
+                                {t('reportsPage.thisSeason')}
                             </SelectItem>
                             <SelectItem value="last-season" className="text-white hover:bg-gray-700">
-                                Last Season
+                                {t('reportsPage.lastSeason')}
                             </SelectItem>
                         </SelectContent>
                     </Select>
                     <Select defaultValue="all-teams">
                         <SelectTrigger className="w-[140px] bg-gray-800/50 border-gray-700 text-white">
-                            <SelectValue placeholder="All Teams" />
+                            <SelectValue placeholder={t('reportsPage.allTeams')} />
                         </SelectTrigger>
                         <SelectContent className="bg-gray-800 border-gray-700">
                             <SelectItem value="all-teams" className="text-white hover:bg-gray-700">
-                                All Teams
+                                {t('reportsPage.allTeams')}
                             </SelectItem>
                             <SelectItem value="u16" className="text-white hover:bg-gray-700">
                                 U16
@@ -142,7 +144,7 @@ const ReportsView = () => {
                     </Select>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                         <Download className="h-4 w-4 mr-2" />
-                        Export PDF
+                        {t('reportsPage.exportPdf')}
                     </Button>
                 </div>
             </div>
@@ -156,10 +158,10 @@ const ReportsView = () => {
                 <Card className="w-full bg-gray-800/50 border-gray-700 ">
                     <CardHeader className="flex flex-row items-center justify-between pb-4">
                         <CardTitle className="text-base lg:text-lg font-semibold text-gray-400">
-                            Match Results Trend
+                            {t('reportsPage.matchResultsTrend')}
                         </CardTitle>
                         <span className="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-md">
-                            Season 2025/26
+                            {t('reportsPage.season')} 2025/26
                         </span>
                     </CardHeader>
                     <CardContent>
@@ -202,7 +204,7 @@ const ReportsView = () => {
                 <Card className="w-full bg-gray-800/50 border-gray-700">
                     <CardHeader>
                         <CardTitle className="text-base lg:text-lg font-semibold text-gray-400">
-                            Goals by Time Period
+                            {t('reportsPage.goalsByTimePeriod')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -235,13 +237,13 @@ const ReportsView = () => {
                 <Card className="bg-gray-800/50 border-gray-700">
                     <CardHeader className="flex flex-row items-center justify-between border-b border-gray-700">
                         <CardTitle className="text-base lg:text-lg font-semibold text-gray-400">
-                            Key Insights
+                            {t('reportsPage.keyInsights')}
                         </CardTitle>
                         <Button
                             variant="ghost"
                             className="text-blue-400 hover:text-blue-300 hover:bg-transparent p-0 h-auto"
                         >
-                            View All
+                            {t('reportsPage.viewAll')}
                             <ChevronRight className="h-4 w-4 ml-1" />
                         </Button>
                     </CardHeader>

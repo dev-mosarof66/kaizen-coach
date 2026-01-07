@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import {
     Breadcrumb,
@@ -16,15 +16,39 @@ import GamePlanCard from '../components/game-plans/game-plan-card'
 import { game_plans } from './game-plan-view'
 import GamePlanContent from '../components/game-plans/game-plan-content'
 import EditPlanModal from '../components/game-plans/edit-plan-modal'
+import { useTranslation } from '../contexts/translation-context'
 
 
 
 const GamePlanDetailsView = ({ id }) => {
-
-    const [activeTab, setActiveTab] = useState('Overview')
+    const { t, language } = useTranslation()
+    // Track which tab key is active (overview, tacticalBoard, aiAnalytics)
+    const tabKeyRef = useRef('overview')
+    const [activeTab, setActiveTab] = useState(() => {
+        return t('gamePlanDetailsPage.tabs.overview')
+    })
     const [comment, setComment] = useState('')
     const [coachNote, setCoachNote] = useState('')
     const [editMode, setEditMode] = useState(false)
+
+    // Update activeTab when language changes to maintain the same tab
+    useEffect(() => {
+        const currentTabKey = tabKeyRef.current
+        setActiveTab(t(`gamePlanDetailsPage.tabs.${currentTabKey}`))
+    }, [language, t])
+
+    // Track tab changes to remember which tab is active
+    const handleTabChange = (tab) => {
+        const tabKeys = ['overview', 'tacticalBoard', 'aiAnalytics']
+        // Find which tab key matches the selected tab
+        const matchedKey = tabKeys.find((key) => {
+            return t(`gamePlanDetailsPage.tabs.${key}`) === tab
+        })
+        if (matchedKey) {
+            tabKeyRef.current = matchedKey
+        }
+        setActiveTab(tab)
+    }
 
     const gamePlan = game_plans.find(game_plan => game_plan.id === parseInt(id))
 
@@ -54,14 +78,14 @@ const GamePlanDetailsView = ({ id }) => {
                         >
                             <Link href="/game-plans">
                                 <ArrowLeft className="h-4 w-4" />
-                                <span>Back</span>
+                                <span>{t('gamePlanDetailsPage.back')}</span>
                             </Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
                         <BreadcrumbLink asChild className="text-gray-400 hover:text-white transition-colors">
-                            <Link href="/game-plans">Game Plans</Link>
+                            <Link href="/game-plans">{t('gamePlanDetailsPage.gamePlans')}</Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
@@ -71,7 +95,7 @@ const GamePlanDetailsView = ({ id }) => {
                 </BreadcrumbList>
             </Breadcrumb>
 
-            <GamePlanCard selectedTab={activeTab} setSelectedTab={setActiveTab} gamePlan={gamePlan} setEditMode={setEditMode} />
+            <GamePlanCard selectedTab={activeTab} setSelectedTab={handleTabChange} gamePlan={gamePlan} setEditMode={setEditMode} />
 
             <GamePlanContent
                 gamePlan={gamePlan}

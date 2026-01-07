@@ -19,10 +19,12 @@ import {
 import { cn } from '../../lib/utils'
 import CircularProgress from '../common/circular-progress'
 import { PrimaryButton } from '../common/button'
+import { useTranslation } from '../../contexts/translation-context'
 
 
 
 const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNote, onSendComment, onSaveNote }) => {
+    const { t } = useTranslation()
     // Extended game plan data with additional fields
     const extendedData = {
         ...gamePlan,
@@ -73,7 +75,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Overview Card */}
                 <Card className="w-full col-span-2 bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-gray-400">Overview</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-gray-400">{t('gamePlanOverview.overview')}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-4">
                         <p className="text-sm text-gray-300 leading-relaxed">
@@ -81,11 +83,11 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <div className="flex flex-col gap-1">
-                                <span className="text-xs text-gray-400">Start Date</span>
+                                <span className="text-xs text-gray-400">{t('gamePlanOverview.startDate')}</span>
                                 <span className="text-sm text-gray-300">{extendedData.startDateFull}</span>
                             </div>
                             <div className="flex flex-col gap-1">
-                                <span className="text-xs text-gray-400">Due Date</span>
+                                <span className="text-xs text-gray-400">{t('gamePlanOverview.dueDate')}</span>
                                 <span className="text-sm text-orange-400">{extendedData.dueDateFull}</span>
                             </div>
                         </div>
@@ -95,13 +97,13 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Progress Tracker Card */}
                 <Card className="w-full col-span-1  bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-gray-400">Progress Tracker</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-gray-400">{t('gamePlanOverview.progressTracker')}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col items-center gap-2 py-0">
                         <CircularProgress value={gamePlan.progress} size={80} />
-                        <p className="text-sm text-gray-400">Complete</p>
+                        <p className="text-sm text-gray-400">{t('gamePlanOverview.complete')}</p>
                         <PrimaryButton className="w-full bg-blue-600 hover:bg-blue-700 text-gray-300">
-                            Update Progress
+                            {t('gamePlanOverview.updateProgress')}
                         </PrimaryButton>
                     </CardContent>
                 </Card>
@@ -114,13 +116,13 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 <Card className="w-full col-span-2 bg-gray-800/50 border-gray-700">
                     <CardHeader className="flex flex-row items-center justify-between">
                         <CardTitle className="text-lg font-semibold text-gray-400">
-                            Assigned Players ({extendedData.assignedPlayers.length})
+                            {t('gamePlanOverview.assignedPlayers')} ({extendedData.assignedPlayers.length})
                         </CardTitle>
                         <Button
                             variant="outline"
                             className="bg-blue-600 hover:bg-blue-700 text-gray-300 border-blue-600"
                         >
-                            Manage
+                            {t('gamePlanOverview.manage')}
                         </Button>
                     </CardHeader>
                     <CardContent>
@@ -147,11 +149,11 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Quick Info Card */}
                 <Card className="bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Quick Info</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.quickInfo')}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-4">
                         <div className="flex flex-col gap-2">
-                            <span className="text-xs text-gray-400">Priority</span>
+                            <span className="text-xs text-gray-400">{t('gamePlanOverview.priority')}</span>
                             <Badge
                                 variant="outline"
                                 className="w-fit text-xs font-semibold px-2 py-1 rounded-full border text-gray-300 border-gray-700 bg-gray-700/50"
@@ -160,14 +162,14 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                             </Badge>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <span className="text-xs text-gray-400">Task Rating</span>
+                            <span className="text-xs text-gray-400">{t('gamePlanOverview.taskRating')}</span>
                             <div className="flex items-center gap-2">
                                 <Progress value={(gamePlan.rating / 10) * 100} className="flex-1 h-2 bg-gray-700" />
                                 <span className="text-sm text-yellow-400 font-semibold">{gamePlan.rating}/10</span>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
-                            <span className="text-xs text-gray-400">Created By</span>
+                            <span className="text-xs text-gray-400">{t('gamePlanOverview.createdBy')}</span>
                             <div className="flex items-center gap-2">
                                 <Avatar className="h-8 w-8">
                                     <AvatarFallback className="bg-blue-500/50 text-blue-200 text-xs border border-gray-700">
@@ -187,7 +189,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Comments & Notes Card */}
                 <Card className="w-full col-span-2 bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Comments & Notes</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.commentsAndNotes')}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-4">
                         <div className="flex flex-col gap-4">
@@ -212,7 +214,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                             <Input
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
-                                placeholder="Add a comment..."
+                                placeholder={t('gamePlanOverview.addCommentPlaceholder')}
                                 className="flex-1 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500"
                                 onKeyPress={(e) => {
                                     if (e.key === 'Enter') {
@@ -233,7 +235,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Next Event Card */}
                 <Card className="w-full col-span-1 bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Next Event</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.nextEvent')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col gap-3">
@@ -259,7 +261,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Attachments Card */}
                 <Card className="bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Attachments</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.attachments')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col gap-3">
@@ -285,7 +287,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                                         className="bg-gray-800 border-gray-700 text-white hover:bg-gray-700"
                                     >
                                         <Download className="h-4 w-4 mr-2" />
-                                        Download
+                                        {t('gamePlanOverview.download')}
                                     </Button>
                                 </div>
                             ))}
@@ -296,7 +298,7 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Task History Card */}
                 <Card className="bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Task History</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.taskHistory')}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col gap-3">
@@ -318,20 +320,20 @@ const GamePlanOverview = ({ gamePlan, comment, setComment, coachNote, setCoachNo
                 {/* Add Coach Note Card */}
                 <Card className="bg-gray-800/50 border-gray-700">
                     <CardHeader>
-                        <CardTitle className="text-lg font-semibold text-white">Add Coach Note</CardTitle>
+                        <CardTitle className="text-lg font-semibold text-white">{t('gamePlanOverview.addCoachNote')}</CardTitle>
                     </CardHeader>
                     <CardContent className="flex flex-col gap-3">
                         <Textarea
                             value={coachNote}
                             onChange={(e) => setCoachNote(e.target.value)}
-                            placeholder="Add your observations..."
+                            placeholder={t('gamePlanOverview.addObservationsPlaceholder')}
                             className="min-h-24 bg-gray-900/50 border-gray-700 text-white placeholder:text-gray-500"
                         />
                         <Button
                             onClick={onSaveNote}
                             className="w-full bg-green-600 hover:bg-green-700 text-white"
                         >
-                            Save Note
+                            {t('gamePlanOverview.saveNote')}
                         </Button>
                     </CardContent>
                 </Card>

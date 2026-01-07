@@ -1,6 +1,7 @@
 'use client'
 import React from 'react'
 import { Card } from '../ui/card'
+import { useTranslation } from '../../contexts/translation-context'
 
 
 
@@ -26,10 +27,11 @@ const performer = [
 ]
 
 const TopPerformer = () => {
+  const { t } = useTranslation()
   return (
     <Card className='w-full flex flex-col gap-4 border border-gray-800 bg-gray-800/50 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300'>
       <div className='w-full h-full flex flex-col gap-4'>
-        <h1 className='text-gray-300 text-base sm:text-lg font-semibold'>Top Performer</h1>
+        <h1 className='text-gray-300 text-base sm:text-lg font-semibold'>{t('teamsOverviewPage.topPerformer.title')}</h1>
 
         <div className='w-full flex flex-col gap-2'>
           {performer.map((item) => (

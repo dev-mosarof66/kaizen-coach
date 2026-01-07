@@ -13,9 +13,11 @@ import {
     SheetContent,
     SheetHeader,
 } from '../ui/sheet';
+import { useTranslation } from '../../contexts/translation-context';
 
 const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
     const router = useRouter()
+    const { t } = useTranslation()
 
     // Support both old (onClose) and new (open/onOpenChange) prop patterns
     const isOpen = open !== undefined ? open : !!player;
@@ -36,7 +38,7 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                         className="w-full flex items-center gap-2 text-gray-400 hover:text-white active:scale-95 cursor-pointer transition-all duration-300 delay-75"
                     >
                         <FaTimes />
-                        <p>Close</p>
+                        <p>{t('playersPage.playerModal.close')}</p>
                     </div>
                 </SheetHeader>
 
@@ -57,7 +59,7 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                         <h2 className="text-2xl font-bold">{player.name}</h2>
                         <div className='w-full flex gap-2'>
                             <p className="px-4 py-1 rounded-full bg-blue-600/30 text-purple-300 text-sm font-semibold">
-                                Forward
+                                {t('playersPage.playerModal.forward')}
                             </p>
                             <p className="px-4 py-1 rounded-full bg-gray-600/30 text-purple-100 text-sm font-semibold">
                                 {player.position}
@@ -71,12 +73,12 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                     <div className="w-full flex items-center gap-4">
                         <div className='flex items-center gap-2'>
                             <p className="font-medium text-2xl sm:text-3xl">{player.gamesPlayed || 36}</p>
-                            <p className="text-gray-400">games Played</p>
+                            <p className="text-gray-400">{t('playersPage.playerModal.gamesPlayed')}</p>
                         </div>
                         <div className='size-1.5 rounded-full bg-gray-400' />
                         <div className='flex items-center gap-2'>
                             <p className="font-medium text-2xl sm:text-3xl">{player.goals || 25}</p>
-                            <p className="text-gray-400">goals scored</p>
+                            <p className="text-gray-400">{t('playersPage.playerModal.goalsScored')}</p>
                         </div>
                     </div>
 
@@ -97,37 +99,37 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                     <div className='w-full flex flex-col gap-3'>
                         {/* Joined info */}
                         <div className="w-full flex justify-between text-gray-400 text-base">
-                            <p className='uppercase'>Joined Team</p>
+                            <p className='uppercase'>{t('playersPage.playerModal.joinedTeam')}</p>
                             <p>{player.joined || "08/10/2021"}</p>
                         </div>
                         {/* Games */}
                         <div className="w-full flex justify-between text-gray-400 text-base">
-                            <p className='uppercase'>GAMES</p>
-                            <p>{player.games || 36} total</p>
+                            <p className='uppercase'>{t('playersPage.playerModal.games')}</p>
+                            <p>{player.games || 36} {t('playersPage.playerModal.total')}</p>
                         </div>
                         {/* Goals */}
                         <div className="w-full flex justify-between text-gray-400 text-base">
-                            <p className='uppercase'>GOALS</p>
-                            <p>{player.games || 25} total</p>
+                            <p className='uppercase'>{t('playersPage.playerModal.goals')}</p>
+                            <p>{player.games || 25} {t('playersPage.playerModal.total')}</p>
                         </div>
                         {/* Assists */}
                         <div className="w-full flex justify-between text-gray-400 text-base">
-                            <p className='uppercase'>ASSISTS</p>
-                            <p>{player.games || 10} total</p>
+                            <p className='uppercase'>{t('playersPage.playerModal.assists')}</p>
+                            <p>{player.games || 10} {t('playersPage.playerModal.total')}</p>
                         </div>
                     </div>
 
                     {/* Action Buttons */}
                     <div className="w-full flex flex-col gap-3 pt-8">
                         <Button onClick={() => router.push('/player-profile')} className="flex-1 bg-blue-600 hover:bg-blue-700 rounded-lg py-2 text-white font-semibold">
-                            View Profile
+                            {t('playersPage.playerModal.viewProfile')}
                         </Button>
                         <div className='w-full flex items-center justify-between gap-3'>
                             <Button className="flex-1 border border-gray-500 bg-transparent hover:bg-gray-600/20 rounded-lg py-2 text-blue-600 font-semibold">
-                                Switch Team
+                                {t('playersPage.playerModal.switchTeam')}
                             </Button>
                             <Button className="flex-1 bg-red-500 hover:bg-red-600 rounded-lg py-2 text-white font-semibold">
-                                Removed
+                                {t('playersPage.playerModal.removed')}
                             </Button>
                         </div>
                     </div>
@@ -138,7 +140,7 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                     {/* Market Value */}
                     <div className="w-full flex flex-col gap-2">
                         <div className='w-full flex items-center justify-between'>
-                            <p className="text-gray-300">Market Value</p>
+                            <p className="text-gray-300">{t('playersPage.playerModal.marketValue')}</p>
                             <p className="text-green-400 font-medium">{player.value || "$80M"}</p>
                         </div>
                         {/* Placeholder chart */}
@@ -150,7 +152,7 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                                 <TrendingUp className="h-4 w-4" />
                                 +15%</p>
                             <p className="text-gray-400">
-                                compared to last month
+                                {t('playersPage.playerModal.comparedToLastMonth')}
                             </p>
                         </div>
                     </div>
@@ -158,10 +160,10 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                     {/* Bottom Actions */}
                     <div className="flex gap-2 pb-20">
                         <Button className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-600/10 rounded-lg py-2 text-white font-semibold">
-                            Assign Task
+                            {t('playersPage.playerModal.assignTask')}
                         </Button>
                         <Button className="flex-1 bg-transparent border border-gray-600 hover:bg-gray-600/10 rounded-lg py-2 text-white font-semibold">
-                            Add Note
+                            {t('playersPage.playerModal.addNote')}
                         </Button>
                     </div>
                 </div>

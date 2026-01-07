@@ -27,6 +27,7 @@ import {
     TrendingUp,
 } from 'lucide-react'
 import { cn } from '../../lib/utils'
+import { useTranslation } from '../../contexts/translation-context'
 
 
 
@@ -34,41 +35,6 @@ const getinitials = (name) => {
     return name.split(' ').map(word => word[0]).join('')
 }
 
-// Stat Cards Data
-const statCards = [
-    {
-        label: 'Avg Completion Time',
-        value: '4.2 days',
-        change: '-12%',
-        isPositive: false,
-        icon: Clock,
-        iconColor: 'text-blue-400',
-    },
-    {
-        label: 'Player Engagement',
-        value: '82%',
-        change: '+8%',
-        isPositive: true,
-        icon: Users,
-        iconColor: 'text-green-400',
-    },
-    {
-        label: 'Success Rate',
-        value: '94%',
-        change: '+5%',
-        isPositive: true,
-        icon: Trophy,
-        iconColor: 'text-yellow-400',
-    },
-    {
-        label: 'Improvement',
-        value: '+18%',
-        change: '+3%',
-        isPositive: true,
-        icon: TrendingUp,
-        iconColor: 'text-purple-400',
-    },
-]
 
 // Completion Trend Data
 const completionTrendData = [
@@ -81,22 +47,9 @@ const completionTrendData = [
     { day: 'Sun', value: 40 },
 ]
 
-const completionTrendConfig = {
-    value: {
-        label: 'Progress',
-        color: '#22c55e',
-    },
-}
 
-// Category Breakdown Data
-const categoryData = [
-    { name: 'Tactical', value: 40, color: '#3b82f6' },
-    { name: 'Fitness', value: 30, color: '#22c55e' },
-    { name: 'Technical', value: 20, color: '#a855f7' },
-    { name: 'Recovery', value: 10, color: '#f97316' },
-]
 
-// Average Ratings Data
+// Average Ratings Data (static data, no translation needed)
 const averageRatings = [
     { name: 'Tactical Drill #2', rating: 8.5 },
     { name: 'Dribbling Drill', rating: 7.2 },
@@ -104,8 +57,6 @@ const averageRatings = [
     { name: '4-4-2 Formation', rating: 8.0 },
     { name: 'Sprint Training', rating: 6.8 },
 ]
-
-const overallAverage = averageRatings.reduce((sum, item) => sum + item.rating, 0) / averageRatings.length
 
 // Player Participation Data
 const playerParticipation = [
@@ -116,15 +67,70 @@ const playerParticipation = [
     { name: 'SA Salem Ahmed', percentage: 68 },
 ]
 
-// Key Insights
-const keyInsights = [
-    'Task completion rate improved by **18%** compared to last week.',
-    'Player engagement is highest on **Thursdays and Fridays**.',
-    '**Tactical drills** show the highest satisfaction ratings.',
-    'Average completion time decreased by **12%**, indicating better efficiency.',
-]
-
 const AIAnalytics = () => {
+    const { t } = useTranslation()
+
+    // Stat Cards Data
+    const statCards = [
+        {
+            label: t('aiAnalytics.stats.avgCompletionTime'),
+            value: '4.2 days',
+            change: '-12%',
+            isPositive: false,
+            icon: Clock,
+            iconColor: 'text-blue-400',
+        },
+        {
+            label: t('aiAnalytics.stats.playerEngagement'),
+            value: '82%',
+            change: '+8%',
+            isPositive: true,
+            icon: Users,
+            iconColor: 'text-green-400',
+        },
+        {
+            label: t('aiAnalytics.stats.successRate'),
+            value: '94%',
+            change: '+5%',
+            isPositive: true,
+            icon: Trophy,
+            iconColor: 'text-yellow-400',
+        },
+        {
+            label: t('aiAnalytics.stats.improvement'),
+            value: '+18%',
+            change: '+3%',
+            isPositive: true,
+            icon: TrendingUp,
+            iconColor: 'text-purple-400',
+        },
+    ]
+
+    const completionTrendConfig = {
+        value: {
+            label: t('aiAnalytics.completionTrend.progress'),
+            color: '#22c55e',
+        },
+    }
+
+    // Category Breakdown Data
+    const categoryData = [
+        { name: t('aiAnalytics.categoryBreakdown.tactical'), value: 40, color: '#3b82f6' },
+        { name: t('aiAnalytics.categoryBreakdown.fitness'), value: 30, color: '#22c55e' },
+        { name: t('aiAnalytics.categoryBreakdown.technical'), value: 20, color: '#a855f7' },
+        { name: t('aiAnalytics.categoryBreakdown.recovery'), value: 10, color: '#f97316' },
+    ]
+
+    // Key Insights
+    const keyInsights = [
+        t('aiAnalytics.keyInsights.insight1'),
+        t('aiAnalytics.keyInsights.insight2'),
+        t('aiAnalytics.keyInsights.insight3'),
+        t('aiAnalytics.keyInsights.insight4'),
+    ]
+
+    const overallAverage = averageRatings.reduce((sum, item) => sum + item.rating, 0) / averageRatings.length
+
     return (
         <div className="w-full flex flex-col gap-6 p-2 md:p-6">
             {/* Stat Cards Grid */}
@@ -169,7 +175,7 @@ const AIAnalytics = () => {
             <Card className="bg-gray-800/50 border-gray-700 rounded-xl">
                 <CardHeader>
                     <CardTitle className="text-gray-400 text-lg font-semibold">
-                        Completion Trend
+                        {t('aiAnalytics.completionTrend.title')}
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -205,8 +211,8 @@ const AIAnalytics = () => {
                             </AreaChart>
                         </ChartContainer>
                         <div className="flex items-center justify-between text-sm">
-                            <p className="text-gray-400">Progress over 7 days</p>
-                            <p className="text-green-400 font-semibold">+60% overall growth</p>
+                            <p className="text-gray-400">{t('aiAnalytics.completionTrend.progressOver7Days')}</p>
+                            <p className="text-green-400 font-semibold">{t('aiAnalytics.completionTrend.overallGrowth')}</p>
                         </div>
                     </div>
                 </CardContent>
@@ -217,7 +223,7 @@ const AIAnalytics = () => {
                 <Card className="bg-gray-800/50 border-gray-700 rounded-xl">
                     <CardHeader>
                         <CardTitle className="text-gray-400 text-lg font-semibold">
-                            Category Breakdown
+                            {t('aiAnalytics.categoryBreakdown.title')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -244,7 +250,7 @@ const AIAnalytics = () => {
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <div className="text-center">
                                         <p className="text-2xl font-bold text-white">100%</p>
-                                        <p className="text-xs text-gray-400">Total</p>
+                                        <p className="text-xs text-gray-400">{t('aiAnalytics.categoryBreakdown.total')}</p>
                                     </div>
                                 </div>
                             </div>
@@ -270,7 +276,7 @@ const AIAnalytics = () => {
                 <Card className="bg-gray-800/50 border-gray-700 rounded-xl">
                     <CardHeader>
                         <CardTitle className="text-gray-400 text-lg font-semibold">
-                            Average Ratings
+                            {t('aiAnalytics.averageRatings.title')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -296,7 +302,7 @@ const AIAnalytics = () => {
                             <div className="pt-4 border-t border-gray-700">
                                 <div className="flex items-center justify-between">
                                     <p className="text-sm font-semibold text-gray-300">
-                                        Overall Average
+                                        {t('aiAnalytics.averageRatings.overallAverage')}
                                     </p>
                                     <p className="text-lg font-bold text-white">
                                         {overallAverage.toFixed(1)}/10
@@ -311,7 +317,7 @@ const AIAnalytics = () => {
                 <Card className="bg-gray-800/50 border-gray-700 rounded-xl">
                     <CardHeader>
                         <CardTitle className="text-gray-400 text-lg font-semibold">
-                            Player Participation
+                            {t('aiAnalytics.playerParticipation.title')}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -348,7 +354,7 @@ const AIAnalytics = () => {
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-gray-400 text-lg font-semibold">
                             <TrendingUp className='h-5 w-5 text-orange-600' />
-                            <span>Key Insights</span>
+                            <span>{t('aiAnalytics.keyInsights.title')}</span>
                         </CardTitle>
                     </CardHeader>
                     <CardContent>

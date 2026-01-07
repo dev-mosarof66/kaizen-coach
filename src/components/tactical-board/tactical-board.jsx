@@ -8,30 +8,11 @@ import FootballPitch from './football-pitch'
 import { CardContent } from '../ui/card'
 import BottomAction from './bottom-action'
 import FootballPitchBackground from './football-pitch-background'
-
-
-const drawingTools = [
-    { id: 'pencil', icon: Pencil, label: 'Pencil' },
-    { id: 'square', icon: Square, label: 'Square' },
-    { id: 'circle', icon: CircleIcon, label: 'Circle' },
-    { id: 'arrow', icon: ArrowRight, label: 'Arrow' },
-    { id: 'text', icon: Type, label: 'Text' },
-    { id: 'players', icon: Users, label: 'Players' },
-    { id: 'eraser', icon: Eraser, label: 'Eraser' },
-]
-
-const actionTools = [
-    { id: 'undo', icon: Undo, label: 'Undo' },
-    { id: 'redo', icon: Redo, label: 'Redo' },
-    { id: 'zoomIn', icon: ZoomIn, label: 'Zoom In' },
-    { id: 'zoomOut', icon: ZoomOut, label: 'Zoom Out' },
-    { id: 'mic', icon: Mic, label: 'Microphone' },
-    { id: 'video', icon: Video, label: 'Video' },
-    { id: 'trash', icon: Trash, label: 'Clear' },
-]
+import { useTranslation } from '../../contexts/translation-context'
 
 
 const TacticalBoard = () => {
+    const { t } = useTranslation()
     const stageRef = useRef(null)
     const startPos = useRef({ x: 0, y: 0 })
     const [color, setColor] = useState('#ffffff')
@@ -46,6 +27,26 @@ const TacticalBoard = () => {
     const [objects, setObjects] = useState([])
 
     const [editingText, setEditingText] = useState(null)
+
+    const drawingTools = [
+        { id: 'pencil', icon: Pencil, label: t('tacticalBoard.drawingTools.pencil') },
+        { id: 'square', icon: Square, label: t('tacticalBoard.drawingTools.square') },
+        { id: 'circle', icon: CircleIcon, label: t('tacticalBoard.drawingTools.circle') },
+        { id: 'arrow', icon: ArrowRight, label: t('tacticalBoard.drawingTools.arrow') },
+        { id: 'text', icon: Type, label: t('tacticalBoard.drawingTools.text') },
+        { id: 'players', icon: Users, label: t('tacticalBoard.drawingTools.players') },
+        { id: 'eraser', icon: Eraser, label: t('tacticalBoard.drawingTools.eraser') },
+    ]
+
+    const actionTools = [
+        { id: 'undo', icon: Undo, label: t('tacticalBoard.actionTools.undo') },
+        { id: 'redo', icon: Redo, label: t('tacticalBoard.actionTools.redo') },
+        { id: 'zoomIn', icon: ZoomIn, label: t('tacticalBoard.actionTools.zoomIn') },
+        { id: 'zoomOut', icon: ZoomOut, label: t('tacticalBoard.actionTools.zoomOut') },
+        { id: 'mic', icon: Mic, label: t('tacticalBoard.actionTools.microphone') },
+        { id: 'video', icon: Video, label: t('tacticalBoard.actionTools.video') },
+        { id: 'trash', icon: Trash, label: t('tacticalBoard.actionTools.clear') },
+    ]
 
 
 

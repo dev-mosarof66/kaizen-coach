@@ -23,6 +23,7 @@ import {
     Dumbbell,
     GitBranch
 } from 'lucide-react'
+import { useTranslation } from '../../contexts/translation-context'
 
 // Mock task details data from the image
 export const task_details = {
@@ -173,6 +174,7 @@ const CircularProgress = ({ value, size = 80, strokeWidth = 8 }) => {
 }
 
 const TaskDetails = ({ open, onOpenChange, task }) => {
+    const { t } = useTranslation()
     const taskData = task || task_details
 
     if (!taskData) return null
@@ -211,7 +213,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                 <SheetHeader className="border-b border-gray-800">
                     <div className="flex items-center justify-between">
                         <SheetTitle className="text-white text-base font-semibold">
-                            Task Details
+                            {t('tasksPage.taskDetails.title')}
                         </SheetTitle>
                     </div>
 
@@ -239,7 +241,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                                                 getCategoryClasses(task.category)
                                             )}
                                         >
-                                            {task.category}
+                                            {t(`tasksPage.categories.${task.category.toLowerCase()}`)}
                                         </Badge>
                                     )}
                                     {task.status && (
@@ -250,7 +252,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                                                 getStatusClasses(task.status)
                                             )}
                                         >
-                                            {task.status}
+                                            {t(`tasksPage.status.${task.status === 'In Progress' ? 'inProgress' : task.status.toLowerCase().replace(' ', '')}`)}
                                         </Badge>
                                     )}
                                 </div>
@@ -259,7 +261,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                         {/* Creator */}
                         {task.createdBy && (
                             <div className="w-full flex items-center gap-2 text-gray-400 text-sm">
-                                <span>Created by</span>
+                                <span>{t('tasksPage.taskDetails.createdBy')}</span>
                                 <span className="text-gray-300 text-sm">{task.createdBy.name}</span>
                             </div>
                         )}
@@ -271,23 +273,23 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
 
                     {/* Progress Summary */}
                     <div className="w-full flex flex-col gap-4 border-b border-gray-800 pb-4">
-                        <h1 className="text-base font-semibold text-white">Progress Summary</h1>
+                        <h1 className="text-base font-semibold text-white">{t('tasksPage.taskDetails.progressSummary')}</h1>
                         <div className="w-full flex flex-col items-center justify-center gap-4 relative">
                             <div className=''>
                                 <CircularProgress size={120} value={task.progress || 0} />
                                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                                    <span className="text-xs text-gray-400">Completed</span>
+                                    <span className="text-xs text-gray-400">{t('tasksPage.taskDetails.completed')}</span>
                                 </div>
                             </div>
                             <p className="text-xs font-semibold text-gray-400">
-                                Due: {task.dueDate}
+                                {t('tasksPage.taskDetails.due')} {task.dueDate}
                             </p>
                         </div>
                     </div>
 
                     {/* Assigned Players */}
                     <div className="flex flex-col gap-3 border-b border-gray-800 pb-4">
-                        <h3 className="text-base font-semibold text-white">Assigned Players</h3>
+                        <h3 className="text-base font-semibold text-white">{t('tasksPage.taskDetails.assignedPlayers')}</h3>
                         <div className="flex flex-col gap-3">
                             {assignedPlayers.map((player, index) => {
 
@@ -320,7 +322,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                     {/* Average Rating */}
                     {taskData.rating && (
                         <div className="flex flex-col gap-2 border-b border-gray-800 pb-4">
-                            <h3 className="text-base font-semibold text-white">Average Rating</h3>
+                            <h3 className="text-base font-semibold text-white">{t('tasksPage.taskDetails.averageRating')}</h3>
                             <div className="flex flex-col items-start gap-3">
                                 <div>
                                     <span className="text-xl font-semibold text-white">
@@ -348,7 +350,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                     {/* Comments */}
                     <div className="flex flex-col gap-3">
                         <div className="flex items-center justify-between">
-                            <h3 className="text-base font-semibold text-white">Comments</h3>
+                            <h3 className="text-base font-semibold text-white">{t('tasksPage.taskDetails.comments')}</h3>
                             <span className="text-xs text-gray-400 font-semibold bg-blue-500/10 size-6 flex items-center justify-center rounded-full border border-blue-500/20">{comments.length}</span>
                         </div>
                         <div className="flex flex-col gap-3">
@@ -385,7 +387,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                             }}
                         >
                             <Edit className="h-4 w-4 mr-2" />
-                            Edit Task
+                            {t('tasksPage.taskDetails.editTask')}
                         </Button>
                         <Button
                             className="w-full bg-gray-700/40 hover:bg-gray-800/60 text-green-400 border border-green-500/10 hover:text-green-400/80"
@@ -394,7 +396,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                             }}
                         >
                             <CheckCircle2 className="h-4 w-4 mr-2" />
-                            Mark as Completed
+                            {t('tasksPage.taskDetails.markAsCompleted')}
                         </Button>
                         <Button
                             variant="destructive"
@@ -405,7 +407,7 @@ const TaskDetails = ({ open, onOpenChange, task }) => {
                             }}
                         >
                             <Trash2 className="h-4 w-4 mr-2" />
-                            Delete Task
+                            {t('tasksPage.taskDetails.deleteTask')}
                         </Button>
                     </div>
                 </div>

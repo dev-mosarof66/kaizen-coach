@@ -18,8 +18,10 @@ import { cn } from '../../lib/utils'
 import { FaCheck, FaUser, FaUsers } from 'react-icons/fa'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select'
 import { OutlineButton, PrimaryButton } from '../common/button'
+import { useTranslation } from '../../contexts/translation-context'
 
 const EditPlanModal = ({ open, onOpenChange }) => {
+    const { t } = useTranslation()
     const [assignTo, setAssignTo] = useState('Team')
     const [selectedTeam, setSelectedTeam] = useState('team-a')
     const [selectedPlayers, setSelectedPlayers] = useState([])
@@ -63,30 +65,30 @@ const EditPlanModal = ({ open, onOpenChange }) => {
     const priorities = [
         {
             id: 'priority-1',
-            name: "Low",
+            name: t('addTaskPage.priorityLevels.low'),
         },
         {
             id: 'priority-2',
-            name: "Medium",
+            name: t('addTaskPage.priorityLevels.medium'),
         },
         {
             id: 'priority-3',
-            name: "High",
+            name: t('addTaskPage.priorityLevels.high'),
         },
     ]
 
     const categories = [
         {
             id: 'category-1',
-            name: "Fitness",
+            name: t('addTaskPage.categories.fitness'),
         },
         {
             id: 'category-2',
-            name: "Technical",
+            name: t('addTaskPage.categories.technical'),
         },
         {
             id: 'category-3',
-            name: "Tactical",
+            name: t('addTaskPage.categories.tactical'),
         },
     ]
 
@@ -135,7 +137,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
             >
                 <SheetHeader className="border-b border-gray-800 py-0">
                     <div className="w-full flex items-center justify-between px-1 py-3">
-                        <SheetTitle className="text-gray-300 text-base font-semibold">Assign Task</SheetTitle>
+                        <SheetTitle className="text-gray-300 text-base font-semibold">{t('editPlanModal.assignTask')}</SheetTitle>
                         <Button variant="ghost" size="icon" className="bg-gray-800/10 rounded-full hover:bg-gray-800/20" onClick={() => onOpenChange(false)}>
                             <X className="size-4 text-gray-400" />
                         </Button>
@@ -145,7 +147,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                 <div className="flex flex-col gap-6 px-4 py-2">
                     {/* Assign To Toggle */}
                     <div className="flex flex-col gap-3">
-                        <Label className="text-sm font-medium text-gray-400">Assign To</Label>
+                        <Label className="text-sm font-medium text-gray-400">{t('editPlanModal.assignTo')}</Label>
                         <div className="flex gap-2">
                             <Button
                                 type="button"
@@ -158,7 +160,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                                 )}
                                 onClick={() => setAssignTo('Team')}
                             >
-                                Team
+                                {t('editPlanModal.team')}
                             </Button>
                             <Button
                                 type="button"
@@ -171,7 +173,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                                 )}
                                 onClick={() => setAssignTo('Players')}
                             >
-                                Players
+                                {t('editPlanModal.players')}
                             </Button>
                         </div>
                     </div>
@@ -179,7 +181,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                     {/* Select Team */}
                     {assignTo === 'Team' && (
                         <div className="flex flex-col gap-3 border-b border-gray-700 pb-6">
-                            <Label className="text-sm font-medium text-gray-400">Select Team</Label>
+                            <Label className="text-sm font-medium text-gray-400">{t('editPlanModal.selectTeam')}</Label>
                             <RadioGroup value={selectedTeam} onValueChange={setSelectedTeam}>
                                 <div className="flex flex-col gap-3">
                                     {teams.map((team) => {
@@ -201,7 +203,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                                                             {team.name}
                                                         </span>
                                                         <span className={cn("text-xs text-gray-400", isSelected && "text-blue-400")}>
-                                                            {team.players} players
+                                                            {team.players} {t('editPlanModal.playersCount')}
                                                         </span>
                                                     </div>
                                                 </div>
@@ -229,7 +231,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                     {/* select players  */}
                     {assignTo === 'Players' && (
                         <div className="flex flex-col gap-3 border-b border-gray-700 pb-6">
-                            <Label className="text-sm font-medium text-gray-400">Select Players</Label>
+                            <Label className="text-sm font-medium text-gray-400">{t('editPlanModal.selectPlayers')}</Label>
                             <div className="flex flex-col gap-3">
                                 {players.map((player) => {
                                     const getInitials = player.name.split(' ').map(name => name[0]).join('')
@@ -260,14 +262,14 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                     )}
                     {/* Schedule */}
                     <div className="w-full flex flex-col gap-3">
-                        <Label className="text-sm font-medium text-gray-400">Schedule</Label>
+                        <Label className="text-sm font-medium text-gray-400">{t('editPlanModal.schedule')}</Label>
                         <div className="w-full grid grid-cols-2 gap-2">
                             <div className="flex flex-col gap-2">
                                 <Label
                                     htmlFor="start-date"
                                     className="text-xs text-gray-400 font-normal"
                                 >
-                                    Start Date
+                                    {t('editPlanModal.startDate')}
                                 </Label>
                                 <Input
                                     id="start-date"
@@ -282,7 +284,7 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                                     htmlFor="due-date"
                                     className="text-xs text-gray-400 font-normal"
                                 >
-                                    Due Date
+                                    {t('editPlanModal.dueDate')}
                                 </Label>
                                 <Input
                                     id="due-date"
@@ -307,17 +309,17 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                             htmlFor="notify"
                             className="text-sm text-gray-400 font-normal cursor-pointer"
                         >
-                            Send notification to all assigned players/teams.
+                            {t('editPlanModal.notifyAssignees')}
                         </Label>
                     </div>
 
                     <div className='w-full flex items-center justify-between gap-2'>
                         {/* Priority */}
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="priority" className="text-sm font-medium text-gray-400">Priority</Label>
+                            <Label htmlFor="priority" className="text-sm font-medium text-gray-400">{t('editPlanModal.priority')}</Label>
                             <Select id="priority" value={priority} onValueChange={(value) => setPriority(value)} className="min-h-[440px]">
                                 <SelectTrigger className="bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50">
-                                    <SelectValue placeholder="Select Priority" />
+                                    <SelectValue placeholder={t('editPlanModal.selectPriority')} />
                                 </SelectTrigger>
                                 <SelectContent className="bg-gray-800 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50">
                                     {priorities.map((priority) => {
@@ -331,10 +333,10 @@ const EditPlanModal = ({ open, onOpenChange }) => {
 
                         {/* Category */}
                         <div className="flex flex-col gap-2">
-                            <Label htmlFor="category" className="text-sm font-medium text-gray-400">Category</Label>
+                            <Label htmlFor="category" className="text-sm font-medium text-gray-400">{t('editPlanModal.category')}</Label>
                             <Select id="category" value={category} onValueChange={(value) => setCategory(value)}>
                                 <SelectTrigger className="bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50">
-                                    <SelectValue placeholder="Select Category" />
+                                    <SelectValue placeholder={t('editPlanModal.selectCategory')} />
                                 </SelectTrigger>
                                 <SelectContent className="bg-gray-800 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50">
                                     {categories.map((category) => {
@@ -350,11 +352,11 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                     {/* Additional Notes */}
                     <div className="flex flex-col gap-2">
                         <Label htmlFor="notes" className="text-sm font-medium text-gray-400">
-                            Additional Notes (Optional)
+                            {t('editPlanModal.additionalNotes')}
                         </Label>
                         <Textarea
                             id="notes"
-                            placeholder="Add any specific instructions or notes..."
+                            placeholder={t('editPlanModal.notesPlaceholder')}
                             value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                             className="min-h-24 bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50 resize-none"
@@ -367,14 +369,14 @@ const EditPlanModal = ({ open, onOpenChange }) => {
                             onClick={handleSave}
                             className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
                         >
-                            Save & Notify
+                            {t('editPlanModal.saveAndNotify')}
                         </PrimaryButton>
                         <OutlineButton
                             onClick={handleCancel}
                             variant="outline"
                             className="flex-1 bg-gray-800/50 border-gray-700 text-gray-300 hover:bg-gray-800/70 hover:text-white"
                         >
-                            Cancel
+                            {t('editPlanModal.cancel')}
                         </OutlineButton>
                     </div>
                 </div>

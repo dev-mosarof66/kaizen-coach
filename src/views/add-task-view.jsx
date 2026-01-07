@@ -30,19 +30,21 @@ import {
 } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { OutlineButton, PrimaryButton } from '../components/common/button'
+import { useTranslation } from '../contexts/translation-context'
 
 const AddTaskView = () => {
     const router = useRouter()
+    const { t } = useTranslation()
     const [assignType, setAssignType] = useState('player')
     const [selectedPlayers, setSelectedPlayers] = useState(['Marcus Silva'])
     const [priority, setPriority] = useState('high')
     const [category, setCategory] = useState('Fitness')
 
     const categories = [
-        { value: 'Fitness', label: 'Fitness', icon: Dumbbell },
-        { value: 'Technical', label: 'Technical', icon: FileText },
-        { value: 'Tactical', label: 'Tactical', icon: FileText },
-        { value: 'Recovery', label: 'Recovery', icon: FileText },
+        { value: 'Fitness', label: t('addTaskPage.categories.fitness'), icon: Dumbbell },
+        { value: 'Technical', label: t('addTaskPage.categories.technical'), icon: FileText },
+        { value: 'Tactical', label: t('addTaskPage.categories.tactical'), icon: FileText },
+        { value: 'Recovery', label: t('addTaskPage.categories.recovery'), icon: FileText },
     ]
 
     const removePlayer = (playerName) => {
@@ -63,19 +65,19 @@ const AddTaskView = () => {
                             >
                                 <Link href="/tasks">
                                     <ArrowLeft className="h-4 w-4" />
-                                    <span>Back</span>
+                                    <span>{t('addTaskPage.back')}</span>
                                 </Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
                             <BreadcrumbLink asChild className="text-gray-400 hover:text-white transition-colors">
-                                <Link href="/tasks">Tasks</Link>
+                                <Link href="/tasks">{t('addTaskPage.tasks')}</Link>
                             </BreadcrumbLink>
                         </BreadcrumbItem>
                         <BreadcrumbSeparator />
                         <BreadcrumbItem>
-                            <BreadcrumbPage className="text-white">Add Task</BreadcrumbPage>
+                            <BreadcrumbPage className="text-white">{t('addTaskPage.addTask')}</BreadcrumbPage>
                         </BreadcrumbItem>
                     </BreadcrumbList>
                 </Breadcrumb>
@@ -85,13 +87,13 @@ const AddTaskView = () => {
                         variant="outline"
                         onClick={() => router.back()}
                     >
-                        Cancel
+                        {t('addTaskPage.cancel')}
                     </OutlineButton>
                     <PrimaryButton
                         onClick={() => console.log('Save changes')}
 
                     >
-                        Save Changes
+                        {t('addTaskPage.saveChanges')}
                     </PrimaryButton>
                 </div>
             </div>
@@ -102,16 +104,16 @@ const AddTaskView = () => {
                 <div className='lg:col-span-2 flex flex-col gap-6'>
                     <Card className="bg-gray-800/50 border-gray-700 py-0">
                         <CardContent className="p-6 flex flex-col gap-6">
-                            <h2 className="text-lg font-semibold text-gray-400">Task Details</h2>
+                            <h2 className="text-lg font-semibold text-gray-400">{t('addTaskPage.taskDetails')}</h2>
 
                             {/* Task Title */}
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="task-title" className="text-sm font-medium text-gray-400">
-                                    Task Title
+                                    {t('addTaskPage.taskTitle')}
                                 </Label>
                                 <Input
                                     id="task-title"
-                                    placeholder="Enter task name"
+                                    placeholder={t('addTaskPage.taskTitlePlaceholder')}
                                     className="bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50"
                                 />
                             </div>
@@ -119,7 +121,7 @@ const AddTaskView = () => {
                             {/* Category */}
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="category" className="text-sm font-medium text-gray-400">
-                                    Category
+                                    {t('addTaskPage.category')}
                                 </Label>
                                 <Select value={category} onValueChange={setCategory}>
                                     <SelectTrigger
@@ -156,11 +158,11 @@ const AddTaskView = () => {
                             {/* Description */}
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="description" className="text-sm font-medium text-gray-400">
-                                    Description
+                                    {t('addTaskPage.description')}
                                 </Label>
                                 <Textarea
                                     id="description"
-                                    placeholder="Describe the task objectives and requirements..."
+                                    placeholder={t('addTaskPage.descriptionPlaceholder')}
                                     className="min-h-32 bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50 resize-none"
                                 />
                             </div>
@@ -169,7 +171,7 @@ const AddTaskView = () => {
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div className="flex flex-col gap-2">
                                     <Label htmlFor="start-date" className="text-sm font-medium text-gray-400">
-                                        Start Date
+                                        {t('addTaskPage.startDate')}
                                     </Label>
                                     <Input
                                         id="start-date"
@@ -179,7 +181,7 @@ const AddTaskView = () => {
                                 </div>
                                 <div className="flex flex-col gap-2">
                                     <Label htmlFor="due-date" className="text-sm font-medium text-gray-400">
-                                        Due Date
+                                        {t('addTaskPage.dueDate')}
                                     </Label>
                                     <Input
                                         id="due-date"
@@ -191,7 +193,7 @@ const AddTaskView = () => {
 
                             {/* Priority */}
                             <div className="flex flex-col gap-2">
-                                <Label className="text-sm font-medium text-gray-400">Priority</Label>
+                                <Label className="text-sm font-medium text-gray-400">{t('addTaskPage.priority')}</Label>
                                 <div className="flex items-center gap-3">
                                     <PrimaryButton
                                         onClick={() => setPriority('high')}
@@ -199,7 +201,7 @@ const AddTaskView = () => {
                                             "flex-1 bg-gray-700/20 hover:bg-gray-800/50 text-red-500 border-red-500/50", priority === 'high' && "bg-red-500/20 hover:bg-red-600/50 text-red-500 border-red-500/50"
                                         )}
                                     >
-                                        High
+                                        {t('addTaskPage.priorityLevels.high')}
                                     </PrimaryButton>
                                     <PrimaryButton
                                         onClick={() => setPriority('medium')}
@@ -207,7 +209,7 @@ const AddTaskView = () => {
                                             "flex-1 bg-gray-700/20 hover:bg-gray-800/50 text-orange-600 border-orange-600/50", priority === 'medium' && "bg-orange-500/20 hover:bg-orange-600/50 text-orange-600 border-orange-600/50"
                                         )}
                                     >
-                                        Medium
+                                        {t('addTaskPage.priorityLevels.medium')}
                                     </PrimaryButton>
                                     <PrimaryButton
                                         onClick={() => setPriority('low')}
@@ -215,18 +217,18 @@ const AddTaskView = () => {
                                             "flex-1 bg-gray-700/20 hover:bg-gray-800/50 text-green-600 border-green-600/50", priority === 'low' && "bg-green-500/20 hover:bg-green-600/50 text-green-600 border-green-600/50"
                                         )}
                                     >
-                                        Low
+                                        {t('addTaskPage.priorityLevels.low')}
                                     </PrimaryButton>
                                 </div>
                             </div>
 
                             {/* Attachments */}
                             <div className="flex flex-col gap-2">
-                                <Label className="text-sm font-medium text-gray-400">Attachments</Label>
+                                <Label className="text-sm font-medium text-gray-400">{t('addTaskPage.attachments')}</Label>
                                 <div className="flex flex-col items-center justify-center gap-3 p-8 border-2 border-dashed border-gray-700 rounded-lg bg-gray-800/50 hover:border-gray-600 transition-colors cursor-pointer relative">
                                     <FileText className="h-8 w-8 text-gray-500" />
                                     <div className="text-center">
-                                        <p className="text-sm text-gray-400">Drag & drop files or click to browse</p>
+                                        <p className="text-sm text-gray-400">{t('addTaskPage.attachmentsHelper')}</p>
                                     </div>
                                     <Input type="file" className="opacity-0 absolute top-0 left-0 w-full h-full cursor-pointer" onChange={(e) => console.log(e.target.files)} />
                                 </div>
@@ -239,11 +241,11 @@ const AddTaskView = () => {
                 <div className='lg:col-span-1 flex flex-col gap-6'>
                     <Card className="bg-gray-800/50 border-gray-700">
                         <CardContent className="p-6 flex flex-col gap-6">
-                            <h2 className="text-lg font-semibold text-gray-400">Assignment</h2>
+                            <h2 className="text-lg font-semibold text-gray-400">{t('addTaskPage.assignment')}</h2>
 
                             {/* Assign To Toggle */}
                             <div className="flex flex-col gap-2">
-                                <Label className="text-sm font-medium text-gray-400">Assign to</Label>
+                                <Label className="text-sm font-medium text-gray-400">{t('addTaskPage.assignTo')}</Label>
                                 <ToggleGroup
                                     type="single"
                                     value={assignType}
@@ -252,7 +254,7 @@ const AddTaskView = () => {
                                 >
                                     <ToggleGroupItem
                                         value="player"
-                                        aria-label="Player"
+                                        aria-label={t('addTaskPage.player')}
                                         className={cn(
                                             "flex-1 bg-gray-700/20 hover:bg-gray-800/50 text-gray-400 border-gray-700/50 cursor-pointer",
                                             assignType === 'player'
@@ -260,11 +262,11 @@ const AddTaskView = () => {
                                                 : "bg-transparent text-gray-400 border-gray-700/50"
                                         )}
                                     >
-                                        Player
+                                        {t('addTaskPage.player')}
                                     </ToggleGroupItem>
                                     <ToggleGroupItem
                                         value="team"
-                                        aria-label="Team"
+                                        aria-label={t('addTaskPage.team')}
                                         className={cn(
                                             "flex-1 bg-gray-700/20 hover:bg-gray-800/50 text-gray-400 border-gray-700/50 cursor-pointer",
                                             assignType === 'team'
@@ -272,7 +274,7 @@ const AddTaskView = () => {
                                                 : "bg-transparent text-gray-400"
                                         )}
                                     >
-                                        Team
+                                        {t('addTaskPage.team')}
                                     </ToggleGroupItem>
                                 </ToggleGroup>
                             </div>
@@ -280,13 +282,13 @@ const AddTaskView = () => {
                             {/* Search Players */}
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="search-players" className="text-sm font-medium text-gray-400">
-                                    Search players...
+                                    {t('addTaskPage.searchPlayers')}
                                 </Label>
                                 <div className="relative">
                                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500" />
                                     <Input
                                         id="search-players"
-                                        placeholder="Search players..."
+                                        placeholder={t('addTaskPage.searchPlayersPlaceholder')}
                                         className="pl-9 bg-gray-800/50 border-gray-700 text-gray-300 placeholder:text-gray-500 focus-visible:ring-blue-500/50"
                                     />
                                 </div>
@@ -322,7 +324,7 @@ const AddTaskView = () => {
                             {/* Due Time */}
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="due-time" className="text-sm font-medium text-gray-400">
-                                    Due Time
+                                    {t('addTaskPage.dueTime')}
                                 </Label>
                                 <Input
                                     id="due-time"
@@ -341,7 +343,7 @@ const AddTaskView = () => {
                                     htmlFor="notify"
                                     className="text-sm text-gray-400 cursor-pointer"
                                 >
-                                    Notify assignees via email/app
+                                    {t('addTaskPage.notifyAssignees')}
                                 </Label>
                             </div>
 
@@ -350,7 +352,7 @@ const AddTaskView = () => {
                                 onClick={() => console.log('Save & Assign')}
                                 className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                             >
-                                Save & Assign
+                                {t('addTaskPage.saveAndAssign')}
                             </PrimaryButton>
                         </CardContent>
                     </Card>
@@ -364,13 +366,13 @@ const AddTaskView = () => {
                                 </div>
                                 <div className="flex-1 flex flex-col gap-3">
                                     <p className="text-sm text-gray-300 leading-relaxed">
-                                        Based on player fitness history, consider adding a 10-minute warm-up before this drill to prevent injuries.
+                                        {t('addTaskPage.aiSuggestion.message')}
                                     </p>
                                     <Button
                                         variant="link"
                                         className="w-fit p-0 h-auto text-blue-400 hover:text-blue-300 text-sm font-medium"
                                     >
-                                        Apply Suggestion
+                                        {t('addTaskPage.aiSuggestion.applySuggestion')}
                                     </Button>
                                 </div>
                             </div>

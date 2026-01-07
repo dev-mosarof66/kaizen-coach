@@ -37,9 +37,9 @@ const LanguageConverter = () => {
 
     return (
         <div>
-            <div className='flex items-center gap-1 cursor-pointer relative border border-gray-600 rounded-md px-2 py-1 md:px-3 hover:bg-gray-950/10 active:scale-95 transition-all duration-300 delay-75' onClick={() => setOpen(!open)}>
-                <Globe size={16} />
-                <span className='text-base'>{language.toUpperCase()}</span>
+            <div className='flex items-center gap-1 cursor-pointer relative border border-gray-700 rounded-md p-1.5 md:p-2.5 xl:p-3 hover:bg-gray-950/10 active:scale-95 transition-all duration-300 delay-75' onClick={() => setOpen(!open)}>
+                <Globe size={17} className='text-gray-400'/>
+                <span className='text-base hidden text-gray-400'>{language.toUpperCase()}</span>
             </div>
             {open && (
                 <div className='absolute top-12 right-20 lg:right-24 md:top-16 z-50 w-40 bg-gray-900 rounded-md shadow-md flex flex-col gap-2 py-4

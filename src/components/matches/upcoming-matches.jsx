@@ -6,13 +6,15 @@ import { Button } from '../ui/button'
 import { Calendar, MapPin, Play } from 'lucide-react'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../ui/select'
 import { OutlineButton, PrimaryButton } from '../common/button'
+import { useTranslation } from '../../contexts/translation-context'
 
 const UpcomingMatches = () => {
+  const { t } = useTranslation()
 
   const upcomingMatches = [
     {
       id: 1,
-      type: 'Friendly match',
+      type: t('matchesPage.upcomingMatches.friendlyMatchType'),
       team1: 'U18 Tigers',
       team1Badge: 'U18',
       team2: 'Hawks United',
@@ -20,11 +22,11 @@ const UpcomingMatches = () => {
       date: 'Nov 7, 2025',
       time: '6:30 PM',
       venue: 'Away',
-      status: 'Upcoming'
+      status: t('matchesPage.upcomingMatches.upcoming')
     },
     {
       id: 2,
-      type: 'Friendly match',
+      type: t('matchesPage.upcomingMatches.friendlyMatchType'),
       team1: 'U18 Tigers',
       team1Badge: 'U18',
       team2: 'Hawks United',
@@ -32,7 +34,7 @@ const UpcomingMatches = () => {
       date: 'Nov 7, 2025',
       time: '6:30 PM',
       venue: 'Away',
-      status: 'Upcoming'
+      status: t('matchesPage.upcomingMatches.upcoming')
     }
   ]
 
@@ -41,20 +43,20 @@ const UpcomingMatches = () => {
     <div className='w-full flex flex-col gap-4'>
       <div className='w-full flex flex-col sm:flex-row items-start xl:items-center justify-between gap-4'>
         <div className='flex items-center gap-2'>
-          <h2 className='text-lg font-semibold text-white'>Upcoming Matches</h2>
+          <h2 className='text-lg font-semibold text-white'>{t('matchesPage.upcomingMatches.title')}</h2>
           <Badge variant='secondary' className='bg-blue-500/20 text-blue-400 border-blue-500/30'>
-            2 matches
+            2 {t('matchesPage.upcomingMatches.matches')}
           </Badge>
         </div>
 
         <Select defaultValue='league'>
           <SelectTrigger className='w-[180px] bg-gray-800/60 border-gray-700 text-gray-300'>
-            <SelectValue placeholder='League match' />
+            <SelectValue placeholder={t('matchesPage.upcomingMatches.leagueMatch')} />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value='league'>League match</SelectItem>
-            <SelectItem value='friendly'>Friendly match</SelectItem>
-            <SelectItem value='cup'>Cup match</SelectItem>
+            <SelectItem value='league'>{t('matchesPage.upcomingMatches.leagueMatch')}</SelectItem>
+            <SelectItem value='friendly'>{t('matchesPage.upcomingMatches.friendlyMatch')}</SelectItem>
+            <SelectItem value='cup'>{t('matchesPage.upcomingMatches.cupMatch')}</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -70,6 +72,8 @@ const UpcomingMatches = () => {
 
 
 const MatchCard = ({ match }) => {
+  const { t } = useTranslation()
+  
   return (
     <Card key={match.id} className='bg-gray-800/60 border-gray-800 hover:shadow-inner cursor-pointer transition-all duration-300 hover:bg-gray-800/70'>
       <CardContent className='p-4 sm:p-6 py-3 flex flex-col gap-6'>
@@ -89,7 +93,7 @@ const MatchCard = ({ match }) => {
               {match.team1Badge}
             </div>
           </div>
-          <span className='text-gray-300 text-3xl font-bold'>vs</span>
+          <span className='text-gray-300 text-3xl font-bold'>{t('matchesPage.upcomingMatches.vs')}</span>
           <div className='flex flex-col items-center gap-1'>
             <p className='text-gray-300 font-medium'>{match.team2}</p>
             <div className='bg-gray-600/10 text-gray-300 border-gray-600/10 p-6 rounded-md text-xs'>
@@ -109,7 +113,7 @@ const MatchCard = ({ match }) => {
           </div>
           <div className='flex items-center gap-2 text-gray-400 text-sm'>
             <MapPin className='w-4 h-4' />
-            <span>Venue: {match.venue}</span>
+            <span>{t('matchesPage.upcomingMatches.venue')}: {match.venue}</span>
           </div>
         </div>
 
@@ -119,10 +123,10 @@ const MatchCard = ({ match }) => {
         <div className='w-full flex  items-center justify-between gap-3'>
           <PrimaryButton className='flex-1 bg-blue-500 hover:bg-blue-600 text-white'>
             <Play className='w-4 h-4' />
-            Record
+            {t('matchesPage.upcomingMatches.record')}
           </PrimaryButton>
           <OutlineButton className='flex-1 bg-transparent border-gray-600 hover:bg-white/5 text-white'>
-            Edit Details
+            {t('matchesPage.upcomingMatches.editDetails')}
           </OutlineButton>
         </div>
       </CardContent>

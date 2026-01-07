@@ -17,60 +17,63 @@ import {
 import { cn } from '../lib/utils'
 import { LuSparkles } from 'react-icons/lu'
 import { RiRobot2Fill } from "react-icons/ri";
+import { useTranslation } from '../contexts/translation-context'
 
-
-const chronologicalContent = {
-    'TODAY': [
-        'Explore the latest trends in global footbal...',
-        'Subject: Follow-Up on Our Recent Discuss...',
-        'Discover the pivotal insights from the 202...',
-        'Subject: Following Up on Our Football Par...',
-        'Get the latest insights from the 2025 Glo...',
-        'Subject: Quick Follow-Up on Our Football...',
-        'Review the essential insights from the 20...',
-        'Subject: Following Up on Our Football Dis...',
-        'Summarize the key findings from the 202...',
-        'Subject: Quick Follow-Up on Our Football...',
-    ],
-    'YESTERDAY': [
-        'Blockchain technology is like a digital ledg...',
-        'Guía de Viaje de Fútbol: Descubre los mej...',
-    ],
-    'AUGUST': [
-        'SEO-Optimized Blog Outline:...',
-        'Top Remote Work Tools for Football Tea...',
-        '"Kickstart Your Green Game: Play for th..."',
-    ]
-}
-
-const actionButtons = [
-    {
-        id: 1,
-        label: 'Analyze Performance',
-        icon: TrendingUp,
-        description: 'Get detailed performance metrics'
-    },
-    {
-        id: 2,
-        label: 'Tactical Suggestions',
-        icon: Target,
-        description: 'Receive tactical recommendations'
-    },
-    {
-        id: 3,
-        label: 'Player Insights',
-        icon: Activity,
-        description: 'Analyze player development'
-    },
-    {
-        id: 4,
-        label: 'Training Ideas',
-        icon: Lightbulb,
-        description: 'Get training recommendations'
-    },
-]
 
 const AiAssistantView = () => {
+    const { t } = useTranslation()
+    
+    const chronologicalContent = {
+        [t('aiAssistantPage.dateLabels.today')]: [
+            'Explore the latest trends in global footbal...',
+            'Subject: Follow-Up on Our Recent Discuss...',
+            'Discover the pivotal insights from the 202...',
+            'Subject: Following Up on Our Football Par...',
+            'Get the latest insights from the 2025 Glo...',
+            'Subject: Quick Follow-Up on Our Football...',
+            'Review the essential insights from the 20...',
+            'Subject: Following Up on Our Football Dis...',
+            'Summarize the key findings from the 202...',
+            'Subject: Quick Follow-Up on Our Football...',
+        ],
+        [t('aiAssistantPage.dateLabels.yesterday')]: [
+            'Blockchain technology is like a digital ledg...',
+            'Guía de Viaje de Fútbol: Descubre los mej...',
+        ],
+        [t('aiAssistantPage.dateLabels.august')]: [
+            'SEO-Optimized Blog Outline:...',
+            'Top Remote Work Tools for Football Tea...',
+            '"Kickstart Your Green Game: Play for th..."',
+        ]
+    }
+
+    const actionButtons = [
+        {
+            id: 1,
+            label: t('aiAssistantPage.actionButtons.analyzePerformance'),
+            icon: TrendingUp,
+            description: t('aiAssistantPage.actionButtons.analyzePerformanceDesc')
+        },
+        {
+            id: 2,
+            label: t('aiAssistantPage.actionButtons.tacticalSuggestions'),
+            icon: Target,
+            description: t('aiAssistantPage.actionButtons.tacticalSuggestionsDesc')
+        },
+        {
+            id: 3,
+            label: t('aiAssistantPage.actionButtons.playerInsights'),
+            icon: Activity,
+            description: t('aiAssistantPage.actionButtons.playerInsightsDesc')
+        },
+        {
+            id: 4,
+            label: t('aiAssistantPage.actionButtons.trainingIdeas'),
+            icon: Lightbulb,
+            description: t('aiAssistantPage.actionButtons.trainingIdeasDesc')
+        },
+    ]
+
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([
         {
@@ -199,14 +202,14 @@ const AiAssistantView = () => {
                             <div className='flex flex-col gap-1'>
                                 <div className='flex items-center gap-2'>
                                     <h3 className='text-base font-semibold text-gray-400'>
-                                        AI Coach Assistant
+                                        {t('aiAssistantPage.title')}
                                     </h3>
                                     <span className='text-xs text-green-400 font-medium bg-green-500/10 px-2 py-1 rounded-full'>
-                                        Online
+                                        {t('aiAssistantPage.online')}
                                     </span>
                                 </div>
                                 <p className='text-xs text-gray-500'>
-                                    Powered by advanced analytics
+                                    {t('aiAssistantPage.poweredBy')}
                                 </p>
                             </div>
                         </div>
@@ -289,7 +292,7 @@ const AiAssistantView = () => {
                                     value={message}
                                     onChange={(e) => setMessage(e.target.value)}
                                     onKeyPress={handleKeyPress}
-                                    placeholder="Ask me anything about tactics, performance, or training..."
+                                    placeholder={t('aiAssistantPage.inputPlaceholder')}
                                     className="flex-1 bg-gray-800/50 border border-gray-700 text-white placeholder:text-gray-500 focus-visible:ring-purple-500/50 pr-20"
                                 />
                                 <div className='absolute right-2 flex items-center gap-2'>
@@ -310,7 +313,7 @@ const AiAssistantView = () => {
                                 </div>
                             </div>
                             <p className='text-xs text-gray-500 px-1'>
-                                AI-powered insights based on your team&apos;s data
+                                {t('aiAssistantPage.inputHelper')}
                             </p>
                         </div>
                     </CardContent>

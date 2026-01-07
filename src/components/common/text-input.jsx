@@ -4,10 +4,12 @@ import React, { useState } from "react"
 import { Search, X } from "lucide-react"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
+import { useTranslation } from "../../contexts/translation-context"
 
 const TextInput = () => {
   const [search, setSearch] = useState("")
   const [showSearchModal, setShowSearchModal] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <div className="w-full">
@@ -19,7 +21,7 @@ const TextInput = () => {
           type="search"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search players, teams, matches..."
+          placeholder={t('header.search.placeholder')}
           className="border-none focus-visible:ring-0"
         />
       </div>
@@ -39,7 +41,7 @@ const TextInput = () => {
 
             {/* Header */}
             <div className="flex items-center justify-between">
-              <h1 className="text-xl font-semibold text-white">Search</h1>
+              <h1 className="text-xl font-semibold text-white">{t('header.search.modalTitle')}</h1>
               <button
                 onClick={() => setShowSearchModal(false)}
                 className="hover:text-blue-500 transition cursor-pointer"
@@ -53,13 +55,13 @@ const TextInput = () => {
               type="search"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search players, teams, matches..."
+              placeholder={t('header.search.placeholder')}
               className="bg-gray-800 border border-gray-700 focus-visible:ring-blue-500"
             />
 
             {/* Button */}
             <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white">
-              Search
+              {t('header.search.button')}
             </Button>
 
           </div>

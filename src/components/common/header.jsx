@@ -5,6 +5,7 @@ import NextEventBadge from './next-event-badge'
 import NotificationBadge from './notification-badge'
 import ProfileButton from './profile-button'
 import DrawerSidebar from './drawer-sidebar'
+import LanguageConverter from './language-changer'
 
 const Header = () => {
   return (
@@ -21,6 +22,7 @@ const Header = () => {
         {/* profile + notification button  */}
         <div className='flex items-center gap-2'>
           <NextEventBadge />
+          <LanguageConverter />
           <NotificationBadge />
           <ProfileButton />
         </div>

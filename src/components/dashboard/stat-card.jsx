@@ -1,3 +1,4 @@
+'use client'
 import React from "react"
 import { PiUsers } from "react-icons/pi"
 import { GoTrophy } from "react-icons/go"
@@ -5,35 +6,38 @@ import { IoCalendarNumberOutline } from "react-icons/io5"
 import { MdOutlineShowChart } from "react-icons/md"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
-
-const stats = [
-    {
-        label: "Active Players",
-        value: 127,
-        icon: PiUsers,
-        percentage: "+12%",
-    },
-    {
-        label: "Matches Won",
-        value: 30,
-        icon: GoTrophy,
-        percentage: "+68%",
-    },
-    {
-        label: "Upcoming Events",
-        value: 8,
-        icon: IoCalendarNumberOutline,
-        time: "This Week",
-    },
-    {
-        label: "Task Completion",
-        value: "82%",
-        icon: MdOutlineShowChart,
-        percentage: "+8%",
-    },
-]
+import { useTranslation } from "../../contexts/translation-context"
 
 const Stats = () => {
+    const { t } = useTranslation()
+    
+    const stats = [
+        {
+            label: t('stats.activePlayers'),
+            value: 127,
+            icon: PiUsers,
+            percentage: "+12%",
+        },
+        {
+            label: t('stats.matchesWon'),
+            value: 30,
+            icon: GoTrophy,
+            percentage: "+68%",
+        },
+        {
+            label: t('stats.upcomingEvents'),
+            value: 8,
+            icon: IoCalendarNumberOutline,
+            time: t('stats.thisWeek'),
+        },
+        {
+            label: t('stats.taskCompletion'),
+            value: "82%",
+            icon: MdOutlineShowChart,
+            percentage: "+8%",
+        },
+    ]
+    
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {stats.map((item, i) => (

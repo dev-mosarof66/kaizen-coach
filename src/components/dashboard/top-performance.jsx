@@ -1,6 +1,8 @@
+'use client'
 import React from "react"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
+import { useTranslation } from "../../contexts/translation-context"
 
 const performance = [
     {
@@ -33,6 +35,8 @@ const resultColor = {
 }
 
 const TopPerformance = () => {
+    const { t } = useTranslation()
+    
     return (
         <Card className="w-full col-span-3 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
             <div className="w-full h-full flex flex-col gap-2 py-3">
@@ -40,7 +44,7 @@ const TopPerformance = () => {
                 {/* Section Header */}
                 <div className="px-5 pb-2">
                     <h1 className="text-base md:text-lg text-white font-semibold">
-                        Team Performance
+                        {t('dashboard.teamPerformance.title')}
                     </h1>
                 </div>
 

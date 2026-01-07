@@ -1,6 +1,8 @@
+'use client'
 import React from "react"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
+import { useTranslation } from "../../contexts/translation-context"
 
 const status = [
   { id: 1, name: "J. Smith", inactive: 7, stamina: 60 },
@@ -11,6 +13,8 @@ const status = [
 ]
 
 const PlayerStatus = () => {
+  const { t } = useTranslation()
+  
   return (
     <Card className="w-full h-full col-span-2 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden mb-6">
       <div className="w-full flex flex-col gap-1">
@@ -18,7 +22,7 @@ const PlayerStatus = () => {
         {/* Header */}
         <div className="px-5 py-4">
           <h1 className="text-base md:text-lg text-white font-semibold">
-            Player Injured
+            {t('dashboard.playerStatus.title')}
           </h1>
         </div>
 
@@ -35,7 +39,7 @@ const PlayerStatus = () => {
               {/* Player Info */}
               <div className="w-full flex items-center justify-between">
                 <p className="text-white font-medium">{player.name}</p>
-                <p className="text-gray-400 text-xs"> {player.inactive} days</p>
+                <p className="text-gray-400 text-xs"> {player.inactive} {t('dashboard.playerStatus.days')}</p>
               </div>
 
               {/* Stamina Bar */}

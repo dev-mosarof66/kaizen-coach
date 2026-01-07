@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "title": "Takteeki AI",
+    "description": "Takteeki App for managing your tasks"
+  },
+
+  "header": {
+    "search": {
+      "placeholder": "Search players, teams, matches...",
+      "modalTitle": "Search",
+      "button": "Search"
+    },
+    "nextEvent": {
+      "label": "Next Event",
+      "event": "U16 vs Eagles - Today 4.00 PM"
+    },
+    "language": {
+      "english": "English",
+      "arabic": "Arabic"
+    }
+  },
+
+  "sidebar": {
+    "logo": {
+      "brand": "CoachHub",
+      "tagline": "ELITE ANALYTICS"
+    },
+    "menu": {
+      "dashboard": "Dashboard",
+      "players": "Players",
+      "teams": "Teams",
+      "matches": "Matches",
+      "tasks": "Tasks",
+      "reports": "Reports",
+      "gamePlans": "Game Plans"
+    },
+    "status": {
+      "lastSync": "Last Sync",
+      "lastSyncTime": "10 mins ago",
+      "aiMode": "AI Mode",
+      "active": "Active"
+    }
+  },
+
+  "hero": {
+    "welcome": {
+      "greeting": "Welcome back, {name}",
+      "greetingDefault": "Welcome back, Coach Saleh",
+      "subtitle": "Here's what's happening with your teams today.",
+      "addMatch": "Add Match",
+      "viewSchedule": "View Schedule"
+    }
+  },
+
+  "stats": {
+    "activePlayers": "Active Players",
+    "matchesWon": "Matches Won",
+    "upcomingEvents": "Upcoming Events",
+    "taskCompletion": "Task Completion",
+    "thisWeek": "This Week"
+  },
+
+  "aiAssistant": {
+    "message": "Based on player fitness history, consider adding a 10-minute warm-up before this drill to prevent injuries."
+  },
+
+  "dashboard": {
+    "playerRequests": {
+      "title": "Player Requests",
+      "joinRequest": "Join Request",
+      "transferRequest": "Transfer Request",
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "accept": "Accept",
+      "deny": "Deny"
+    },
+    "upcomingEvents": {
+      "title": "Upcoming Matches",
+      "viewAll": "View All",
+      "league": "League",
+      "cup": "Cup",
+      "friendly": "Friendly",
+      "vs": "vs",
+      "at": "@",
+      "today": "Today",
+      "tomorrow": "Tomorrow"
+    },
+    "recentResults": {
+      "title": "Recent Results",
+      "viewAll": "View All",
+      "vs": "vs"
+    },
+    "teamPerformance": {
+      "title": "Team Performance"
+    },
+    "playerStatus": {
+      "title": "Player Injured",
+      "days": "days"
+    }
+  },
+
+  "pages": {
+    "players": {
+      "title": "Players",
+      "subtitle": "Manage and track all players across your teams",
+      "importPlayers": "Import Players",
+      "addPlayers": "Add Players"
+    },
+    "teams": {
+      "title": "Teams",
+      "subtitle": "Manage all teams across your club",
+      "createNewTeam": "Create New Team"
+    },
+    "matches": {
+      "title": "Matches",
+      "subtitle": "Manage and track all players across your teams",
+      "switchTeam": "Switch Team",
+      "recordMatch": "Record Match"
+    }
+  }
+}

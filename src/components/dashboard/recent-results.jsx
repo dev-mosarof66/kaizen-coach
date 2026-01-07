@@ -1,7 +1,9 @@
+'use client'
 import React from "react"
 import { Card } from "../ui/card"
 import { ChevronRight } from "lucide-react"
 import { cn } from "../../lib/utils"
+import { useTranslation } from "../../contexts/translation-context"
 
 const results = [
     { id: 1, team1: "U16 Eagles", team2: "Lions FC", date: "Nov 3", results: "3 - 1", status: "W" },
@@ -17,15 +19,17 @@ const resultColor = {
 }
 
 const RecentResults = () => {
+    const { t } = useTranslation()
+    
     return (
         <Card className="w-full col-span-3 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
 
                 {/* Header */}
                 <div className="w-full flex items-center justify-between px-5 py-3">
-                    <h1 className="text-base md:text-lg text-white font-semibold">Recent Results</h1>
+                    <h1 className="text-base md:text-lg text-white font-semibold">{t('dashboard.recentResults.title')}</h1>
                     <div className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
-                        <p>View All</p>
+                        <p>{t('dashboard.recentResults.viewAll')}</p>
                         <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                     </div>
                 </div>
@@ -53,7 +57,7 @@ const RecentResults = () => {
                                         <p className="text-white font-semibold text-sm sm:text-base">
                                             {m.team1}
                                         </p>
-                                        <p className="text-gray-400 text-xs mt-1"><span className="text-gray-400">vs</span> {m.team2}</p>
+                                        <p className="text-gray-400 text-xs mt-1"><span className="text-gray-400">{t('dashboard.recentResults.vs')}</span> {m.team2}</p>
 
                                     </div>
                                 </div>

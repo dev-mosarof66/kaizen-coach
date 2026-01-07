@@ -1,36 +1,43 @@
+'use client'
 import React from "react"
 import { Card } from "../ui/card"
 import { ChevronRight } from "lucide-react"
 import { cn } from "../../lib/utils"
-
-const matches = [
-    {
-        id: 1,
-        type: "League",
-        team1: "U16 Eagles",
-        team2: "Lions FC",
-        date: "Today",
-        time: "4:00 PM",
-    },
-    {
-        id: 2,
-        type: "Cup",
-        team1: "U18 Tigers",
-        team2: "Hawks United",
-        date: "Tomorrow",
-        time: "6:30 PM",
-    },
-    {
-        id: 3,
-        type: "Friendly",
-        team1: "U16 Eagles",
-        team2: "Wolves Academy",
-        date: "Sat, Nov 8",
-        time: "2:00 PM",
-    },
-]
+import { useTranslation } from "../../contexts/translation-context"
 
 const UpcomingEvents = () => {
+    const { t } = useTranslation()
+    
+    const matches = [
+        {
+            id: 1,
+            type: t('dashboard.upcomingEvents.league'),
+            typeKey: 'league',
+            team1: "U16 Eagles",
+            team2: "Lions FC",
+            date: t('dashboard.upcomingEvents.today'),
+            time: "4:00 PM",
+        },
+        {
+            id: 2,
+            type: t('dashboard.upcomingEvents.cup'),
+            typeKey: 'cup',
+            team1: "U18 Tigers",
+            team2: "Hawks United",
+            date: t('dashboard.upcomingEvents.tomorrow'),
+            time: "6:30 PM",
+        },
+        {
+            id: 3,
+            type: t('dashboard.upcomingEvents.friendly'),
+            typeKey: 'friendly',
+            team1: "U16 Eagles",
+            team2: "Wolves Academy",
+            date: "Sat, Nov 8",
+            time: "2:00 PM",
+        },
+    ]
+    
     return (
         <Card className="w-full col-span-2 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
@@ -38,11 +45,11 @@ const UpcomingEvents = () => {
                 {/* Header */}
                 <div className="w-full flex items-center justify-between px-5 py-3">
                     <h1 className="text-base md:text-lg text-white font-semibold">
-                        Upcoming Matches
+                        {t('dashboard.upcomingEvents.title')}
                     </h1>
 
                     <div className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
-                        <p>View All</p>
+                        <p>{t('dashboard.upcomingEvents.viewAll')}</p>
                         <ChevronRight
                             size={18}
                             className="group-hover:translate-x-1 transition-transform"
@@ -56,11 +63,11 @@ const UpcomingEvents = () => {
                 {/* Matches List */}
                 <div className="flex flex-col">
                     {matches.map((m) => {
-                        const typeColor = m.type.toLowerCase() === 'league' ? "text-blue-400" : m.type.toLowerCase() === 'cup' ? "text-amber-400" : "text-gray-400";
+                        const typeColor = m.typeKey === 'league' ? "text-blue-400" : m.typeKey === 'cup' ? "text-amber-400" : "text-gray-400";
 
 
 
-                        const typeBgColor = m.type.toLowerCase() === 'league' ? "bg-blue-700/20" : m.type.toLowerCase() === 'cup' ? "bg-amber-700/20" : "bg-gray-700/20"
+                        const typeBgColor = m.typeKey === 'league' ? "bg-blue-700/20" : m.typeKey === 'cup' ? "bg-amber-700/20" : "bg-gray-700/20"
                         return (
                             <div
                                 key={m.id}
@@ -84,7 +91,7 @@ const UpcomingEvents = () => {
                                         <p className="text-white font-semibold text-sm sm:text-base">
                                             <span className="text-gray-400">
 
-                                                {m.type.toLowerCase() === 'cup' ? "@" : "vs"}
+                                                {m.typeKey === 'cup' ? t('dashboard.upcomingEvents.at') : t('dashboard.upcomingEvents.vs')}
                                             </span> {m.team2}
                                         </p>
 

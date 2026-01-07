@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "title": "Takteeki AI",
+    "description": "تطبيق تاكتيكي لإدارة مهامك"
+  },
+
+  "header": {
+    "search": {
+      "placeholder": "البحث عن اللاعبين والفرق والمباريات...",
+      "modalTitle": "بحث",
+      "button": "بحث"
+    },
+    "nextEvent": {
+      "label": "الحدث القادم",
+      "event": "U16 ضد النسور - اليوم 4:00 مساءً"
+    },
+    "language": {
+      "english": "الإنجليزية",
+      "arabic": "العربية"
+    }
+  },
+
+  "sidebar": {
+    "logo": {
+      "brand": "CoachHub",
+      "tagline": "التحليلات النخبوية"
+    },
+    "menu": {
+      "dashboard": "لوحة التحكم",
+      "players": "اللاعبون",
+      "teams": "الفرق",
+      "matches": "المباريات",
+      "tasks": "المهام",
+      "reports": "التقارير",
+      "gamePlans": "خطط اللعب"
+    },
+    "status": {
+      "lastSync": "آخر مزامنة",
+      "lastSyncTime": "منذ 10 دقائق",
+      "aiMode": "وضع الذكاء الاصطناعي",
+      "active": "نشط"
+    }
+  },
+
+  "hero": {
+    "welcome": {
+      "greeting": "مرحباً بعودتك، {name}",
+      "greetingDefault": "مرحباً بعودتك، المدرب صالح",
+      "subtitle": "إليك ما يحدث مع فرقك اليوم.",
+      "addMatch": "إضافة مباراة",
+      "viewSchedule": "عرض الجدول"
+    }
+  },
+
+  "stats": {
+    "activePlayers": "اللاعبون النشطون",
+    "matchesWon": "المباريات الفائزة",
+    "upcomingEvents": "الأحداث القادمة",
+    "taskCompletion": "إتمام المهام",
+    "thisWeek": "هذا الأسبوع"
+  },
+
+  "aiAssistant": {
+    "message": "بناءً على تاريخ لياقة اللاعب، فكر في إضافة إحماء لمدة 10 دقائق قبل هذا التمرين لمنع الإصابات."
+  },
+
+  "dashboard": {
+    "playerRequests": {
+      "title": "طلبات اللاعبين",
+      "joinRequest": "طلب انضمام",
+      "transferRequest": "طلب انتقال",
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "accept": "قبول",
+      "deny": "رفض"
+    },
+    "upcomingEvents": {
+      "title": "المباريات القادمة",
+      "viewAll": "عرض الكل",
+      "league": "الدوري",
+      "cup": "الكأس",
+      "friendly": "ودي",
+      "vs": "ضد",
+      "at": "@",
+      "today": "اليوم",
+      "tomorrow": "غداً"
+    },
+    "recentResults": {
+      "title": "النتائج الأخيرة",
+      "viewAll": "عرض الكل",
+      "vs": "ضد"
+    },
+    "teamPerformance": {
+      "title": "أداء الفريق"
+    },
+    "playerStatus": {
+      "title": "لاعب مصاب",
+      "days": "أيام"
+    }
+  },
+
+  "pages": {
+    "players": {
+      "title": "اللاعبون",
+      "subtitle": "إدارة وتتبع جميع اللاعبين في فرقك",
+      "importPlayers": "استيراد اللاعبين",
+      "addPlayers": "إضافة لاعبين"
+    },
+    "teams": {
+      "title": "الفرق",
+      "subtitle": "إدارة جميع الفرق في ناديك",
+      "createNewTeam": "إنشاء فريق جديد"
+    },
+    "matches": {
+      "title": "المباريات",
+      "subtitle": "إدارة وتتبع جميع اللاعبين في فرقك",
+      "switchTeam": "تبديل الفريق",
+      "recordMatch": "تسجيل مباراة"
+    }
+  }
+}

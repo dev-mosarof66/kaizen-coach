@@ -1,38 +1,42 @@
+'use client'
 import React from "react"
 import { Card } from "../ui/card"
 import { cn } from "../../lib/utils"
 import { Button } from "../ui/button"
 import { getInitials } from "../../utils/utils"
-
-const requests = [
-    {
-        id: 1,
-        name: "Jenny Wilson",
-        label: "Join Request",
-        time: "Today",
-    },
-    {
-        id: 2,
-        name: "Brooklyn Simmonson",
-        label: "Transfer Request",
-        time: "Today",
-    },
-    {
-        id: 3,
-        name: "Robert Fox",
-        label: "Join Request",
-        time: "Yesterday",
-    },
-]
+import { useTranslation } from "../../contexts/translation-context"
 
 const PlayerRequests = () => {
+    const { t } = useTranslation()
+    
+    const requests = [
+        {
+            id: 1,
+            name: "Jenny Wilson",
+            label: t('dashboard.playerRequests.joinRequest'),
+            time: t('dashboard.playerRequests.today'),
+        },
+        {
+            id: 2,
+            name: "Brooklyn Simmonson",
+            label: t('dashboard.playerRequests.transferRequest'),
+            time: t('dashboard.playerRequests.today'),
+        },
+        {
+            id: 3,
+            name: "Robert Fox",
+            label: t('dashboard.playerRequests.joinRequest'),
+            time: t('dashboard.playerRequests.yesterday'),
+        },
+    ]
+    
     return (
         <Card className="w-full border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
                 {/* Header */}
                 <div className="w-full flex items-center justify-between px-4 py-3">
                     <h1 className="text-base md:text-lg text-white font-semibold">
-                        Player Requests
+                        {t('dashboard.playerRequests.title')}
                     </h1>
 
                     <p className="bg-red-700/20 text-xs sm:text-sm px-3 py-1 text-red-300 rounded-full">
@@ -92,12 +96,12 @@ const PlayerRequests = () => {
                                             <span>
 
                                             </span>
-                                            Accept
+                                            {t('dashboard.playerRequests.accept')}
                                         </Button>
 
                                         {/* Deny */}
                                         <Button className="flex-1 sm:w-fit text-xs rounded-md border border-gray-700 bg-transparent text-gray-300 hover:bg-gray-800 transition-all">
-                                            Deny
+                                            {t('dashboard.playerRequests.deny')}
                                         </Button>
                                     </div>
                                 </div>

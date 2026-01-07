@@ -1,13 +1,15 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { LuSparkles } from "react-icons/lu";
 import { useRouter, usePathname } from 'next/navigation';
+import { useTranslation } from '../../contexts/translation-context';
 
 const AIAssistant = () => {
     const router = useRouter();
     const pathname = usePathname();
+    const { t } = useTranslation();
     const [showBubble, setShowBubble] = useState(false);
-    const [currentMSG, setCurrentMSG] = useState('Based on player fitness history, consider adding a 10-minute warm-up before this drill to prevent injuries.');
+    const currentMSG = t('aiAssistant.message');
 
 
     if(pathname === '/ai-assistant' || pathname === '/add-task' || pathname === '/game-plans') {

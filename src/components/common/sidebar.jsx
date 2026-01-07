@@ -9,50 +9,52 @@ import { GiTrophyCup, GiChessKnight } from "react-icons/gi";
 import { RiTaskLine } from "react-icons/ri";
 import { cn } from '../../lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
-
-const sidebarItems = [
-    {
-        label: "Dashboard",
-        icon: FiHome,
-        href: "/",
-    },
-    {
-        label: "Players",
-        icon: LuUsers,
-        href: "/players",
-    },
-    {
-        label: "Teams",
-        icon: FiShield,
-        href: "/teams",
-    },
-    {
-        label: "Matches",
-        icon: GiTrophyCup,
-        href: "/matches",
-    },
-    {
-        label: "Tasks",
-        icon: RiTaskLine,
-        href: "/tasks",
-    },
-    {
-        label: "Reports",
-        icon: MdAssessment,
-        href: "/reports",
-    },
-    {
-        label: "Game Plans",
-        icon: GiChessKnight,
-        href: "/game-plans",
-    }
-];
+import { useTranslation } from '../../contexts/translation-context';
 
 
 const SideBar = ({ closeDrawer }) => {
     const router = useRouter()
     const pathname = usePathname()
     const [activeItem, setActiveItem] = useState(0)
+    const { t } = useTranslation()
+
+    const sidebarItems = [
+        {
+            label: t('sidebar.menu.dashboard'),
+            icon: FiHome,
+            href: "/",
+        },
+        {
+            label: t('sidebar.menu.players'),
+            icon: LuUsers,
+            href: "/players",
+        },
+        {
+            label: t('sidebar.menu.teams'),
+            icon: FiShield,
+            href: "/teams",
+        },
+        {
+            label: t('sidebar.menu.matches'),
+            icon: GiTrophyCup,
+            href: "/matches",
+        },
+        {
+            label: t('sidebar.menu.tasks'),
+            icon: RiTaskLine,
+            href: "/tasks",
+        },
+        {
+            label: t('sidebar.menu.reports'),
+            icon: MdAssessment,
+            href: "/reports",
+        },
+        {
+            label: t('sidebar.menu.gamePlans'),
+            icon: GiChessKnight,
+            href: "/game-plans",
+        }
+    ];
 
     useEffect(() => {
         if (pathname === '/') {
@@ -84,9 +86,9 @@ const SideBar = ({ closeDrawer }) => {
                 <div className='w-full flex flex-col gap-2 px-4 pt-4 pb-2'>
                     <div className='w-full flex items-center gap-1'>
                         <Image src="/logo.png" alt="logo" width={30} height={30} />
-                        <p className='text-base-content'>CoachHub</p>
+                        <p className='text-base-content'>{t('sidebar.logo.brand')}</p>
                     </div>
-                    <p className='text-xs text-gray-500'>ELITE ANALYTICS</p>
+                    <p className='text-xs text-gray-500'>{t('sidebar.logo.tagline')}</p>
                 </div>
                 {/* border  */}
                 <div className='w-full h-px bg-gray-500/20' />
@@ -121,14 +123,14 @@ const SideBar = ({ closeDrawer }) => {
             <div className='w-full border-t border-t-gray-500/20 p-4'>
                 <div className='w-full flex flex-col gap-2 border border-gray-500 bg-gray-950/50 text-gray-500 p-2 rounded-lg'>
                     <div className='w-full flex items-center justify-between text-xs'>
-                        <p>Last Sync</p>
-                        <p className='text-green-400'>10 mins ago</p>
+                        <p>{t('sidebar.status.lastSync')}</p>
+                        <p className='text-green-400'>{t('sidebar.status.lastSyncTime')}</p>
                     </div>
                     <div className='w-full flex items-center justify-between text-xs'>
-                        <p>AI Mode</p>
+                        <p>{t('sidebar.status.aiMode')}</p>
                         <div className='flex items-center gap-1 text-green-400'>
                             <div className='w-2 h-2 rounded-full bg-green-400' />
-                            <p>Active</p>
+                            <p>{t('sidebar.status.active')}</p>
                         </div>
                     </div>
                 </div>

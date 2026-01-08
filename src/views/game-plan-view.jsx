@@ -125,7 +125,8 @@ export const game_plans = [
 
 const GamePlanView = () => {
     const router = useRouter()
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
     const [selectedTasks, setSelectedTasks] = useState([])
 
     const getStatusClasses = (status) => {
@@ -327,8 +328,8 @@ const getCategoryClasses = (category) => {
                                                 'text-sm text-gray-400')}>
                                                 {task.startDate}
                                             </p>
-                                            <p className='pl-3 text-sm text-orange-400 flex items-center gap-1'>
-                                                <ArrowRight className='size-4' /> {task.dueDate}
+                                            <p className={cn('pl-3 text-sm text-orange-400 flex items-center gap-1', isRTL && 'flex-row-reverse pr-3 pl-0')}>
+                                                <ArrowRight className={cn('size-4', isRTL && 'rotate-180')} /> {task.dueDate}
                                             </p>
                                         </TableCell>
 

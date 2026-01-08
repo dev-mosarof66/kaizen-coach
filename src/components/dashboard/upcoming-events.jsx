@@ -6,8 +6,8 @@ import { cn } from "../../lib/utils"
 import { useTranslation } from "../../contexts/translation-context"
 
 const UpcomingEvents = () => {
-    const { t } = useTranslation()
-    
+    const { t, language } = useTranslation()
+
     const matches = [
         {
             id: 1,
@@ -37,7 +37,9 @@ const UpcomingEvents = () => {
             time: "2:00 PM",
         },
     ]
-    
+
+    const isRTL = language === 'ar'
+
     return (
         <Card className="w-full col-span-2 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
@@ -48,11 +50,11 @@ const UpcomingEvents = () => {
                         {t('dashboard.upcomingEvents.title')}
                     </h1>
 
-                    <div className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
+                    <div className={cn("flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group", isRTL && "flex-row-reverse")}>
                         <p>{t('dashboard.upcomingEvents.viewAll')}</p>
                         <ChevronRight
                             size={18}
-                            className="group-hover:translate-x-1 transition-transform"
+                            className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")}
                         />
                     </div>
                 </div>
@@ -108,7 +110,10 @@ const UpcomingEvents = () => {
                                             </p>
                                         </div>
                                         {/* Arrow */}
-                                        <ChevronRight className="text-gray-500 group-hover:text-gray-300 transition-all duration-300 group-hover:translate-x-1 " />
+                                        <ChevronRight
+                                            size={18}
+                                            className={cn("text-gray-500 group-hover:text-gray-300 duration-300 transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")}
+                                        />
                                     </div>
                                 </div>
                             </div>

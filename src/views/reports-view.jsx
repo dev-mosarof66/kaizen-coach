@@ -43,7 +43,8 @@ const matchResultsData = [
 ]
 
 const ReportsView = () => {
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
     
     const matchResultsConfig = {
         wins: {
@@ -241,10 +242,10 @@ const ReportsView = () => {
                         </CardTitle>
                         <Button
                             variant="ghost"
-                            className="text-blue-400 hover:text-blue-300 hover:bg-transparent p-0 h-auto"
+                            className={cn("text-blue-400 hover:text-blue-300 hover:bg-transparent p-0 h-auto flex items-center gap-1", isRTL && "flex-row-reverse")}
                         >
                             {t('reportsPage.viewAll')}
-                            <ChevronRight className="h-4 w-4 ml-1" />
+                            <ChevronRight className={cn("h-4 w-4", isRTL && "rotate-180")} />
                         </Button>
                     </CardHeader>
                     <CardContent className={cn('p-0 px-2')}>

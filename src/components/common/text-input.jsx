@@ -6,11 +6,13 @@ import { Input } from "../ui/input"
 import { Button } from "../ui/button"
 import { useTranslation } from "../../contexts/translation-context"
 import { AnimatePresence, motion } from 'framer-motion'
+import { cn } from "../../lib/utils"
 
 const TextInput = () => {
   const [search, setSearch] = useState("")
   const [showSearchModal, setShowSearchModal] = useState(false)
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
+  const isRTL = language === 'ar'
 
   const handleChange = (e) => {
     setSearch(e.target.value)
@@ -34,7 +36,7 @@ const TextInput = () => {
     <div className="w-full">
 
       {/* DESKTOP SEARCH */}
-      <div className="hidden lg:flex items-center gap-1 w-full max-w-sm border border-gray-700 focus:ring-blue-600 rounded-md px-3 shadow-sm">
+      <div className={cn("hidden lg:flex items-center gap-1 w-full max-w-sm border border-gray-700 focus:ring-blue-600 rounded-md shadow-sm", isRTL ? "flex-row-reverse px-3" : "px-3")}>
         <Search size={18} className="text-gray-400" />
         <Input
           type="search"
@@ -42,7 +44,8 @@ const TextInput = () => {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           placeholder={t('header.search.placeholder')}
-          className="border-none focus-visible:ring-0"
+          className={cn("border-none focus-visible:ring-0", isRTL && "text-right")}
+          dir={isRTL ? 'rtl' : 'ltr'}
         />
       </div>
 
@@ -73,11 +76,11 @@ const TextInput = () => {
             >
 
               {/* Header */}
-              <div className="flex items-center justify-between">
-                <h1 className="text-xl font-semibold text-white">{t('header.search.modalTitle')}</h1>
+              <div className={cn("flex items-center", isRTL ? "flex-row-reverse" : "justify-between")}>
+                <h1 className={cn("text-xl font-semibold text-white", isRTL && "ml-auto")}>{t('header.search.modalTitle')}</h1>
                 <button
                   onClick={() => setShowSearchModal(false)}
-                  className="hover:text-blue-500 transition cursor-pointer"
+                  className={cn("hover:text-blue-500 transition cursor-pointer", isRTL && "mr-auto")}
                 >
                   <X size={22} />
                 </button>
@@ -89,7 +92,8 @@ const TextInput = () => {
                 value={search}
                 onChange={handleChange}
                 placeholder={t('header.search.placeholder')}
-                className="bg-gray-800 border border-gray-700 focus-visible:ring-blue-500"
+                className={cn("bg-gray-800 border border-gray-700 focus-visible:ring-blue-500", isRTL && "text-right")}
+                dir={isRTL ? 'rtl' : 'ltr'}
               />
 
               {/* Button */}

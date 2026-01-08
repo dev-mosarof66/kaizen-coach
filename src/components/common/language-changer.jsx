@@ -50,10 +50,10 @@ const LanguageConverter = () => {
                 <span className='text-base hidden text-gray-400'>{language.toUpperCase()}</span>
             </div>
             {open && (
-                <div className={cn('absolute top-14 z-50 w-40 bg-gray-900 rounded-md shadow-md flex flex-col gap-2 py-4', isRTL ? isMobile ? 'left-20' : 'left-25' : 'right-25')}
+                <div className={cn('absolute top-14 z-50 w-40 bg-gray-900 rounded-md shadow-md flex flex-col gap-2 py-4', isRTL ? (isMobile ? 'left-0' : 'left-0') : 'right-0')}
                 >
                     {languages.map((lang) => (
-                        <div key={lang.id} className=' px-4 py-2 hover:bg-gray-800/50 active:scale-95 transition-all duration-300 delay-75 cursor-pointer text-sm' onClick={() => {
+                        <div key={lang.id} className={cn('px-4 py-2 hover:bg-gray-800/50 active:scale-95 transition-all duration-300 delay-75 cursor-pointer text-sm', isRTL && 'text-right')} onClick={() => {
                             handleLanguageChange(lang.code)
                         }}>{getLanguageName(lang.code)}</div>
                     ))}

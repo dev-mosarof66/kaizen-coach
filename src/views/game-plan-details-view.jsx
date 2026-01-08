@@ -17,11 +17,13 @@ import { game_plans } from './game-plan-view'
 import GamePlanContent from '../components/game-plans/game-plan-content'
 import EditPlanModal from '../components/game-plans/edit-plan-modal'
 import { useTranslation } from '../contexts/translation-context'
+import { cn } from '../lib/utils'
 
 
 
 const GamePlanDetailsView = ({ id }) => {
     const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
     const tabKeyRef = useRef('overview')
     const [activeTab, setActiveTab] = useState(() => {
         return t('gamePlanDetailsPage.tabs.overview')
@@ -73,10 +75,10 @@ const GamePlanDetailsView = ({ id }) => {
                     <BreadcrumbItem>
                         <BreadcrumbLink
                             asChild
-                            className="flex items-center gap-1 text-gray-400 hover:text-white transition-colors"
+                            className={cn("flex items-center gap-1 text-gray-400 hover:text-white transition-colors", isRTL && "flex-row-reverse")}
                         >
                             <Link href="/game-plans">
-                                <ArrowLeft className="h-4 w-4" />
+                                <ArrowLeft className={cn("h-4 w-4", isRTL && "rotate-180")} />
                                 <span>{t('gamePlanDetailsPage.back')}</span>
                             </Link>
                         </BreadcrumbLink>

@@ -3,13 +3,15 @@ import React, { useState } from 'react'
 import { LuSparkles } from "react-icons/lu";
 import { useRouter, usePathname } from 'next/navigation';
 import { useTranslation } from '../../contexts/translation-context';
+import { cn } from '../../lib/utils';
 
 const AIAssistant = () => {
     const router = useRouter();
     const pathname = usePathname();
-    const { t } = useTranslation();
+    const { t, language } = useTranslation();
     const [showBubble, setShowBubble] = useState(false);
     const currentMSG = t('aiAssistant.message');
+    const isRTL = language === 'ar'
 
 
     if(pathname === '/ai-assistant' || pathname === '/add-task' || pathname === '/game-plans') {
@@ -17,14 +19,15 @@ const AIAssistant = () => {
     }
 
     return (
-        <div className='fixed bottom-8 xl:bottom-12 right-8 xl:right-18 z-40 flex flex-col items-end gap-3'>
+        <div className={cn('fixed bottom-8 xl:bottom-12 z-40 flex flex-col gap-3', isRTL ? 'left-8 xl:left-18 items-start' : 'right-8 xl:right-18 items-end')}>
 
             {/* Bubble Message */}
             {showBubble && (
-                <div className="
-                    bg-gray-900 text-white text-sm px-4 py-2 rounded-xl shadow-lg 
-                    border border-gray-700 animate-in fade-in duration-300
-                ">
+                <div className={cn(
+                    "bg-gray-900 text-white text-sm px-4 py-2 rounded-xl shadow-lg",
+                    "border border-gray-700 animate-in fade-in duration-300",
+                    isRTL && "text-right"
+                )}>
                     {currentMSG}
                 </div>
             )}

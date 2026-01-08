@@ -7,7 +7,8 @@ import { constClassName } from '../../constants/constants'
 import { useTranslation } from '../../contexts/translation-context'
 
 const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
     const totalPages = Math.ceil(totalItems / itemsPerPage)
     const [currentPageIndex, setCurrentPageIndex] = useState(1)
 
@@ -35,9 +36,9 @@ const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
                 {t('teamsPage.pagination.showing')} {(currentPageIndex - 1) * itemsPerPage + 1} -{' '}
                 {Math.min(currentPageIndex * itemsPerPage, totalItems)} {t('teamsPage.pagination.of')} <span>{totalItems}</span> {t('teamsPage.pagination.teams')}
             </p>
-            <div className='flex items-center gap-2'>
+            <div className={cn('flex items-center gap-2', isRTL && 'flex-row-reverse')}>
                 <Button className={cn(constClassName.outlineButton)} onClick={handlePrev} disabled={currentPageIndex === 1}>
-                    <ChevronLeft />
+                    <ChevronLeft className={cn(isRTL && "rotate-180")} />
                 </Button>
                 <div className='flex items-center gap-3'>
                     {getVisiblePages().map((page) => (
@@ -52,7 +53,7 @@ const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
                     ))}
                 </div>
                 <Button className={cn(constClassName.outlineButton)} onClick={handleNext} disabled={currentPageIndex === totalPages}>
-                    <ChevronRight />
+                    <ChevronRight className={cn(isRTL && "rotate-180")} />
                 </Button>
             </div>
         </div>

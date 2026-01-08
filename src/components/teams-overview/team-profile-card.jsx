@@ -7,16 +7,19 @@ import { FaHeart } from 'react-icons/fa'
 import { BarChart, TrendingUp } from 'lucide-react'
 import { Card } from '../ui/card'
 import { useTranslation } from '../../contexts/translation-context'
+import { cn } from '../../lib/utils'
 
 const TeamProfileCard = () => {
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
+    
     return (
         <Card className='w-full flex flex-col gap-4 border border-gray-800 bg-gray-800/50 rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300'>
             <div className='w-full h-full flex flex-col gap-4'>
                 {/* back button and team profile  */}
-                <div className='w-full flex items-center justify-start gap-8'>
-                    <div className='flex items-center gap-2 text-gray-400 cursor-pointer group hover:text-white transition-all duration-300'>
-                        <FaArrowLeft className='size-4 group-hover:-translate-x-1 transition-all duration-300' />
+                <div className={cn('w-full flex items-center gap-8', isRTL ? 'justify-start flex-row-reverse' : 'justify-start')}>
+                    <div className={cn('flex items-center gap-2 text-gray-400 cursor-pointer group hover:text-white transition-all duration-300', isRTL && 'flex-row-reverse')}>
+                        <FaArrowLeft className={cn('size-4 transition-all duration-300', isRTL ? 'group-hover:translate-x-1 rotate-180' : 'group-hover:-translate-x-1')} />
                         <p className='text-gray-400 text-sm group-hover:text-white transition-all duration-300'>{t('teamsOverviewPage.teamProfileCard.back')}</p>
                     </div>
                     {/* team profile  */}

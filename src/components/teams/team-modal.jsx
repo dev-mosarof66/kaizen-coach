@@ -10,11 +10,13 @@ import {
 } from '../ui/sheet';
 import { Button } from '../ui/button';
 import { useTranslation } from '../../contexts/translation-context';
+import { cn } from '../../lib/utils';
 
 
 const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
-  const { t } = useTranslation()
+  const { t, language } = useTranslation()
   const router = useRouter()
+  const isRTL = language === 'ar'
 
   const isOpen = open !== undefined ? open : showModal;
   const handleOpenChange = onOpenChange || ((value) => {
@@ -25,7 +27,7 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
   return (
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
-        side="right"
+        side={isRTL ? "left" : "right"}
         className="w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
       >
         <SheetHeader className="border-b border-gray-800 py-0">
@@ -127,26 +129,26 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
           {/* button  */}
 
           <div className='w-full flex justify-center border-b border-b-gray-800 pb-6'>
-            <PrimaryButton onClick={() => router.push(`/teams/${teamId}`)} className='w-full flex items-center gap-6 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500 group'>
+            <PrimaryButton onClick={() => router.push(`/teams/${teamId}`)} className={cn('w-full flex items-center gap-6 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500 group', isRTL && 'flex-row-reverse')}>
               <p>{t('teamsPage.teamModal.openFullTeamPage')}</p>
-              <FaArrowRight className='group-hover:translate-x-2 transition-all duration-300' />
+              <FaArrowRight className={cn('transition-all duration-300', isRTL ? 'group-hover:-translate-x-2 rotate-180' : 'group-hover:translate-x-2')} />
             </PrimaryButton>
           </div>
 
           {/* coach details  */}
           <div className='w-full flex flex-col gap-2 pb-10'>
             <h2 className='text-gray-400 text-xs font-semibold'>{t('teamsPage.teamModal.headCoach')}</h2>
-            <div onClick={() => router.push('/coaches/coach-details')} className='w-full flex items-center gap-4 bg-gray-950/50 p-3 rounded-xl  group hover:bg-gray-950/70 active:scale-95 cursor-pointer transition-all duration-300 hover:shadow-lg'>
+            <div onClick={() => router.push('/coaches/coach-details')} className={cn('w-full flex items-center gap-4 bg-gray-950/50 p-3 rounded-xl  group hover:bg-gray-950/70 active:scale-95 cursor-pointer transition-all duration-300 hover:shadow-lg', isRTL && 'flex-row-reverse')}>
               <div className='p-3 rounded-full bg-blue-500/20 text-blue-400'>
                 <FaUsers />
               </div>
-              <div className='flex-1 flex items-center justify-between'>
-                <div className='flex flex-col'>
+              <div className={cn('flex-1 flex items-center', isRTL ? 'justify-between flex-row-reverse' : 'justify-between')}>
+                <div className={cn('flex flex-col', isRTL && 'text-right')}>
                   <h1 className='text-white text-sm font-semibold'>Coach Saleh</h1>
                   <p className='text-gray-400 text-xs'>{t('teamsPage.teamModal.viewProfile')}</p>
                 </div>
                 <div className='text-gray-400 hover:text-white cursor-pointer'>
-                  <FaArrowRight className='size-4 group-hover:translate-x-1 transition-all duration-300' />
+                  <FaArrowRight className={cn('size-4 transition-all duration-300', isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1')} />
                 </div>
               </div>
             </div>

@@ -34,7 +34,8 @@ import { useTranslation } from '../contexts/translation-context'
 
 const AddTaskView = () => {
     const router = useRouter()
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
     const [assignType, setAssignType] = useState('player')
     const [selectedPlayers, setSelectedPlayers] = useState(['Marcus Silva'])
     const [priority, setPriority] = useState('high')
@@ -61,10 +62,10 @@ const AddTaskView = () => {
                         <BreadcrumbItem>
                             <BreadcrumbLink
                                 asChild
-                                className="flex items-center gap-1 text-gray-400 hover:text-white transition-colors"
+                                className={cn("flex items-center gap-1 text-gray-400 hover:text-white transition-colors", isRTL && "flex-row-reverse")}
                             >
                                 <Link href="/tasks">
-                                    <ArrowLeft className="h-4 w-4" />
+                                    <ArrowLeft className={cn("h-4 w-4", isRTL && "rotate-180")} />
                                     <span>{t('addTaskPage.back')}</span>
                                 </Link>
                             </BreadcrumbLink>

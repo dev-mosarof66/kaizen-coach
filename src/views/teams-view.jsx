@@ -1,6 +1,6 @@
 'use client'
 import Header from '../components/teams/header'
-import Pagination from '../components/teams/pagination'
+import Pagination from '../components/common/pagination'
 import Stats from '../components/teams/stats'
 import TeamList from '../components/teams/team-list'
 import TeamModal from '../components/teams/team-modal'

@@ -5,7 +5,7 @@ import Header from '../components/players/Header'
 import PlayersList from '../components/players/players-list'
 import Stats from '../components/players/stat-card'
 import TabsFilter from '../components/players/tabs'
-import Pagination from '../components/players/pagination'
+import Pagination from '../components/common/pagination'
 import { useTranslation } from '../contexts/translation-context'
 
 

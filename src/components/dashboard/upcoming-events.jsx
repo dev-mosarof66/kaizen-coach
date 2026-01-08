@@ -50,7 +50,7 @@ const UpcomingEvents = () => {
                         {t('dashboard.upcomingEvents.title')}
                     </h1>
 
-                    <div className={cn("flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group", isRTL && "flex-row-reverse")}>
+                    <div className={cn("flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group")}>
                         <p>{t('dashboard.upcomingEvents.viewAll')}</p>
                         <ChevronRight
                             size={18}

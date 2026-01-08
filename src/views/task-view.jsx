@@ -9,7 +9,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '.
 import { Search, Download, Plus, CheckCircle2, TrendingUp, Target, Star, ChevronLeft, ChevronRight, Activity } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { OutlineButton, PrimaryButton } from '../components/common/button'
-import Pagination from '../components/tasks/pagination'
+import Pagination from '../components/common/pagination'
 import { Checkbox } from '../components/ui/checkbox'
 import TaskDetails from '../components/tasks/task-details'
 import { useRouter } from 'next/navigation'
@@ -223,9 +223,9 @@ const TaskView = () => {
             <Download className='w-4 h-4' />
             {t('tasksPage.exportReport')}
           </OutlineButton>
-          <PrimaryButton 
-          onClick={() => router.push('/add-task')}
-          className='bg-blue-600 hover:bg-blue-700 text-white'>
+          <PrimaryButton
+            onClick={() => router.push('/add-task')}
+            className='bg-blue-600 hover:bg-blue-700 text-white'>
             <Plus className='w-4 h-4' />
             {t('tasksPage.addTask')}
           </PrimaryButton>
@@ -280,7 +280,7 @@ const TaskView = () => {
 
       {/* All Tasks Section */}
       <Card className='bg-gray-800/60 border-gray-700 py-0 px-0'>
-        <CardContent className='p-0'>
+        <CardContent className='p-0 px-4'>
           <Table className='min-w-full'>
             <TableHeader className={'hover:bg-purple-500/5'}>
               <TableRow className='border-b border-gray-700 hover:bg-purple-700/5'>

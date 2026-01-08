@@ -28,7 +28,7 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
     <Sheet open={isOpen} onOpenChange={handleOpenChange}>
       <SheetContent
         side={isRTL ? "left" : "right"}
-        className="w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
+        className="w-80 md:w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
       >
         <SheetHeader className="border-b border-gray-800 py-0">
           {/* header  */}
@@ -131,7 +131,7 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
           <div className='w-full flex justify-center border-b border-b-gray-800 pb-6'>
             <PrimaryButton onClick={() => router.push(`/teams/${teamId}`)} className={cn('w-full flex items-center gap-6 bg-linear-to-br from-blue-500 via-blue-500 to-purple-500 group', isRTL && 'flex-row-reverse')}>
               <p>{t('teamsPage.teamModal.openFullTeamPage')}</p>
-              <FaArrowRight className={cn('transition-all duration-300', isRTL ? 'group-hover:-translate-x-2 rotate-180' : 'group-hover:translate-x-2')} />
+              <FaArrowRight className={cn('transition-all duration-300')} />
             </PrimaryButton>
           </div>
 
@@ -148,7 +148,7 @@ const TeamModal = ({ showModal, setShowModal, teamId, open, onOpenChange }) => {
                   <p className='text-gray-400 text-xs'>{t('teamsPage.teamModal.viewProfile')}</p>
                 </div>
                 <div className='text-gray-400 hover:text-white cursor-pointer'>
-                  <FaArrowRight className={cn('size-4 transition-all duration-300', isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1')} />
+                  <FaArrowRight className={cn('size-4 transition-all duration-300')} />
                 </div>
               </div>
             </div>

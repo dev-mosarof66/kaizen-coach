@@ -14,10 +14,12 @@ import {
     SheetHeader,
 } from '../ui/sheet';
 import { useTranslation } from '../../contexts/translation-context';
+import { cn } from '../../lib/utils';
 
 const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
     const router = useRouter()
-    const { t } = useTranslation()
+    const { t ,language} = useTranslation()
+    const isRTL = language === 'ar'
 
     // Support both old (onClose) and new (open/onOpenChange) prop patterns
     const isOpen = open !== undefined ? open : !!player;
@@ -28,8 +30,8 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
     return (
         <Sheet open={isOpen} onOpenChange={handleOpenChange}>
             <SheetContent
-                side="right"
-                className="w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
+                side={isRTL ? "left" : "right"}
+                className="w-80 md:w-96 bg-gray-900 border-gray-800 text-white overflow-y-auto p-0"
             >
                 <SheetHeader className="border-b border-gray-700">
                     {/* Close Button */}
@@ -37,7 +39,7 @@ const PlayerModal = ({ player, onClose, open, onOpenChange }) => {
                         onClick={() => handleOpenChange(false)}
                         className="w-full flex items-center gap-2 text-gray-400 hover:text-white active:scale-95 cursor-pointer transition-all duration-300 delay-75"
                     >
-                        <FaTimes />
+                        <FaTimes size={18} className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                         <p>{t('playersPage.playerModal.close')}</p>
                     </div>
                 </SheetHeader>

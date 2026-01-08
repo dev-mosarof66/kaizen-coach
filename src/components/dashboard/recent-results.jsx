@@ -19,7 +19,8 @@ const resultColor = {
 }
 
 const RecentResults = () => {
-    const { t } = useTranslation()
+    const { t ,language} = useTranslation()
+    const isRTL = language === 'ar'
     
     return (
         <Card className="w-full col-span-3 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
@@ -30,7 +31,7 @@ const RecentResults = () => {
                     <h1 className="text-base md:text-lg text-white font-semibold">{t('dashboard.recentResults.title')}</h1>
                     <div className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
                         <p>{t('dashboard.recentResults.viewAll')}</p>
-                        <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                        <ChevronRight size={18} className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@ const RecentResults = () => {
                                         <p className="text-gray-200 font-semibold text-sm mt-1">{m.results}</p>
                                         <p className="text-gray-400 text-xs">{m.date}</p>
                                     </div>
-                                    <ChevronRight className="text-gray-500 group-hover:text-gray-300 transition-colors" />
+                                    <ChevronRight size={18} className={cn("text-gray-500 group-hover:text-gray-300 transition-colors", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                                 </div>
                             </div>
                         )

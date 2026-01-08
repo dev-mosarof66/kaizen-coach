@@ -8,7 +8,7 @@ import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '.
 import { Search, Plus, ChevronDown, ArrowRight } from 'lucide-react'
 import { cn } from '../lib/utils'
 import { OutlineButton, PrimaryButton } from '../components/common/button'
-import Pagination from '../components/tasks/pagination'
+import Pagination from '../components/common/pagination'
 import { Checkbox } from '../components/ui/checkbox'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -238,10 +238,10 @@ const getCategoryClasses = (category) => {
 
             {/* All Tasks Section */}
             <Card className='bg-gray-800/60 border-gray-700 py-0 px-0'>
-                <CardContent className='p-0'>
+                <CardContent className='p-0 px-2'>
                     <Table className='min-w-full'>
-                        <TableHeader className={'hover:bg-purple-500/5'}>
-                            <TableRow className='border-b border-gray-700 hover:bg-purple-700/5'>
+                        <TableHeader>
+                            <TableRow className='border-b border-gray-700 hover:bg-transparent'>
                                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 flex items-center gap-2'>
                                     <Checkbox
                                         checked={selectedTasks.length === game_plans.length} onClick={() =>
@@ -266,18 +266,18 @@ const getCategoryClasses = (category) => {
 
 
                                 return (
-                                    <TableRow onClick={() => router.push(`/game-plans/${task.id}`)} key={task.id} className='border-b border-gray-700/50 hover:bg-gray-800/30 active:scale-95 transition-all duration-300 delay-75  cursor-pointer'>
+                                    <TableRow onClick={() => router.push(`/game-plans/${task.id}`)} key={task.id} className='border-b border-gray-700/50 hover:bg-gray-800/30 active:scale-95 transition-all duration-300 delay-75  cursor-pointer relative'>
                                         {/* Task Name */}
                                         <TableCell className='py-3 px-4'>
-                                            <div className='flex items-center gap-3 relative'>
+                                            <div className='flex items-center gap-1 relative'>
                                                 <Checkbox
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         isSelected ? handleDeselectTask(task.id) : handleSelectTask(task.id)
                                                     }}
                                                     checked={isSelected}
-                                                    className='size-4 absolute left-0 z-40 top-1/2 transform -translate-y-1/2 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white backdrop-blur-sm cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
-                                                <div className='flex flex-col gap-1 ml-6'>
+                                                    className='size-4  transform -translate-y-1/2 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white backdrop-blur-sm cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
+                                                <div className='flex flex-col gap-1 ml-2'>
                                                     <span className='text-white font-medium text-sm'>{task.taskName}</span>
                                                     <span className={`inline-block w-fit text-[10px] font-semibold px-2 py-0.5 rounded-full border ${getCategoryClasses(task.category)}`}>
                                                         {task.category}

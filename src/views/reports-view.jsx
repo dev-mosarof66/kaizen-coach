@@ -242,7 +242,7 @@ const ReportsView = () => {
                         </CardTitle>
                         <Button
                             variant="ghost"
-                            className={cn("text-blue-400 hover:text-blue-300 hover:bg-transparent p-0 h-auto flex items-center gap-1", isRTL && "flex-row-reverse")}
+                            className={cn("text-blue-400 hover:text-blue-300 hover:bg-transparent p-0 h-auto flex items-center gap-1")}
                         >
                             {t('reportsPage.viewAll')}
                             <ChevronRight className={cn("h-4 w-4", isRTL && "rotate-180")} />

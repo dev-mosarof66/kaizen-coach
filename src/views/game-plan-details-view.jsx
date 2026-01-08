@@ -22,7 +22,6 @@ import { useTranslation } from '../contexts/translation-context'
 
 const GamePlanDetailsView = ({ id }) => {
     const { t, language } = useTranslation()
-    // Track which tab key is active (overview, tacticalBoard, aiAnalytics)
     const tabKeyRef = useRef('overview')
     const [activeTab, setActiveTab] = useState(() => {
         return t('gamePlanDetailsPage.tabs.overview')

@@ -16,7 +16,8 @@ const SideBar = ({ closeDrawer }) => {
     const router = useRouter()
     const pathname = usePathname()
     const [activeItem, setActiveItem] = useState(0)
-    const { t } = useTranslation()
+    const { t, language } = useTranslation()
+    const isRTL = language === 'ar'
 
     const sidebarItems = [
         {
@@ -79,7 +80,7 @@ const SideBar = ({ closeDrawer }) => {
     }, [pathname]);
 
     return (
-        <div className='w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-900 to-gray-800 border-r border-r-gray-700'>
+        <div className={cn('w-60 lg:w-64 h-full flex flex-col justify-between bg-linear-to-b from-gray-900 to-gray-800', isRTL ? 'border-l border-l-gray-700' : 'border-r border-r-gray-700')}>
             {/* logo + sidebarItems  */}
             <div className='w-full'>
                 {/* logo  */}
@@ -112,7 +113,11 @@ const SideBar = ({ closeDrawer }) => {
                             {item.label}
                             <span className={
                                 cn(
-                                    activeItem === index && 'absolute -right-1 h-[34px] w-[9px] bg-white rounded-tl-lg rounded-bl-lg'
+                                    activeItem === index && isRTL 
+                                        ? 'absolute -left-1 h-[34px] w-[9px] bg-white rounded-tr-lg rounded-br-lg'
+                                        : activeItem === index 
+                                        ? 'absolute -right-1 h-[34px] w-[9px] bg-white rounded-tl-lg rounded-bl-lg'
+                                        : ''
                                 )
                             }></span>
                         </button>

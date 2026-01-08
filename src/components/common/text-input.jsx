@@ -34,7 +34,7 @@ const TextInput = () => {
     <div className="w-full">
 
       {/* DESKTOP SEARCH */}
-      <div className="hidden md:flex items-center gap-1 w-full max-w-sm border border-gray-700 focus:ring-blue-600 rounded-md px-3 shadow-sm">
+      <div className="hidden lg:flex items-center gap-1 w-full max-w-sm border border-gray-700 focus:ring-blue-600 rounded-md px-3 shadow-sm">
         <Search size={18} className="text-gray-400" />
         <Input
           type="search"
@@ -49,7 +49,7 @@ const TextInput = () => {
       {/* MOBILE BUTTON */}
       <div
         onClick={() => setShowSearchModal(true)}
-        className="md:hidden p-2 border border-gray-600 rounded-full active:scale-95 transition cursor-pointer flex items-center justify-center"
+        className="w-fit lg:hidden p-2 border border-gray-600 rounded-full active:scale-95 transition cursor-pointer flex items-center justify-center"
       >
         <Search className="w-4 h-4 text-gray-400" />
       </div>

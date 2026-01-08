@@ -32,9 +32,10 @@ export const TranslationProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    // Update HTML lang attribute when language changes
+    // Update HTML lang and dir attributes when language changes
     if (typeof document !== 'undefined') {
       document.documentElement.lang = language
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
     }
   }, [language])
 
@@ -46,7 +47,7 @@ export const TranslationProvider = ({ children }) => {
       if (value && typeof value === 'object' && k in value) {
         value = value[k]
       } else {
-        return key // Return key if translation not found
+        return key 
       }
     }
     

@@ -28,13 +28,21 @@ const TacticalBoard = () => {
 
     const [editingText, setEditingText] = useState(null)
 
+
+
+    // audio state
+    const [audioStream, setAudioStream] = useState(null)
+    const [audioChunks, setAudioChunks] = useState([])
+    const [isRecording, setIsRecording] = useState(false)
+    const [mediaRecorder, setMediaRecorder] = useState(null)
+
     const drawingTools = [
         { id: 'pencil', icon: Pencil, label: t('tacticalBoard.drawingTools.pencil') },
         { id: 'square', icon: Square, label: t('tacticalBoard.drawingTools.square') },
         { id: 'circle', icon: CircleIcon, label: t('tacticalBoard.drawingTools.circle') },
         { id: 'arrow', icon: ArrowRight, label: t('tacticalBoard.drawingTools.arrow') },
         { id: 'text', icon: Type, label: t('tacticalBoard.drawingTools.text') },
-        { id: 'players', icon: Users, label: t('tacticalBoard.drawingTools.players') },
+        // { id: 'players', icon: Users, label: t('tacticalBoard.drawingTools.players') },
         { id: 'eraser', icon: Eraser, label: t('tacticalBoard.drawingTools.eraser') },
     ]
 
@@ -192,6 +200,57 @@ const TacticalBoard = () => {
         stageRef.current.batchDraw()
     }
 
+
+    const handleMicrophone = async () => {
+        try {
+
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+            const mediaRecorder = new MediaRecorder(stream)
+            setAudioStream(stream)
+            setMediaRecorder(mediaRecorder)
+            setIsRecording(true)
+            mediaRecorder.start()
+            mediaRecorder.addEventListener('dataavailable', (event) => {
+                setAudioChunks(prev => [...prev, event.data])
+            })
+            mediaRecorder.addEventListener('stop', () => {
+                setIsRecording(false)
+                mediaRecorder.stop()
+                stream.getTracks().forEach(track => track.stop())
+                setAudioStream(null)
+                setMediaRecorder(null)
+                setAudioChunks([])
+            })
+        } catch (error) {
+            console.error('Error accessing microphone:', error)
+            setIsRecording(false)
+            setAudioStream(null)
+            setMediaRecorder(null)
+            setAudioChunks([])
+        }
+    }
+
+    const handleVideo = async () => {
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+            setVideoStream(stream)
+        } catch (error) {
+            console.error('Error accessing video:', error)
+        }
+    }
+
+
+    const stopRecording = () => {
+        if (mediaRecorder) {
+            mediaRecorder.stop()
+            mediaRecorder.getTracks().forEach(track => track.stop())
+            setIsRecording(false)
+            setAudioStream(null)
+            setMediaRecorder(null)
+            setAudioChunks([])
+        }
+    }
+
     const handleAction = (actionId) => {
         switch (actionId) {
             case 'undo':
@@ -208,6 +267,15 @@ const TacticalBoard = () => {
                 break
             case 'trash':
                 clearBoard()
+                break
+            case 'mic':
+                handleMicrophone()
+                break
+            case 'video':
+                handleVideo()
+                break
+            case 'stop':
+                stopRecording()
                 break
         }
     }

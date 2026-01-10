@@ -51,8 +51,8 @@ const TacticalBoard = () => {
         { id: 'redo', icon: Redo, label: t('tacticalBoard.actionTools.redo') },
         { id: 'zoomIn', icon: ZoomIn, label: t('tacticalBoard.actionTools.zoomIn') },
         { id: 'zoomOut', icon: ZoomOut, label: t('tacticalBoard.actionTools.zoomOut') },
-        { id: 'mic', icon: Mic, label: t('tacticalBoard.actionTools.microphone') },
-        { id: 'video', icon: Video, label: t('tacticalBoard.actionTools.video') },
+        // { id: 'mic', icon: Mic, label: t('tacticalBoard.actionTools.microphone') },
+        // { id: 'video', icon: Video, label: t('tacticalBoard.actionTools.video') },
         { id: 'trash', icon: Trash, label: t('tacticalBoard.actionTools.clear') },
     ]
 

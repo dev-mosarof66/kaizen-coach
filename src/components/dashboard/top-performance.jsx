@@ -43,22 +43,22 @@ const TopPerformance = () => {
 
                 {/* Section Header */}
                 <div className="px-5 pb-2">
-                    <h1 className="text-base md:text-lg text-white font-semibold">
+                    <h1 className="text-base md:text-lg text-gray-300 font-semibold">
                         {t('dashboard.teamPerformance.title')}
                     </h1>
                 </div>
 
                 {/* Divider */}
-                <div className="w-full h-px bg-gray-700" />
+                <div className="w-full h-px bg-gray-500/20" />
 
                 {/* Performance List */}
-                <div className="flex flex-col divide-y divide-gray-800">
+                <div className="flex flex-col divide-y divide-gray-500/20">
                     {performance.map((team) => (
                         <div key={team.id} className="px-5 py-2 flex flex-col gap-1 sm:gap-3">
                             <div className="w-full flex flex-col sm:flex-row gap-1 items-start sm:items-center justify-between">
                                 {/* team + W/D/L streak */}
-                                <div className="flex-1 flex flex-col gap-1">
-                                    <p className="text-white font-medium">{team.team}</p>
+                                <div className="flex-1 flex flex-col gap-2">
+                                    <p className="text-gray-300 font-medium">{team.team}</p>
                                     <div className="flex items-center gap-2">
                                         {team.label.map((stat, i) => {
                                             const type = stat[0]
@@ -66,7 +66,7 @@ const TopPerformance = () => {
                                                 <span
                                                     key={i}
                                                     className={cn(
-                                                        "text-sm text-gray-500 font-medium")}
+                                                        "text-sm text-gray-400 font-medium")}
                                                 >
                                                     {stat}
                                                 </span>
@@ -95,7 +95,7 @@ const TopPerformance = () => {
                             {/* Progress Bar */}
                             <div className="w-full pb-4">
                                 <p className="text-blue-300 justify-self-end px-4 py-0.5 font-semibold">{team.completion}%</p>
-                                <div className="w-full h-1.5 bg-gray-900 rounded-full overflow-hidden border border-gray-700">
+                                <div className="w-full h-1.5 bg-gray-900 rounded-full overflow-hidden border border-gray-500/20">
                                     <div
                                         className="h-full bg-blue-400 rounded-full transition-all"
                                         style={{ width: `${team.completion}%` }}

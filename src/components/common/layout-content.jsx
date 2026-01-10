@@ -4,6 +4,7 @@ import SideBar from "./sidebar";
 import Header from "./header";
 import AIAssistant from "./ai-assistant";
 import { useTranslation } from "../../contexts/translation-context";
+import VoiceAssistant from './voice-assistant';
 
 export default function LayoutContent({ children }) {
   const { language } = useTranslation();
@@ -16,10 +17,13 @@ export default function LayoutContent({ children }) {
       </div>
       <div className="w-full h-screen overflow-y-scroll scrollbar-hidden">
         <Header />
-        <div className="w-full flex-1 h-[89%] overflow-auto scrollbar-hidden">
+        <div className="w-full flex-1 h-[90%] overflow-auto scrollbar-hidden">
           {children}
         </div>
-        <AIAssistant />
+        <div >
+          <VoiceAssistant />
+          <AIAssistant />
+        </div>
       </div>
     </div>
   );

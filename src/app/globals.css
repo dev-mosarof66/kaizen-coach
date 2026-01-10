@@ -117,6 +117,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -125,9 +126,40 @@
 
 /* custom css  */
 
-.scrollbar-hidden{
+.scrollbar-hidden {
   scrollbar-width: none;
 }
 
 
 
+
+
+.voice-ring {
+  width: 4.1rem;
+  height: 4.1rem;
+  border-radius: 9999px;
+  padding: 3px;
+  background: conic-gradient(from 0deg,
+      #ef4444,
+      #fb7185,
+      #f97316,
+      #ef4444);
+  animation: spin 1.4s linear infinite;
+  filter: blur(0.2px);
+}
+
+.voice-ring::before {
+  content: '';
+  display: block;
+  width: 90%;
+  height: 90%;
+  background: #0f172a;
+  /* match your page background */
+  border-radius: 9999px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -84,17 +84,15 @@ const SideBar = ({ closeDrawer }) => {
             {/* logo + sidebarItems  */}
             <div className='w-full'>
                 {/* logo  */}
-                <div className='w-full flex flex-col gap-2 px-4 pt-4 pb-2'>
+                <div className='w-full flex flex-col gap-2 p-4 border-b border-gray-500/20'>
                     <div className='w-full flex items-center gap-1'>
                         <Image src="/logo.png" alt="logo" width={30} height={30} />
-                        <p className='text-base-content'>{t('sidebar.logo.brand')}</p>
+                        <p className='text-gray-300 text-lg'>{t('sidebar.logo.brand')}</p>
                     </div>
-                    <p className='text-xs text-gray-500'>{t('sidebar.logo.tagline')}</p>
+                    <p className='text-sm font-medium text-gray-400'>{t('sidebar.logo.tagline')}</p>
                 </div>
-                {/* border  */}
-                <div className='w-full h-px bg-gray-500/20' />
                 {/* sidebar items  */}
-                <div className='flex flex-col gap-2 py-4 px-2 transition-transform duration-300'>
+                <div className='flex flex-col gap-2 px-px my-6 transition-transform duration-300'>
                     {sidebarItems.map((item, index) => (
                         <button
 
@@ -107,17 +105,17 @@ const SideBar = ({ closeDrawer }) => {
                             }}
 
                             className={
-                                cn('flex items-center gap-2 text-gray-400 px-2 py-2  rounded-lg cursor-pointer hover:bg-blue-500/5 transition-colors duration-300 delay-75', activeItem === index && "relative overflow-hidden text-white bg-linear-to-r from-blue-500 to-purple-700 transition-transform duration-200")
+                                cn('flex items-center gap-2 text-gray-400 px-4 py-2  rounded-md cursor-pointer hover:bg-blue-500/5 transition-colors duration-300 delay-75', activeItem === index && "relative overflow-hidden text-white bg-linear-to-r from-blue-500 to-purple-700 transition-transform duration-200")
                             }>
                             <item.icon size={19} />
                             {item.label}
                             <span className={
                                 cn(
-                                    activeItem === index && isRTL 
+                                    activeItem === index && isRTL
                                         ? 'absolute -left-1 h-[34px] w-[9px] bg-white rounded-tr-lg rounded-br-lg'
-                                        : activeItem === index 
-                                        ? 'absolute -right-1 h-[34px] w-[9px] bg-white rounded-tl-lg rounded-bl-lg'
-                                        : ''
+                                        : activeItem === index
+                                            ? 'absolute -right-1 h-[34px] w-[9px] bg-white rounded-tl-lg rounded-bl-lg'
+                                            : ''
                                 )
                             }></span>
                         </button>
@@ -125,13 +123,13 @@ const SideBar = ({ closeDrawer }) => {
                 </div>
             </div>
             {/* account status  */}
-            <div className='w-full border-t border-t-gray-500/20 p-4'>
+            <div className='w-full border-t border-t-gray-500/20 p-3'>
                 <div className='w-full flex flex-col gap-2 border border-gray-500 bg-gray-950/50 text-gray-500 p-2 rounded-lg'>
-                    <div className='w-full flex items-center justify-between text-xs'>
+                    <div className='w-full flex items-center justify-between text-xs text-gray-400'>
                         <p>{t('sidebar.status.lastSync')}</p>
                         <p className='text-green-400'>{t('sidebar.status.lastSyncTime')}</p>
                     </div>
-                    <div className='w-full flex items-center justify-between text-xs'>
+                    <div className='w-full flex items-center justify-between text-xs text-gray-400'>
                         <p>{t('sidebar.status.aiMode')}</p>
                         <div className='flex items-center gap-1 text-green-400'>
                             <div className='w-2 h-2 rounded-full bg-green-400' />

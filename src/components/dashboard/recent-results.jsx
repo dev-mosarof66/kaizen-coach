@@ -19,24 +19,28 @@ const resultColor = {
 }
 
 const RecentResults = () => {
-    const { t ,language} = useTranslation()
+    const { t, language } = useTranslation()
     const isRTL = language === 'ar'
-    
+
+    const handleViewAll = () => {
+        console.log('view all')
+    }
+
     return (
-        <Card className="w-full col-span-3 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
+        <Card className="w-full col-span-3 border border-gray-800 bg-gray-800/50 rounded-md p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
 
                 {/* Header */}
-                <div className="w-full flex items-center justify-between px-5 py-3">
-                    <h1 className="text-base md:text-lg text-white font-semibold">{t('dashboard.recentResults.title')}</h1>
-                    <div className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
+                <div className="w-full flex items-center justify-between p-4">
+                    <h1 className="text-base md:text-lg text-gray-300 font-semibold">{t('dashboard.recentResults.title')}</h1>
+                    <div onClick={handleViewAll} className="flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group">
                         <p>{t('dashboard.recentResults.viewAll')}</p>
                         <ChevronRight size={18} className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                     </div>
                 </div>
 
                 {/* Divider */}
-                <div className="w-full h-px bg-gray-700" />
+                <div className="w-full h-px bg-gray-500/20" />
 
                 {/* Results List */}
                 <div className="flex flex-col">
@@ -44,32 +48,32 @@ const RecentResults = () => {
                         return (
                             <div
                                 key={m.id}
-                                className="flex items-center justify-between m-2 px-5 py-3 bg-gray-900 gap-2 rounded-xl transition-colors duration-300 hover:bg-purple-500/5 active:scale-95 cursor-pointer "
+                                className="flex items-center justify-between m-2 p-3 py-4 bg-gray-900 gap-2 rounded-md transition-colors duration-300 hover:bg-gray-900/80 active:scale-95 cursor-pointer "
                             >
                                 {/* Left Section */}
                                 <div className="flex items-center gap-3">
                                     {/* Status Badge */}
-                                    <div className={cn("w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm", resultColor[m.status])}>
+                                    <div className={cn("size-8 rounded-full flex items-center justify-center font-bold text-sm", resultColor[m.status])}>
                                         {m.status}
                                     </div>
 
                                     {/* Teams & Results */}
-                                    <div className="flex flex-col">
-                                        <p className="text-white font-semibold text-sm sm:text-base">
+                                    <div className="flex flex-col gap-1">
+                                        <p className="text-gray-300 font-semibold text-sm sm:text-base">
                                             {m.team1}
                                         </p>
-                                        <p className="text-gray-400 text-xs mt-1"><span className="text-gray-400">{t('dashboard.recentResults.vs')}</span> {m.team2}</p>
+                                        <p className="text-gray-400 text-xs"><span className="text-gray-400">{t('dashboard.recentResults.vs')}</span> {m.team2}</p>
 
                                     </div>
                                 </div>
 
                                 {/* Right Section: Date + Arrow */}
                                 <div className="flex items-center gap-2">
-                                    <div className="flex flex-col items-end justify-end gap-1">
-                                        <p className="text-gray-200 font-semibold text-sm mt-1">{m.results}</p>
+                                    <div className="flex flex-col items-end justify-end">
+                                        <p className="text-gray-300 font-semibold text-sm">{m.results}</p>
                                         <p className="text-gray-400 text-xs">{m.date}</p>
                                     </div>
-                                    <ChevronRight size={18} className={cn("text-gray-500 group-hover:text-gray-300 transition-colors", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
+                                    <ChevronRight size={18} className={cn("text-gray-400 group-hover:text-gray-300 transition-colors", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                                 </div>
                             </div>
                         )

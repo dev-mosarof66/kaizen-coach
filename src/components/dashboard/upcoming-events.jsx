@@ -40,27 +40,31 @@ const UpcomingEvents = () => {
 
     const isRTL = language === 'ar'
 
+    const handleViewAll = () => {
+        console.log('view all')
+    }
+
     return (
-        <Card className="w-full col-span-2 border border-gray-800 bg-gray-800/50 rounded-xl p-0 overflow-hidden">
+        <Card className="w-full col-span-2 border border-gray-800 bg-gray-800/50 rounded-md p-0 overflow-hidden">
             <div className="w-full flex flex-col gap-1">
 
                 {/* Header */}
-                <div className="w-full flex items-center justify-between px-5 py-3">
-                    <h1 className="text-base md:text-lg text-white font-semibold">
+                <div className="w-full flex items-center justify-between p-4">
+                    <h1 className="text-base md:text-lg text-gray-300 font-semibold">
                         {t('dashboard.upcomingEvents.title')}
                     </h1>
 
-                    <div className={cn("flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group")}>
+                    <div onClick={handleViewAll} className={cn("flex items-center gap-1 text-blue-500 hover:text-blue-600 text-xs sm:text-sm cursor-pointer transition-all group")}>
                         <p>{t('dashboard.upcomingEvents.viewAll')}</p>
                         <ChevronRight
                             size={18}
-                            className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")}
+                            className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-0.5" : "group-hover:translate-x-0.5")}
                         />
                     </div>
                 </div>
 
                 {/* Divider */}
-                <div className="w-full h-px bg-gray-700" />
+                <div className="w-full h-px bg-gray-500/20" />
 
                 {/* Matches List */}
                 <div className="flex flex-col">
@@ -73,7 +77,7 @@ const UpcomingEvents = () => {
                         return (
                             <div
                                 key={m.id}
-                                className="m-1 mx-3 py-2 px-4 bg-gray-900 hover:bg-purple-600/5 gap-2 rounded-xl shadow-inset transition-colors duration-300 cursor-pointer group"
+                                className="m-1 mx-2 py-2 px-4 bg-gray-900 hover:bg-gray-900/50 gap-2 rounded-md transition-colors duration-300 cursor-pointer group"
                             >
                                 <div className="flex items-center justify-between">
 
@@ -82,15 +86,15 @@ const UpcomingEvents = () => {
                                         {/* Match Type Badge */}
                                         <div className="flex gap-2">
                                             <span className={
-                                                cn("px-1 py-1 text-xs rounded-md bg-gray-900  border border-gray-700", typeColor, typeBgColor)
+                                                cn("px-1 py-1 text-xs rounded-md  border border-gray-500/20", typeColor, typeBgColor)
                                             }>
                                                 {m.type}
                                             </span>
-                                            <span className="text-white font-semibold text-sm">{m.team1}</span>
+                                            <span className="text-gray-300 font-semibold text-sm">{m.team1}</span>
                                         </div>
 
                                         {/* Teams */}
-                                        <p className="text-white font-semibold text-sm sm:text-base">
+                                        <p className="text-gray-300 font-semibold text-sm sm:text-base">
                                             <span className="text-gray-400">
 
                                                 {m.typeKey === 'cup' ? t('dashboard.upcomingEvents.at') : t('dashboard.upcomingEvents.vs')}

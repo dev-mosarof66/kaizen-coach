@@ -1,19 +1,25 @@
 'use client'
 import React from "react"
 import { Card } from "../ui/card"
-import { Button } from "../ui/button"
 import { FaPlus } from "react-icons/fa"
-import { OutlineButton } from "../common/button"
-import { cn } from "../../lib/utils"
-import { constClassName } from "../../constants/constants"
+import { OutlineButton, PrimaryButton } from "../common/button"
 import { useTranslation } from "../../contexts/translation-context"
 
 const WelcomeCard = () => {
     const { t } = useTranslation()
-    
+
+
+    const handleAddMatch = () => {
+        console.log('add match')
+    }
+
+    const handleViewSchedule = () => {
+        console.log('view schedule')
+    }
+
     return (
         <Card className="w-full bg-transparent border-none text-white">
-            <div className="flex flex-col gap-4 bg-linear-to-br from-gray-800 via-gray-800 to-blue-500/50  border border-gray-700 p-6 rounded-2xl">
+            <div className="flex flex-col gap-4 bg-linear-to-br from-gray-800 via-gray-800 to-blue-500/50  border border-gray-500/20 p-6 rounded-md">
 
                 <div className="w-full flex flex-col gap-1">
                     <h1 className="text-2xl xl:text-3xl font-semibold tracking-tight">
@@ -24,19 +30,19 @@ const WelcomeCard = () => {
                     </p>
                 </div>
 
-                <div className="w-full flex items-center gap-4">
+                <div className="w-full flex items-center gap-3">
 
-                    <Button className={cn("flex items-center gap-2", constClassName.primaryButton)}>
+
+                    <PrimaryButton onClick={handleAddMatch}>
                         <FaPlus className="text-sm" />
                         {t('hero.welcome.addMatch')}
-                    </Button>
+                    </PrimaryButton>
 
-                    <Button
-                        variant="outline"
-                        className={cn(constClassName.outlineButton)}
-                    >
+
+                    <OutlineButton onClick={handleViewSchedule}>
                         {t('hero.welcome.viewSchedule')}
-                    </Button>
+                    </OutlineButton>
+
                 </div>
             </div>
         </Card>

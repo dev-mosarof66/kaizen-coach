@@ -36,7 +36,7 @@ const TextInput = () => {
     <div className="w-full">
 
       {/* DESKTOP SEARCH */}
-      <div className={cn("hidden lg:flex items-center gap-1 w-full max-w-sm border border-gray-700 focus:ring-blue-600 rounded-md shadow-sm", isRTL ? "flex-row-reverse px-3" : "px-3")}>
+      <div className={cn("hidden lg:flex items-center gap-1 w-full max-w-sm border border-gray-500/40 focus:ring-blue-600 rounded-md", isRTL ? "flex-row-reverse px-3" : "px-3")}>
         <Search size={18} className="text-gray-400" />
         <Input
           type="search"
@@ -52,7 +52,7 @@ const TextInput = () => {
       {/* MOBILE BUTTON */}
       <div
         onClick={() => setShowSearchModal(true)}
-        className="w-fit lg:hidden p-2 border border-gray-600 rounded-full active:scale-95 transition cursor-pointer flex items-center justify-center"
+        className="w-fit lg:hidden p-2 border border-gray-500/40 rounded-full active:scale-95 transition cursor-pointer flex items-center justify-center"
       >
         <Search className="w-4 h-4 text-gray-400" />
       </div>
@@ -68,7 +68,7 @@ const TextInput = () => {
             transition={{ duration: 0.2 }}
           >
             <motion.div
-              className="w-full max-w-md bg-gray-900 p-5 rounded-xl shadow-xl flex flex-col gap-4"
+              className="w-full max-w-md bg-gray-900 p-5 rounded-md flex flex-col gap-4"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -76,11 +76,11 @@ const TextInput = () => {
             >
 
               {/* Header */}
-              <div className={cn("flex items-center", isRTL ? "flex-row-reverse" : "justify-between")}>
+              <div className={cn("flex items-center justify-between")}>
                 <h1 className={cn("text-xl font-semibold text-white", isRTL && "ml-auto")}>{t('header.search.modalTitle')}</h1>
                 <button
                   onClick={() => setShowSearchModal(false)}
-                  className={cn("hover:text-blue-500 transition cursor-pointer", isRTL && "mr-auto")}
+                  className={cn("hover:text-blue-500 active:scale-95 transition cursor-pointer")}
                 >
                   <X size={22} />
                 </button>
@@ -92,12 +92,12 @@ const TextInput = () => {
                 value={search}
                 onChange={handleChange}
                 placeholder={t('header.search.placeholder')}
-                className={cn("bg-gray-800 border border-gray-700 focus-visible:ring-blue-500", isRTL && "text-right")}
+                className={cn("bg-gray-800 border rounded-md border-gray-500/40 focus-visible:ring-blue-500", isRTL && "text-right")}
                 dir={isRTL ? 'rtl' : 'ltr'}
               />
 
               {/* Button */}
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={handleSearch}>
+              <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-md" onClick={handleSearch}>
                 {t('header.search.button')}
               </Button>
 

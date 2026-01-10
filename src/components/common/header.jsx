@@ -16,7 +16,9 @@ const Header = () => {
   const isRTL = language === 'ar'
 
   return (
-    <div className={cn('w-full flex items-center bg-gray-800 border-b border-gray-500/10 px-2 sm:px-4 md:px-3 py-2.5 relative z-50 justify-between', isRTL ? isMobile ? 'flex-row' : "flex-row-reverse" : 'flex-row')}>
+    <div className={cn('w-full flex items-center bg-gray-800 border-b border-gray-500/20 px-2 sm:px-4 md:px-3 py-2.5 relative z-50 justify-between', isRTL ? isMobile ? 'flex-row' : "flex-row-reverse" : 'flex-row')}>
+     
+      {/* drawer sidebar button  */}
       <div className='block md:hidden relative z-50'>
         <DrawerSidebar />
       </div>
@@ -26,7 +28,7 @@ const Header = () => {
         <div className='flex-1'>
           <TextInput />
         </div>
-        {/* profile + notification button  */}
+        {/* language + notification + profile button  */}
         <div className={cn('flex items-center gap-2')}>
           <NextEventBadge />
           <LanguageConverter />

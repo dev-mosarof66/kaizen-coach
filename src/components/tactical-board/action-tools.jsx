@@ -2,13 +2,17 @@ import React from 'react'
 import { Button } from '../ui/button'
 import { cn } from '../../lib/utils'
 
-const ActionTools = ({ actionTools, handleAction }) => {
+const ActionTools = ({ actionTools, handleAction, isRecording }) => {
     return (
         <div className='flex flex-wrap gap-1'>
             {
                 actionTools.map((tool) => {
 
                     const isDelete = tool.id === 'trash';
+
+
+                    if (isRecording && tool.id === 'mic') return null;
+                    if (!isRecording && tool.id === 'stop') return null;
 
                     return (
                         <ActionTool key={tool.id} icon={tool.icon} onClick={() => handleAction(tool.id)} danger={isDelete} label={tool.label} />

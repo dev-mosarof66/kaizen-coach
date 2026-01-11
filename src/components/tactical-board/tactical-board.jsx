@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/immutability */
 'use client'
 import React, { useRef, useState } from 'react'
-import { Pencil, Square, Circle as CircleIcon, ArrowRight, Type, Eraser, Undo, Redo, ZoomIn, ZoomOut, Trash, Users, Mic, Video } from 'lucide-react'
+import { Pencil, Square, Circle as CircleIcon, ArrowRight, Type, Eraser, Undo, Redo, ZoomIn, ZoomOut, Trash, Users, Mic, Video, Pause } from 'lucide-react'
 import DrawingTools from './drawing-tools'
 import ActionTools from './action-tools'
 import FootballPitch from './football-pitch'
@@ -51,7 +51,8 @@ const TacticalBoard = () => {
         { id: 'redo', icon: Redo, label: t('tacticalBoard.actionTools.redo') },
         { id: 'zoomIn', icon: ZoomIn, label: t('tacticalBoard.actionTools.zoomIn') },
         { id: 'zoomOut', icon: ZoomOut, label: t('tacticalBoard.actionTools.zoomOut') },
-        // { id: 'mic', icon: Mic, label: t('tacticalBoard.actionTools.microphone') },
+        { id: 'mic', icon: Mic, label: "Stop" },
+        { id: 'stop', icon: Pause, label: t('tacticalBoard.actionTools.stop') },
         // { id: 'video', icon: Video, label: t('tacticalBoard.actionTools.video') },
         { id: 'trash', icon: Trash, label: t('tacticalBoard.actionTools.clear') },
     ]
@@ -283,7 +284,7 @@ const TacticalBoard = () => {
         <CardContent className='w-full h-full p-2 flex flex-col gap-4 bg-gray-800 rounded-md'>
             <div className='flex items-center justify-between gap-2 flex-wrap'>
                 <DrawingTools tool={tool} setTool={setTool} color={color} setColor={setColor} drawingTools={drawingTools} />
-                <ActionTools actionTools={actionTools} handleAction={handleAction} />
+                <ActionTools actionTools={actionTools} handleAction={handleAction} isRecording={isRecording} />
             </div>
             <div className='w-full max-w-5xl mx-auto h-full bg-gray-900 relative rounded-md p-2 md:p-6'>
                 <div className='w-full max-w-4xl mx-auto relative'>

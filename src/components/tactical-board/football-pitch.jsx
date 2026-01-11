@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/refs */
 import React, { useRef } from 'react'
 import { Stage, Layer, Line, Rect, Circle, Arrow, Text } from 'react-konva'
 import FootballPitchBackground from './football-pitch-background'
@@ -9,11 +10,10 @@ const FootballPitch = ({ stageRef, handleMouseDown, handleMouseMove, handleMouse
     return (
         <div ref={containerRef} style={{ position: 'relative' }} className='w-full  h-full'>
 
-            <div className='w-full max-w-4xl mx-auto h-full relative z-50'>
+            <div className='w-full mx-auto h-full relative z-50'>
                 <Stage
                     ref={stageRef}
-                    width={window.innerWidth * 0.95}
-                    // eslint-disable-next-line react-hooks/refs
+                    width={containerRef.current?.clientWidth || 500}
                     height={containerRef.current?.clientHeight || 450}
                     onMouseDown={handleMouseDown}
                     onPointerDown={handleMouseDown}

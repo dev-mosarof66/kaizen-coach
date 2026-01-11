@@ -127,7 +127,7 @@ const GamePlanView = () => {
     const router = useRouter()
     const { t, language } = useTranslation()
     const isRTL = language === 'ar'
-    const [selectedTasks, setSelectedTasks] = useState([])
+    const [selectedTaskIds, setSelectedTaskIds] = useState(new Set())
 
     const getStatusClasses = (status) => {
         const statusKey = status === 'Completed' ? 'completed' : status === 'In Progress' ? 'inProgress' : 'notStarted'
@@ -159,21 +159,31 @@ const getCategoryClasses = (category) => {
 }
 
 
-    const handleSelectTask = (taskId) => {
-        setSelectedTasks((prev) => [...prev, taskId])
+    const handleTaskCheckbox = (taskId, checked) => {
+        setSelectedTaskIds((prev) => {
+            const newSet = new Set(prev)
+            if (checked) {
+                newSet.add(taskId)
+            } else {
+                newSet.delete(taskId)
+            }
+            return newSet
+        })
     }
 
-    const handleDeselectTask = (taskId) => {
-        setSelectedTasks((prev) => prev.filter((id) => id !== taskId))
+    const handleSelectAll = (checked) => {
+        if (checked === true) {
+            setSelectedTaskIds(new Set(game_plans.map((task) => task.id)))
+        } else {
+            setSelectedTaskIds(new Set())
+        }
     }
 
-    const handleSelectAllTasks = () => {
-        setSelectedTasks(game_plans.map((task) => task.id))
-    }
-
-    const handleDeselectAllTasks = () => {
-        setSelectedTasks([])
-    }
+    const isAllSelected = game_plans.length > 0 && selectedTaskIds.size === game_plans.length
+    const isIndeterminate = selectedTaskIds.size > 0 && selectedTaskIds.size < game_plans.length
+    
+    // For Radix UI checkbox, checked can be true, false, or "indeterminate"
+    const selectAllChecked = isAllSelected ? true : isIndeterminate ? "indeterminate" : false
 
     const getStatusText = (status) => {
         if (status === 'Completed') return t('gamePlansPage.status.completed')
@@ -244,11 +254,9 @@ const getCategoryClasses = (category) => {
                             <TableRow className='border-b border-gray-700 hover:bg-transparent'>
                                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 flex items-center gap-2'>
                                     <Checkbox
-                                        checked={selectedTasks.length === game_plans.length} onClick={() =>
-                                            selectedTasks.length > 0 ?
-                                                handleDeselectAllTasks() :
-                                                handleSelectAllTasks()
-                                        } className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
+                                        checked={selectAllChecked}
+                                        onCheckedChange={handleSelectAll}
+                                        className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
                                     <p className='text-white'>{t('gamePlansPage.tableHeaders.taskPlanName')}</p>
                                 </TableHead>
                                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 hidden lg:table-cell'>{t('gamePlansPage.tableHeaders.createdBy')}</TableHead>
@@ -261,9 +269,7 @@ const getCategoryClasses = (category) => {
                         </TableHeader>
                         <TableBody>
                             {game_plans.map((task) => {
-
-                                const isSelected = selectedTasks.includes(task.id)
-
+                                const isSelected = selectedTaskIds.has(task.id)
 
                                 return (
                                     <TableRow onClick={() => router.push(`/game-plans/${task.id}`)} key={task.id} className='border-b border-gray-700/50 hover:bg-gray-800/30 active:scale-95 transition-all duration-300 delay-75  cursor-pointer relative'>
@@ -271,11 +277,9 @@ const getCategoryClasses = (category) => {
                                         <TableCell className='py-3 px-4'>
                                             <div className='flex items-center gap-1 relative'>
                                                 <Checkbox
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        isSelected ? handleDeselectTask(task.id) : handleSelectTask(task.id)
-                                                    }}
                                                     checked={isSelected}
+                                                    onCheckedChange={(checked) => handleTaskCheckbox(task.id, checked)}
+                                                    onClick={(e) => e.stopPropagation()}
                                                     className='size-4  transform -translate-y-1/2 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white backdrop-blur-sm cursor-pointer active:scale-95 transition-all duration-300 delay-75' />
                                                 <div className='flex flex-col gap-1 ml-2'>
                                                     <span className='text-white font-medium text-sm'>{task.taskName}</span>

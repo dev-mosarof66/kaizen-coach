@@ -167,7 +167,7 @@ const AiAssistantView = () => {
     return (
         <div className='w-full h-full grid grid-cols-1 xl:grid-cols-5 gap-6 p-3 md:p-4'>
             {/* Left Panel - Chronological Content */}
-            <Card className='xl:col-span-2 w-full flex flex-col gap-6 overflow-y-auto bg-gray-800/50 border-gray-700 py-3 px-3'>
+            <Card className='w-full h-48 xl:h-full xl:col-span-2 flex flex-col gap-6 overflow-y-auto bg-gray-800/50 border-gray-700 py-3 px-3'>
                 <div className='flex flex-col gap-3'>
                     {Object.entries(chronologicalContent).map(([date, items]) => (
                         <div key={date} className='flex flex-col gap-3'>

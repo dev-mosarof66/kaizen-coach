@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { Card, CardContent, CardHeader } from '../components/ui/card'
-import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input'
 import { Progress } from '../components/ui/progress'
 import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from '../components/ui/table'
@@ -163,7 +162,8 @@ const TaskView = () => {
   const { t } = useTranslation()
   const router = useRouter()
   const [showTaskDetails, setShowTaskDetails] = useState(false)
-  const [selectedTasks, setSelectedTasks] = useState(1)
+  const [selectedTaskId, setSelectedTaskId] = useState(1)
+  const [selectedTaskIds, setSelectedTaskIds] = useState(new Set())
 
   const taskStats = [
     {
@@ -202,9 +202,35 @@ const TaskView = () => {
 
 
   const handleSelectTask = (taskId) => {
-    setSelectedTasks(taskId)
+    setSelectedTaskId(taskId)
     setShowTaskDetails(true)
   }
+
+  const handleTaskCheckbox = (taskId, checked) => {
+    setSelectedTaskIds((prev) => {
+      const newSet = new Set(prev)
+      if (checked) {
+        newSet.add(taskId)
+      } else {
+        newSet.delete(taskId)
+      }
+      return newSet
+    })
+  }
+
+  const handleSelectAll = (checked) => {
+    if (checked === true) {
+      setSelectedTaskIds(new Set(tasks.map((task) => task.id)))
+    } else {
+      setSelectedTaskIds(new Set())
+    }
+  }
+
+  const isAllSelected = tasks.length > 0 && selectedTaskIds.size === tasks.length
+  const isIndeterminate = selectedTaskIds.size > 0 && selectedTaskIds.size < tasks.length
+  
+  // For Radix UI checkbox, checked can be true, false, or "indeterminate"
+  const selectAllChecked = isAllSelected ? true : isIndeterminate ? "indeterminate" : false
 
 
 
@@ -284,10 +310,14 @@ const TaskView = () => {
       <Card className='bg-gray-800/60 border-gray-700 py-0 px-0'>
         <CardContent className='p-0 px-4'>
           <Table className='min-w-full'>
-            <TableHeader className={'hover:bg-purple-500/5'}>
-              <TableRow className='border-b border-gray-700 hover:bg-purple-700/5'>
+            <TableHeader>
+              <TableRow className='border-b border-gray-700 hover:bg-transparent'>
                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400 flex items-center gap-2'>
-                  <Checkbox className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white' />
+                  <Checkbox
+                    checked={selectAllChecked}
+                    onCheckedChange={handleSelectAll}
+                    className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white'
+                  />
                   <p className='text-white'>{t('tasksPage.table.taskName')}</p>
                 </TableHead>
                 <TableHead className='py-3 px-4 text-left text-sm font-medium text-gray-400'>{t('tasksPage.table.assignedTo')}</TableHead>
@@ -305,7 +335,12 @@ const TaskView = () => {
                   {/* Task Name */}
                   <TableCell className='py-3 px-4'>
                     <div className='flex items-center gap-3'>
-                      <Checkbox className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white' />
+                      <Checkbox
+                        checked={selectedTaskIds.has(task.id)}
+                        onCheckedChange={(checked) => handleTaskCheckbox(task.id, checked)}
+                        onClick={(e) => e.stopPropagation()}
+                        className='size-4 border-gray-500/50 text-gray-500 bg-blue-500/10 checked:bg-blue-500 checked:text-white'
+                      />
                       <div className='flex flex-col gap-1'>
                         <span className='text-white font-medium text-sm'>{task.taskName}</span>
                         <span className={`inline-block w-fit text-[10px] font-semibold px-2 py-0.5 rounded-full border ${getCategoryClasses(task.category)}`}>
@@ -403,7 +438,7 @@ const TaskView = () => {
       </Card>
 
 
-      {showTaskDetails && <TaskDetails task={tasks[selectedTasks - 1]} open={showTaskDetails} onOpenChange={setShowTaskDetails} />}
+      {showTaskDetails && <TaskDetails task={tasks[selectedTaskId - 1]} open={showTaskDetails} onOpenChange={setShowTaskDetails} />}
 
     </div>
   )

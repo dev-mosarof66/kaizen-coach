@@ -19,7 +19,7 @@ const AIAssistant = () => {
     }
 
     return (
-        <div className={cn('fixed bottom-8 xl:bottom-12 z-40 flex flex-col gap-3', isRTL ? 'left-8 xl:left-18 items-start' : 'right-8 xl:right-18 items-end')}>
+        <div onClick={() => router.push('/ai-assistant')}>
 
             {/* Bubble Message */}
             {showBubble && (

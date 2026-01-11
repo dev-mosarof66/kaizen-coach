@@ -33,8 +33,8 @@ const DrawerSidebar = () => {
         className={cn(
           "fixed top-0 h-screen backdrop-blur-sm transition-transform duration-300 z-50",
           isRTL
-            ? (showDrawerSidebar ? "right-0 translate-x-0" : "right-0 translate-x-full")
-            : (showDrawerSidebar ? "left-0 translate-x-0" : "left-0 -translate-x-full")
+            ? (showDrawerSidebar ? "right-0 translate-x-0 opacity-100" : "right-0 translate-x-full opacity-0")
+            : (showDrawerSidebar ? "left-0 translate-x-0 opacity-100" : "left-0 -translate-x-full opacity-0")
         )}
       >
         <SideBar closeDrawer={() => setShowDrawerSidebar(false)}

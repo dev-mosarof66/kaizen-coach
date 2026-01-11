@@ -53,19 +53,19 @@ const StatCard = ({ label, value, icon: Icon, index, theme }) => {
     return (
         <Card
             className={cn(
-                "flex flex-col gap-4 border border-gray-700 bg-blue-500/5 rounded-xl p-4 text-white shadow-md hover:shadow-lg transition-all duration-300",)}
+                "flex flex-col gap-4 border border-gray-700 bg-blue-500/5 rounded-md p-4 text-gray-300 shadow-md hover:shadow-lg transition-all duration-300",)}
         >
             <div className="flex items-center justify-between">
                 <div className="w-full h-20 sm:h-24 flex flex-col justify-between">
                     <p className={cn("text-sm sm:text-base text-gray-400", "font-medium")}>{label}</p>
-                    <h2 className={cn("text-2xl font-bold drop-shadow")}>
+                    <h2 className={cn("text-2xl font-bold drop-shadow text-gray-300")}>
                         {value}
                     </h2>
 
                 </div>
                 <div
                     className={cn(
-                        "size-10 flex items-center justify-center rounded-full text-2xl",
+                        "p-3 flex items-center justify-center rounded-full text-xl",
                         theme.iconBg,
                         theme.icon
                     )}

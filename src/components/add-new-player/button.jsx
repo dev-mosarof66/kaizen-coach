@@ -1,29 +1,29 @@
 'use client'
 import React from 'react'
-import { Button } from '../ui/button'
+import {  } from '../ui/'
 import { FaSave } from 'react-icons/fa'
-import { OutlineButton, PrimaryButton } from '../common/button'
+import { Outline, Primary } from '../common/'
 import { useRouter } from 'next/navigation'
 
 
 
-export const TopButtons = () => {
+export const Tops = () => {
 
     const router = useRouter();
 
     return (
         <div className='flex items-center gap-2 py-2'>
-            <OutlineButton onClick={() => router.back()}>
+            <Outline onClick={() => router.back()}>
                 Cancel
-            </OutlineButton>
-            <PrimaryButton>
+            </Outline>
+            <Primary>
                 <FaSave />
                 Save Player
-            </PrimaryButton>
+            </Primary>
         </div>
     )
 }
-export const SubmitButtons = () => {
+export const Submits = () => {
     const router = useRouter();
 
     const handleSubmit = () => {
@@ -33,13 +33,13 @@ export const SubmitButtons = () => {
 
     return (
         <div className='w-full flex items-end justify-center gap-2'>
-            <OutlineButton onClick={() => router.back()}>
+            <Outline onClick={() => router.back()}>
                 Cancel
-            </OutlineButton>
-            <PrimaryButton className='bg-linear-to-br from-blue-500 via-blue-500 to-purple-500' onClick={handleSubmit}>
+            </Outline>
+            <Primary className='bg-linear-to-br from-blue-500 via-blue-500 to-purple-500' onClick={handleSubmit}>
                 <FaSave />
                 Save Player
-            </PrimaryButton>
+            </Primary>
         </div>
     );
 };

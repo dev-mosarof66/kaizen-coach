@@ -156,7 +156,7 @@ const TeamCard = ({ team, setShowModal }) => {
         {/* Header with Trophy Icon */}
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <h3 className="text-gray-400 font-semibold text-lg mb-1">{team.name}</h3>
+            <h3 className="text-gray-300 font-semibold text-lg mb-1">{team.name}</h3>
             <p className="text-gray-400 text-sm">{team.coach}</p>
           </div>
           <div className={cn('p-2.5 rounded-lg', iconBgClass)}>
@@ -167,14 +167,14 @@ const TeamCard = ({ team, setShowModal }) => {
         {/* Active Players */}
         <div className="flex items-center gap-2">
           <span className="text-gray-400 text-sm">{t('teamsPage.teamCard.activePlayers')}</span>
-          <span className="text-gray-200 font-medium">{team.activePlayers} {t('teamsPage.teamCard.active')}</span>
+          <span className="text-gray-300 font-medium">{team.activePlayers} {t('teamsPage.teamCard.active')}</span>
         </div>
 
         {/* Win Rate */}
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <span className="text-gray-400 text-sm">{t('teamsPage.teamCard.winRate')}</span>
-            <span className="text-gray-200 font-semibold">{team.winRate}%</span>
+            <span className="text-gray-300 font-semibold">{team.winRate}%</span>
           </div>
           <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
             <div

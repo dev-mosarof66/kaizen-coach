@@ -48,7 +48,7 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }),'cursor-pointer active:scale-95 transition-all duration-300 delay-75')}
+      className={cn(buttonVariants({ variant, size, className }),'text-gray-200 border border-gray-600 cursor-pointer active:scale-95 transition-all duration-300 delay-75')}
       {...props} />
   );
 }

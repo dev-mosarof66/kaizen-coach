@@ -7,7 +7,7 @@ import { constClassName } from '../../constants/constants'
 import { useTranslation } from '../../contexts/translation-context'
 
 const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
-    const { t ,language} = useTranslation()
+    const { t, language } = useTranslation()
     const isRTL = language === 'ar'
     const totalPages = Math.ceil(totalItems / itemsPerPage)
     const [currentPageIndex, setCurrentPageIndex] = useState(1)
@@ -37,7 +37,7 @@ const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
                 {Math.min(currentPageIndex * itemsPerPage, totalItems)} {t('playersPage.pagination.of')} <span>{totalItems}</span> {t('playersPage.pagination.players')}
             </p>
             <div className='flex items-center gap-2'>
-                <Button className={cn(constClassName.outlineButton)} onClick={handlePrev} disabled={currentPageIndex === 1}>
+                <Button size={'icon-sm'} className={cn(constClassName.outlineButton)} onClick={handlePrev} disabled={currentPageIndex === 1}>
                     <ChevronLeft size={18} className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                 </Button>
                 <div className='flex items-center gap-3'>
@@ -45,14 +45,14 @@ const Pagination = ({ totalItems = 127, itemsPerPage = 8 }) => {
                         <div
                             key={page}
                             className={cn(
-                                page === currentPageIndex ? 'bg-blue-500 text-white px-2' : 'border border-gray-600 px-2 text-white'
+                                page === currentPageIndex ? 'bg-blue-500 text-gray-300 px-2' : 'border border-gray-700 px-2 text-gray-300'
                             )}
                         >
                             {page}
                         </div>
                     ))}
                 </div>
-                <Button className={cn(constClassName.outlineButton)} onClick={handleNext} disabled={currentPageIndex === totalPages}>
+                <Button size={'icon-sm'} className={cn(constClassName.outlineButton)} onClick={handleNext} disabled={currentPageIndex === totalPages}>
                     <ChevronRight size={18} className={cn("transition-transform", isRTL ? "rotate-180 group-hover:-translate-x-1" : "group-hover:translate-x-1")} />
                 </Button>
             </div>

@@ -260,7 +260,7 @@ const TaskView = () => {
         <h2 className='text-xl font-semibold text-white'>{t('tasksPage.allTasks')}</h2>
 
         {/* Search and Filters */}
-        <div className='flex  sm:flex-row items-start sm:items-center justify-between gap-4'>
+        <div className='flex flex-col  sm:flex-row items-start sm:items-center justify-between gap-4'>
           <div className='w-full  lg:w-[350px] relative'>
             <Search className='size-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400' />
             <Input
@@ -268,12 +268,14 @@ const TaskView = () => {
               className='w-full pl-9 bg-gray-800/60 border-gray-700 text-gray-300 placeholder:text-gray-500'
             />
           </div>
-          <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-            {t('tasksPage.allPositions')}
-          </OutlineButton>
-          <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
-            {t('tasksPage.allStatus')}
-          </OutlineButton>
+          <div className='flex items-center gap-2'>
+            <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
+              {t('tasksPage.allPositions')}
+            </OutlineButton>
+            <OutlineButton className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700/80'>
+              {t('tasksPage.allStatus')}
+            </OutlineButton>
+          </div>
         </div>
       </div>
 

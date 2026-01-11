@@ -8,7 +8,7 @@ export const OutlineButton = ({ children, onClick, className = constClassName.ou
             variant="outline"
             size={'sm'}
             onClick={onClick}
-            className={cn("items-center gap-2 rounded-md", className)} >
+            className={cn("items-center gap-2 rounded-md text-gray-400 border border-gray-600", className)} >
             {children}
         </Button>
 
@@ -16,7 +16,7 @@ export const OutlineButton = ({ children, onClick, className = constClassName.ou
 }
 export const PrimaryButton = ({ children, onClick, className = constClassName.primaryButton }) => {
     return (
-        <Button onClick={onClick} size={'sm'} className={cn("items-center gap-2 rounded-md", className)}>
+        <Button onClick={onClick} size={'sm'} className={cn("items-center gap-2 rounded-md text-gray-300", className)}>
             {children}
         </Button>
 

@@ -73,7 +73,7 @@ const MatchHistory = () => {
             <div className='w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4'>
                 <h2 className='text-2xl font-semibold text-white'>{t('matchesPage.matchHistory.title')}</h2>
 
-                <div className='flex fitems-center gap-3 w-full sm:w-auto'>
+                <div className='flex flex-col items-start gap-2 sm:flex-row flex-wrap md:flex-col lg:flex-row w-full sm:w-auto'>
                     <div className='relative flex-1 sm:flex-initial sm:w-[200px]'>
                         <Search className='absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400' />
                         <Input
@@ -81,12 +81,18 @@ const MatchHistory = () => {
                             className='pl-9 bg-gray-800/60 border-gray-700 text-gray-300 placeholder:text-gray-500'
                         />
                     </div>
-                    <Button variant='outline' className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700'>
-                        {t('matchesPage.matchHistory.allPositions')}
-                    </Button>
-                    <Button variant='outline' className='bg-gray-800/60 border-gray-700 text-gray-300 hover:bg-gray-700'>
-                        {t('matchesPage.matchHistory.allStatus')}
-                    </Button>
+                    <div className='flex items-center gap-2'>
+
+                        <OutlineButton>
+                            {t('matchesPage.matchHistory.allPositions')}
+                        </OutlineButton>
+
+
+
+                        <OutlineButton>
+                            {t('matchesPage.matchHistory.allStatus')}
+                        </OutlineButton>
+                    </div>
                 </div>
             </div>
 

@@ -10,7 +10,7 @@ const TeamsTab = () => {
         <div className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
             
             {/* Title */}
-            <h1 className="text-xl font-semibold whitespace-nowrap">{t('teamsPage.allTeams')}</h1>
+            <h1 className="text-xl font-semibold whitespace-nowrap text-gray-300">{t('teamsPage.allTeams')}</h1>
 
             {/* Controls */}
             <div className="flex flex-col sm:flex-row md:flex-row w-full xl:w-auto gap-3">
@@ -19,7 +19,7 @@ const TeamsTab = () => {
                 <div className="w-full sm:w-72 md:w-full xl:w-72">
                     <Input 
                         placeholder={t('teamsPage.searchPlayersPlaceholder')} 
-                        className="w-full"
+                        className="w-full text-gray-300 border border-gray-600 rounded-md"
                     />
                 </div>
 
